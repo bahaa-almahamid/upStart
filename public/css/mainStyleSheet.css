@@ -1,0 +1,142 @@
+* {
+    transition-duration: 0.3;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+
+/* here is where the homepage header content */
+
+header {
+    padding-top: 7px;
+    position: relative;
+    width: 100%;
+    height: 50px;
+    background-color: #056675;
+}
+
+#logo-us {
+    margin-left: 100px;
+    display: inline;
+    color: #fff;
+    vertical-align: middle;
+}
+
+#search-input {
+    height: 30px;
+    border: none;
+    background: #02323a;
+    color: #fff;
+    border-radius: 5px;
+}
+
+#search-input-container {
+    padding: 0 5px;
+    border: none;
+    border-radius: 5px;
+    background: #02323a;
+    display: inline-block;
+    margin-left: 40px;
+    color: grey;
+}
+
+
+/* end of header content */
+
+
+/* body content of the homepage */
+
+.main-container {
+    position: relative;
+    width: 100%;
+    height: 1000px;
+    background-color: #d6ddde;
+}
+
+.main-text-container {
+    position: absolute;
+    width: 70%;
+    height: 1000px;
+}
+
+.up-content {
+    font-size: 250px;
+    font-weight: bolder;
+    color: #056675;
+    text-shadow: 0px 24px 12px #515454;
+}
+
+.start-content {
+    font-size: 250px;
+    font-weight: bolder;
+    color: #89a8ae;
+}
+
+.main-forms-container {
+    background-color: #d6ddde;
+    width: 30%;
+    position: absolute;
+    height: 1000px;
+    right: 0%;
+}
+
+.definition-first-para {
+    color: #89a8ae;
+    text-align: center;
+    font-size: 2rem;
+}
+
+.definition-second-para {
+    color: #89a8ae;
+    text-align: center;
+    font-size: 3rem;
+}
+
+.login-form,
+.signup-form {
+    background-color: #fff;
+    margin: 10px;
+    padding: 10px;
+    padding-top: 20px;
+    border: none;
+    border-radius: 5px;
+}
+
+.login-form-user,
+.login-form-password {
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 10px;
+    border: .5px solid #000;
+    height: 30px;
+    border-radius: 3px;
+    padding: 2px;
+    background-color: #fff;
+    display: block;
+}
+
+.login-form-submit {
+    cursor: pointer;
+    width: 60px;
+    height: 30px;
+    margin-left: 17px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 3px;
+    background-color: #056675;
+    color: #fff;
+}
+
+.login-form-label {
+    color: #056675;
+}
+
+.forgot-password {
+    color: #056675;
+    margin-left: 85px;
+    margin-top: 10px;
+}
