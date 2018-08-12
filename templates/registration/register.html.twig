@@ -28,10 +28,10 @@
                         <form class="signup-form" action="">
                             
                             {{ form_start(form) }}
-                                {{ form_row(form.username) }}
-                                {{ form_row(form.email) }}
-                                {{ form_row(form.password) }}
-                                <button type="submit">Register</button>
+                                {{ form_row(form.username, { 'attr': {'class': 'login-form-user'} }) }}
+                                {{ form_row(form.email, { 'attr': {'class': 'login-form-user'} }) }}
+                                {{ form_row(form.password, { 'attr': {'class': 'login-form-user'} }) }}
+                                <button type="submit" class="login-form-submit">Register</button>
                             {{ form_end(form) }}
                         </form>
 
