@@ -5,4 +5,3 @@
 homepage:
   path:     /
   controller: App\Controller\RegistrationController::registerUser
-

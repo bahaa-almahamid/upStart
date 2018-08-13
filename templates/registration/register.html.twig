@@ -25,18 +25,17 @@
                             <input type="checkbox" id="login-form-checkbox" class="login-form-checkbox" name="remember-me"><label class="login-form-label" for="login-form-checkbox">Remember me</label> <br>
                             <a class="forgot-password" href="">Forgot your password?</a>
                         </form>
-                        <form class="signup-form" action="">
+                        
                             
-                            {{ form_start(form) }}
+                            {{ form_start(form, {'attr': {'class': 'signup-form'}} ) }}
                                 {{ form_row(form.username, { 'attr': {'class': 'login-form-user'} }) }}
                                 {{ form_row(form.email, { 'attr': {'class': 'login-form-user'} }) }}
                                 {{ form_row(form.plainPassword.first, { 'attr': {'class': 'login-form-user'} }) }}
                                 {{ form_row(form.plainPassword.second, { 'attr': {'class': 'login-form-user'} }) }}
-
-
-                                <button type="submit">Register</button>
+                                {{ form_row(form.address, { 'attr': {'class': 'login-form-user'} }) }}
+                                <button type="submit" class="login-form-submit" >Register</button>
                             {{ form_end(form) }}
-                        </form>
+                        
 
                     </div>
 

@@ -3,15 +3,17 @@
 // src/Entity/User.php
 namespace App\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
+ * @ORM\Entity
  * @ORM\Table(name="app_users")
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
+ * @UniqueEntity(fields="email", message="Email already taken")
+ * @UniqueEntity(fields="username", message="Username already taken")
  */
 class User implements UserInterface, \Serializable
 {
@@ -23,7 +25,8 @@ class User implements UserInterface, \Serializable
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=25, unique=true)
+     * @ORM\Column(type="string", length=70, unique=true)
+     * @Assert\NotBlank()
      */
     private $username;
 
@@ -34,12 +37,17 @@ class User implements UserInterface, \Serializable
     private $plainPassword;
 
     /**
+     * The below length depends on the "algorithm" you use for encoding
+     * the password, but this works well with bcrypt.
+     *
      * @ORM\Column(type="string", length=64)
      */
     private $password;
 
-    /**
-     * @ORM\Column(type="string", length=100, unique=true)
+     /**
+     * @ORM\Column(type="string", length=70, unique=true)
+     * @Assert\NotBlank()
+     * @Assert\Email()
      */
     private $email;
 
@@ -54,7 +62,7 @@ class User implements UserInterface, \Serializable
     private $address;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=200, nullable=true)
      */
     private $picture;
 
@@ -68,17 +76,16 @@ class User implements UserInterface, \Serializable
      */
     private $about;
 
-    /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Chat", mappedBy="user_id")
-     */
-    private $chats;
+    private $role;
+
+
+
 
     public function __construct()
     {
         $this->isActive = true;
-        $this->chats = new ArrayCollection();
-        // may not be needed, see section on salt below
-        // $this->salt = md5(uniqid('', true));
+        $this->createdate = new \DateTime();
+        $this->roles = array('ROLE_USER');
     }
 
     public function getUsername()
@@ -98,6 +105,16 @@ class User implements UserInterface, \Serializable
         return null;
     }
     
+    public function getPlainPassword()
+    {
+        return $this->plainPassword;
+    }
+
+    public function setPlainPassword($password)
+    {
+        $this->plainPassword = $password;
+    }
+ 
 
     public function getPassword()
     {
@@ -111,16 +128,6 @@ class User implements UserInterface, \Serializable
         return $this;
     }
 
-    public function getPlainPassword()
-    {
-        return $this->plainPassword;
-    }
-
-    public function setPlainPassword($password)
-    {
-        $this->plainPassword = $password;
-    }
-
 
     public function getEmail()
     {
@@ -132,37 +139,9 @@ class User implements UserInterface, \Serializable
         return $this;
     }
 
-    public function getRoles()
-    {
-        return array('ROLE_USER');
-    }
 
     public function eraseCredentials()
     {
-    }
-
-    /** @see \Serializable::serialize() */
-    public function serialize()
-    {
-        return serialize(array(
-            $this->id,
-            $this->username,
-            $this->password,
-            // see section on salt below
-            // $this->salt,
-        ));
-    }
-
-    /** @see \Serializable::unserialize() */
-    public function unserialize($serialized)
-    {
-        list (
-            $this->id,
-            $this->username,
-            $this->password,
-            // see section on salt below
-            // $this->salt
-        ) = unserialize($serialized, array('allowed_classes' => false));
     }
 
     public function getAddress(): ?string
@@ -194,16 +173,15 @@ class User implements UserInterface, \Serializable
         return $this->createdate;
     }
 
-    public function setCreatedate(\DateTimeInterface $createdate): self
-    {
-        $this->createdate = $createdate;
-
-        return $this;
-    }
 
     public function getAbout(): ?string
     {
         return $this->about;
+    }
+
+    public function getRoles()
+    {
+        return $this->roles;
     }
 
     public function setAbout(?string $about): self
@@ -212,32 +190,28 @@ class User implements UserInterface, \Serializable
 
         return $this;
     }
-
-    /**
-     * @return Collection|Chat[]
-     */
-    public function getChats(): Collection
-    {
-        return $this->chats;
-    }
-
-    public function addChat(Chat $chat): self
-    {
-        if (!$this->chats->contains($chat)) {
-            $this->chats[] = $chat;
-            $chat->addUserId($this);
-        }
-
-        return $this;
-    }
-
-    public function removeChat(Chat $chat): self
-    {
-        if ($this->chats->contains($chat)) {
-            $this->chats->removeElement($chat);
-            $chat->removeUserId($this);
-        }
-
-        return $this;
-    }
+     /** @see \Serializable::serialize() */
+     public function serialize()
+     {
+         return serialize(array(
+             $this->id,
+             $this->username,
+             $this->password,
+             // see section on salt below
+             // $this->salt,
+         ));
+     }
+ 
+     /** @see \Serializable::unserialize() */
+     public function unserialize($serialized)
+     {
+         list (
+             $this->id,
+             $this->username,
+             $this->password,
+             // see section on salt below
+             // $this->salt
+         ) = unserialize($serialized, array('allowed_classes' => false));
+     }
+    
 }

@@ -10,7 +10,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\User;
 
 class RegistrationController extends AbstractController
-{//Hewllo 
+{
     public function registerUser(Request $request, UserPasswordEncoderInterface $passwordEncoder)
     {
         $user = new User();
@@ -19,6 +19,7 @@ class RegistrationController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $password = $passwordEncoder->encodePassword($user, $user->getPlainPassword());
             $user->setPassword($password);
+            
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
             $entityManager->flush();
