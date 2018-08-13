@@ -10,7 +10,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\User;
 
 class RegistrationController extends AbstractController
-{//
+{//test
     
     public function registerUser(Request $request, UserPasswordEncoderInterface $passwordEncoder)
     {
