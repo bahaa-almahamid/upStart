@@ -70,10 +70,13 @@ class User implements UserInterface, \Serializable
         return null;
     }
     
+
     public function getPassword()
     {
         return $this->password;
     }
+
+
     public function setPassword($password)
     {
         $this->password = $password;
@@ -89,6 +92,7 @@ class User implements UserInterface, \Serializable
     {
         $this->plainPassword = $password;
     }
+
 
     public function getEmail()
     {
