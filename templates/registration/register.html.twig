@@ -28,9 +28,11 @@
                         <form class="signup-form" action="">
                             
                             {{ form_start(form) }}
-                                {{ form_row(form.username) }}
-                                {{ form_row(form.email) }}
-                                {{ form_row(form.password) }}
+                                {{ form_row(form.username, { 'attr': {'class': 'login-form-user'} }) }}
+                                {{ form_row(form.email, { 'attr': {'class': 'login-form-user'} }) }}
+                                {{ form_row(form.plainPassword.first, { 'attr': {'class': 'login-form-user'} }) }}
+                                {{ form_row(form.plainPassword.second, { 'attr': {'class': 'login-form-user'} }) }}
+
                                 <button type="submit">Register</button>
                             {{ form_end(form) }}
                         </form>
