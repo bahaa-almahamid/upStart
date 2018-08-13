@@ -59,19 +59,20 @@ header {
 
 .main-text-container {
     position: absolute;
-    width: 70%;
-    height: 1000px;
+    width: 60%;
+    height: 900px;
+    margin-left: 10px;
 }
 
 .up-content {
-    font-size: 250px;
+    font-size: 200px;
     font-weight: bolder;
     color: #056675;
     text-shadow: 0px 24px 12px #515454;
 }
 
 .start-content {
-    font-size: 250px;
+    font-size: 200px;
     font-weight: bolder;
     color: #89a8ae;
 }
@@ -93,7 +94,7 @@ header {
 .definition-second-para {
     color: #89a8ae;
     text-align: center;
-    font-size: 3rem;
+    font-size: 2rem;
 }
 
 .login-form,
@@ -104,6 +105,12 @@ header {
     padding-top: 20px;
     border: none;
     border-radius: 5px;
+    box-shadow: 0px 0px 15px #737373;
+}
+
+.login{
+    margin-right: 5px;
+    margin-top: 5px;
 }
 
 .login-form-user,
@@ -117,6 +124,10 @@ header {
     padding: 2px;
     background-color: #fff;
     display: block;
+}
+
+button{
+    margin-bottom: 7px;
 }
 
 .login-form-submit {
