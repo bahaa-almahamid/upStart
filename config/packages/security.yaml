@@ -16,7 +16,7 @@ security:
             form_login:
                 check_path:         login
                 login_path:         login
-                default_target_path: /
+                default_target_path: Default/homepage.html.twig
             logout:
                 path: /logout
                 target: /
