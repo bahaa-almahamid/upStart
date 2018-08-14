@@ -6,3 +6,10 @@ homepage:
   path:     /
   controller: App\Controller\RegistrationController::registerUser
 
+login:
+  path:     /login
+  controller: App\Controller\DefaultController::login
+
+logout:
+  path:     /logout
+
