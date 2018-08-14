@@ -10,7 +10,7 @@ class DefaultController extends Controller
 {
     public function homepage()
     {
-        return $this->render('default/homepage.html.twig'); //
+        return $this->render('default/homepage.html.twig'); 
     }
 
     public function login(AuthenticationUtils $authenticationUtils)
