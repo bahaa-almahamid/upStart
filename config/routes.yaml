@@ -5,3 +5,6 @@
 homepage:
   path:     /
   controller: App\Controller\RegistrationController::registerUser
+Chat:
+  path:   /Chat
+  controller: App\Controller\ChatController::showChat
