@@ -1,4 +1,7 @@
 {
+    "cboden/ratchet": {
+        "version": "v0.4.1"
+    },
     "doctrine/annotations": {
         "version": "1.0",
         "recipe": {
@@ -77,8 +80,14 @@
     "egulias/email-validator": {
         "version": "2.1.4"
     },
+    "evenement/evenement": {
+        "version": "v3.0.1"
+    },
     "fig/link-util": {
         "version": "1.0.0"
+    },
+    "guzzlehttp/psr7": {
+        "version": "1.4.2"
     },
     "jdorn/sql-formatter": {
         "version": "v1.2.17"
@@ -91,6 +100,12 @@
     },
     "ocramius/proxy-manager": {
         "version": "2.1.1"
+    },
+    "paragonie/random_compat": {
+        "version": "v9.99.99"
+    },
+    "paragonie/sodium_compat": {
+        "version": "v1.6.3"
     },
     "phpdocumentor/reflection-common": {
         "version": "1.0.1"
@@ -107,6 +122,9 @@
     "psr/container": {
         "version": "1.0.0"
     },
+    "psr/http-message": {
+        "version": "1.0.1"
+    },
     "psr/link": {
         "version": "1.0.0"
     },
@@ -115,6 +133,39 @@
     },
     "psr/simple-cache": {
         "version": "1.0.1"
+    },
+    "pusher/pusher-php-server": {
+        "version": "3.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "master",
+            "version": "3.0",
+            "ref": "8dd3ea817217453e14ab596317177465211e01d2"
+        }
+    },
+    "ratchet/rfc6455": {
+        "version": "0.2.4"
+    },
+    "react/cache": {
+        "version": "v0.5.0"
+    },
+    "react/dns": {
+        "version": "v0.4.15"
+    },
+    "react/event-loop": {
+        "version": "v1.0.0"
+    },
+    "react/promise": {
+        "version": "v2.7.0"
+    },
+    "react/promise-timer": {
+        "version": "v1.5.0"
+    },
+    "react/socket": {
+        "version": "v1.0.0"
+    },
+    "react/stream": {
+        "version": "v1.0.0"
     },
     "sensio/framework-extra-bundle": {
         "version": "5.2",
@@ -243,6 +294,15 @@
             "branch": "master",
             "version": "1.0",
             "ref": "fadbfe33303a76e25cb63401050439aa9b1a9c7f"
+        }
+    },
+    "symfony/messenger": {
+        "version": "4.1",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "4.1",
+            "ref": "85ab0b55d90a8f3e29e1b685a71f5b37923a7f5e"
         }
     },
     "symfony/monolog-bridge": {
