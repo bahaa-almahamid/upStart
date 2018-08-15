@@ -16,10 +16,7 @@ post:
   path: /post
   controller: App\Controller\PostController::postList
 
-comment:
-  path: /post
-  controller: App\Controller\CommentController::commentList
-=======
+
 login:
   path:     /login
   controller: App\Controller\DefaultController::login
