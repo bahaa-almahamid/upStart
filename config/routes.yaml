@@ -5,6 +5,30 @@
 homepage:
   path:     /
   controller: App\Controller\RegistrationController::registerUser
+
 Chat:
   path:   /Chat
   controller: App\Controller\ChatController::showChat
+
+
+
+post:
+  path: /post
+  controller: App\Controller\PostController::postList
+
+comment:
+  path: /post
+  controller: App\Controller\CommentController::commentList
+=======
+login:
+  path:     /login
+  controller: App\Controller\DefaultController::login
+
+# When you login you will be redirected to the HomePage!...The logout Button is already on the home page, is just place it in place.
+
+
+logout:
+  path:     /logout
+  controller: App\Controller\RegistrationController::registerUser
+
+
