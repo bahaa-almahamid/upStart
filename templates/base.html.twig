@@ -9,13 +9,18 @@
             <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
             <link href="{{ asset('css/mainStyleSheet.css') }}" rel="stylesheet">
             <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
         {% endblock %}
     </head>
     <body>
         {% block header %}
             {% include 'header.html.twig' %}
         {% endblock %}
-        {% block body %}{% endblock %}
+
+        {% block body %}
+
+        {% endblock %}
+
         {% block footer %}
             {% include 'footer.html.twig' %}
         {% endblock %}
@@ -23,5 +28,6 @@
             <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
             <script type="text/javascript" src="{{ asset('script/mainScript.js') }}"></script>
         {% endblock %}
+
     </body>
 </html>

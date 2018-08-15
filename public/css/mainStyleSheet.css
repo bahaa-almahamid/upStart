@@ -141,3 +141,8 @@ button{
     background-color: #056675;
     color: #fff;
 }
+
+#home{
+    position: absolute;
+    bottom: 3px;
+}
