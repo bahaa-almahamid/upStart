@@ -76,7 +76,7 @@ class User implements UserInterface, \Serializable
      */
     private $about;
 
-    private $role;
+    private $roles;
 
 
 
@@ -181,7 +181,7 @@ class User implements UserInterface, \Serializable
 
     public function getRoles()
     {
-        return $this->roles;
+        return array("ROLE_USER");
     }
 
     public function setAbout(?string $about): self
