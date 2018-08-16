@@ -18,8 +18,8 @@ post:
 
 
 login:
-  path:     /login
-  controller: App\Controller\DefaultController::login
+  path:     /registration
+  controller: App\Controller\RegistrationController::login
 
 # When you login you will be redirected to the HomePage!...The logout Button is already on the home page, is just place it in place.
 
