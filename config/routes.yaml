@@ -5,3 +5,11 @@
 homepage:
   path:     /
   controller: App\Controller\RegistrationController::registerUser
+
+chat:
+  path:     /chat
+  controller: App\Controller\ChatController::chatList
+
+profile:
+  path:     /profile
+  controller: App\Controller\DefaultController::profile
