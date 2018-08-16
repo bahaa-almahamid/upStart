@@ -28,4 +28,9 @@ class DefaultController extends Controller
         );
     }
 
+    public function profile()
+    {
+        return $this->render('profile/profile.html.twig'); 
+    }
+
 }

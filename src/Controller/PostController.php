@@ -47,10 +47,7 @@ class PostController extends AbstractController
                 $post->setPicture($document);
                 $manager->persist($document);
             }
-
-          
-
-            
+            $posts = $manager->getRepository(Post::class)->findByPostSearch($dto);          
         }
     
         $dto = new PostSearch();
@@ -62,12 +59,10 @@ class PostController extends AbstractController
         return $this->render(
             'post/index.html.twig',
             [
-                'posts' => $post,
+                'posts' =>$manager->getRepository(Post::class)->findAll(),
                 'postForm' => $postForm->createView(),
                 'searchForm' => $searchForm->createView()
             ]
         );
-
     }
-
 }
