@@ -10,31 +10,25 @@
             	<thead>
 				<h1><a href='{{ path('logout') }}' > Logout </a></h1>
             		<tr>
-            			<th>message</th>
-            			
+            			<th>message</th>           			
             		</tr>
             	</thead>
             	<tbody>
             		{% for message in messages %}
-            			<tr>
-            				
-            				<td>{{ message.getContent() }}</td>
-            				
+            			<tr>          				
+            				<td>{{ message.getContent() }}</td>           				
             			</tr>
             		{% endfor %}
             	</tbody>
             </table>
     	{% endif %}
 	
-
 {{ form_start(chatForm) }}
 	{{ form_row(chatForm.content) }}
-                                
 
-    <button type="submit" class="login-form-submit" >Register</button>
+	<button type="submit" class="login-form-submit" > Send </button>
 {{ form_end(chatForm) }}
-                                <button type="submit" class="login-form-submit" >Send</button>
-                            {{ form_end(chatForm) }}
+
 
 
 {% endblock %}

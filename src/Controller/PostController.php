@@ -50,9 +50,9 @@ class PostController extends AbstractController
                 $manager->persist($document);
             }
 
-          
 
             return $this->redirectToRoute('post');
+
 
         }
         //this is search function
@@ -98,14 +98,14 @@ class PostController extends AbstractController
         return $this->render(
             'post/index.html.twig',
             [
+
                 'posts' => $manager->getRepository(Post::class)->findAll(),
+
                 'postForm' => $postForm->createView(),
                 'searchForm' => $searchForm->createView(),
                 'commentForm' => $commentForm->createView()
             ]
         );
-       
 
     }
-
 }

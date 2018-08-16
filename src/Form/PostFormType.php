@@ -16,18 +16,18 @@ class PostFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title',TextType::class )
-            ->add('category',TextType::class)
-            ->add('text',TextareaType::class)
+            ->add('title',TextType::class, ['attr' => ['class' => 'form-control']])
+            ->add('category',TextType::class, ['attr' => ['class' => 'form-control']])
+            ->add('text',TextareaType::class, ['attr' => ['class' => 'form-control']])
             ->add('picture',FileType::class,
-            ['required'=>false])
+            ['required'=>false],
+            ['attr' => ['class' => 'form-control']]);
             
-        ;
         if ($options['standalone']) {
             $builder->add(
                 'submit', 
                 SubmitType::class, 
-                ['attr' => ['class' => 'btn-success']]
+                ['attr' => ['class' => 'btn btn-info']]
             );
         }
     }

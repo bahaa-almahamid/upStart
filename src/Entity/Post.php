@@ -50,6 +50,11 @@ class Post
      * @ORM\ManyToOne(targetEntity="App\Entity\User")
      */
     private $user_id;
+    /**
+     *  @ORM\Column(type="datetime")
+     */
+
+    private $createdate;
 
     /**
      * @ORM\Column(type="datetime")
@@ -60,7 +65,7 @@ class Post
 
     public function __construct()
     {
-        $this->creationDate = new \DateTime();
+        $this->createdate = new \DateTime();
     }
     public function getId(): ?string
     {
@@ -116,11 +121,12 @@ class Post
         return $this;
     }
 
+
     public function getCreationDate(): ?\DateTimeInterface
+
     {
         return $this->creationDate;
     }
-
 
     public function getUserId(): ?User
     {

@@ -4,7 +4,6 @@
 
 {% endblock %}
 
-
 {% block body %}
 	{% for post in posts %}
 						<tr>
@@ -17,7 +16,53 @@
 						</tr>
 					{% endfor %}
 
-{{ form(postForm) }}
-{{ form(searchForm) }}
+
+<main class="main-container">
+
+    <div class="margin_left">
+        <a href="{{ path('profile') }}">My profile</a>
+        <a href="{{ path('Chat') }}">Messages</a>
+    </div>
+
+    <div class="margin_right"></div>
+
+    <div id="searchform">
+    {{ form_start(searchForm) }}
+        {{ form_row(searchForm.post)  }}
+        {{ form_row(searchForm.search) }}
+    {{ form_end(searchForm) }}
+    </div>
+    <br>
+
+    <div id="posting">
+        {{ form_start(postForm) }}
+            {{ form_row(postForm.category) }}
+            {{ form_row(postForm.title) }}
+            {{ form_row(postForm.text) }}
+        {{ form_end(postForm) }}
+    </div>
+
+    {% if posts is empty %}
+        <p>No Post found in the application</p>
+    {% else %}                   
+    {% for post in posts %}
+
+        <div class = "post">	
+            {{ post.getCreateDate()| date('Y-m-d H:i:s') }}
+            <br>
+            {{ post.getCategory() }} 
+            <br>
+            {{ post.getTitle() }}
+            <br>
+            {{ post.getText() }}    
+        </div>	      				
+        
+    {% endfor %}             
+    {% endif %}
+
+</main>
+
+
 {{ form(commentForm) }}
+
 {% endblock %}
