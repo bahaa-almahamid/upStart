@@ -50,42 +50,9 @@ class PostController extends AbstractController
             'posts' => $manager->getRepository(Post::class)->findAll(),
                 'postForm' => $postForm->createView()
                 ]);
-    }
 
-        public function commentList(Request $request)
-        {
-            $manager = $this->getDoctrine()->getManager();
-            $comment = new Comment();
-            $commentForm = $this->createForm(CommentFormType::class,
-            $comment,['standalone' => true]);
-            $commentForm->handleRequest($request);
-            if ($commentForm->isSubmitted() && $commentForm->isValid()) {
-                /**
-                 * @var UploadFile $file
-                 */
-                $file = $comment->getPicture();
-                if($file)
-                {
-                    
-                    $document = new Document();
-                    $document->setPath($this->getParameter('upload_dir'))
-                        ->setMimeType($file->getMimeType())
-                        ->setName($file->getFileName());
-    
-                    $file->move($this->getParameter('upload_dir'));
-                    $comment->setPicture($document);
-                    $manager->persist($document);
-                }
-    
-                $manager->persist($comment);
-                $manager->flush();
-                
-                return $this->redirectToRoute('post');
-            }
-    
-    
-    
-            $commentForm->handleRequest($request);
+
+
             
         
 
