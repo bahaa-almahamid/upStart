@@ -2,44 +2,38 @@
 
 namespace App\Form;
 
-
-use App\Entity\Chat;
+use App\Entity\Comment;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use App\Entity\Message;
 
-class ChatFormType extends AbstractType
+class CommentFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-
-            ->add('text',TextareaType::class, ['attr'=>['class'=>'textarea']]);
+            ->add('content',TextareaType::class)
+            ->add('picture',FileType::class,
+            ['required'=>false]);
             
         if ($options['standalone']) {
             $builder->add(
-                'submit',
-                 SubmitType::class,
-                ['attr'=>['class'=>'buttonchat']]);
-        }       
-
-            ->add('content')
-        ;
-
+                'submit', 
+                SubmitType::class, 
+                ['attr' => ['class' => 'btn-success']]
+            );
+        }
+           
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-
-            'data_class' => Chat::class,
+            'data_class' => Comment::class,
             'standalone' => false
         ]);
-      
-        ]);
-
     }
 }

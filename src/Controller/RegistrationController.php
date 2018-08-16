@@ -24,7 +24,7 @@ class RegistrationController extends AbstractController
             $entityManager->persist($user);
             $entityManager->flush();
 
-            return $this->redirectToRoute('homepage');
+            return $this->redirectToRoute('post');
         }
         return $this->render(
             'registration/register.html.twig',
@@ -33,3 +33,5 @@ class RegistrationController extends AbstractController
 
     }
 }
+
+

@@ -9,6 +9,17 @@ security:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
+
+        main:
+            pattern: .*
+            anonymous: true
+            form_login:
+                check_path:         login
+                login_path:         login
+                default_target_path: /Chat
+            logout:
+                path: /logout
+                target: /
         
 
             # activate different ways to authenticate

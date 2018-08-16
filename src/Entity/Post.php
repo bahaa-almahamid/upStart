@@ -2,58 +2,62 @@
 
 namespace App\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
+
+
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
+ * @ORM\Table(name="post")
  * @ORM\Entity(repositoryClass="App\Repository\PostRepository")
  */
 class Post
 {
     /**
      * @ORM\Id()
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="string", length=36)
+     * @ORM\GeneratedValue(strategy="UUID")
      */
     private $id;
 
     /**
+     * 
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank()
      */
     private $title;
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\NotBlank()
      */
     private $text;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\ManyToOne(targetEntity="App\Entity\Document")
+     * @ORM\JoinColumn(nullable=true)
+     *  @Assert\File(mimeTypes={"image/*"})
      */
     private $picture;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank()
      */
     private $category;
-
-    /**
-     * @ORM\Column(type="datetime")
-     */
-    private $createdate;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\User")
      */
     private $user_id;
 
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Comment", mappedBy="id_post")
-     */
 
 
-    public function getId(): ?int
+    public function __construct()
+    {
+        $this->creationDate = new \DateTime();
+    }
+    public function getId(): ?string
     {
         return $this->id;
     }
@@ -111,12 +115,6 @@ class Post
         return $this->createdate;
     }
 
-    public function setCreatedate(\DateTimeInterface $createdate): self
-    {
-        $this->createdate = $createdate;
-
-        return $this;
-    }
 
     public function getUserId(): ?User
     {

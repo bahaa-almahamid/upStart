@@ -138,6 +138,7 @@ button{
     color: #fff;
 }
 
+
 .textarea{
     border: #056675 1px solid; 
     box-shadow: 0px 0px 15px #056675;
@@ -221,3 +222,9 @@ button{
     }
 }
 /* end of responsive */
+
+#home{
+    position: absolute;
+    bottom: 3px;
+}
+
