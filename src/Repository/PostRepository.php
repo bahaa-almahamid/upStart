@@ -3,7 +3,9 @@
 namespace App\Repository;
 
 use App\Entity\Post;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\EntityRepository;
+use App\DTO\PostSearch;
+use App\DTO\PostSearchFormType;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
@@ -12,39 +14,30 @@ use Symfony\Bridge\Doctrine\RegistryInterface;
  * @method Post[]    findAll()
  * @method Post[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class PostRepository extends ServiceEntityRepository
+class PostRepository extends EntityRepository
 {
-    public function __construct(RegistryInterface $registry)
-    {
-        parent::__construct($registry, Post::class);
-    }
+
 
 //    /**
 //     * @return Post[] Returns an array of Post objects
 //     */
-    /*
-    public function findByExampleField($value)
+    
+ 
+    public function findByPostSearch(PostSearch $dto)
     {
-        return $this->createQueryBuilder('p')
-            ->andWhere('p.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('p.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
+        $queryBuilder = $this->createQueryBuilder('ta');
+        if (!empty($dto->post))
+        {
+            $queryBuilder->andWhere('ta.post = :post');
+            $queryBuilder->setParameter('post',$dto->post);
+        }
+        if (!empty($dto->search)) {
 
-    /*
-    public function findOneBySomeField($value): ?Post
-    {
-        return $this->createQueryBuilder('p')
-            ->andWhere('p.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
+            $queryBuilder->andWhere('ta.title like :search');
+
+            $queryBuilder->setParameter('search','%'.$dto->search.'%');
+        }
+        return $queryBuilder->getQuery()->execute();
+        
     }
-    */
 }
