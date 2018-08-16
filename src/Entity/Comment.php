@@ -11,8 +11,8 @@ class Comment
 {
     /**
      * @ORM\Id()
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="string", length=36)
+     * @ORM\GeneratedValue(strategy="UUID")
      */
     private $id;
 
@@ -41,7 +41,12 @@ class Comment
      */
     private $createdate;
 
-    public function getId(): ?int
+    public function __construct()
+    {
+        $this->creationDate = new \DateTime();
+    }
+
+    public function getId(): ?string
     {
         return $this->id;
     }
@@ -99,10 +104,4 @@ class Comment
         return $this->createdate;
     }
 
-    public function setCreatedate(\DateTimeInterface $createdate): self
-    {
-        $this->createdate = $createdate;
-
-        return $this;
-    }
 }
