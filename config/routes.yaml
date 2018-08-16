@@ -7,7 +7,7 @@ homepage:
   controller: App\Controller\RegistrationController::registerUser
 
 Chat:
-  path:   /Chat
+  path:   /chat
   controller: App\Controller\ChatController::showChat
 
 
