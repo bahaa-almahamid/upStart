@@ -8,6 +8,9 @@ use Symfony\Component\HttpFoundation\Request;
 use App\Form\PostFormType;
 use App\Entity\Post;
 use App\Entity\Document;
+use App\Form\PostSearchFormType;
+use App\DTO\PostSearch;
+
 
 class PostController extends AbstractController
 {
@@ -18,17 +21,23 @@ class PostController extends AbstractController
     {
         $manager = $this->getDoctrine()->getManager();
         $post = new Post();
-        $postForm = $this->createForm(PostFormType::class,
-        $post,['standalone' => true]);
+        $postForm = $this->createForm(
+            PostFormType::class,
+            $post,
+            ['standalone' => true]
+        );
         $postForm->handleRequest($request);
         if ($postForm->isSubmitted() && $postForm->isValid()) {
             /**
              * @var UploadFile $file
+             * 
              */
+            $manager->persist($post);
+            $manager->flush();
             $file = $post->getPicture();
-            if($file)
-            {
-                
+            return $this->redirectToRoute('post');
+            if ($file) {
+
                 $document = new Document();
                 $document->setPath($this->getParameter('upload_dir'))
                     ->setMimeType($file->getMimeType())
@@ -39,28 +48,26 @@ class PostController extends AbstractController
                 $manager->persist($document);
             }
 
-            $manager->persist($post);
-            $manager->flush();
+          
+
             
-            return $this->redirectToRoute('post');
         }
+    
+        $dto = new PostSearch();
+        $searchForm = $this->createForm(PostSearchFormType::class, $dto, ['standalone' => true]);
 
-        $postForm->handleRequest($request);
-        return $this->render('post/index.html.twig', [
-            'posts' => $manager->getRepository(Post::class)->findAll(),
-                'postForm' => $postForm->createView()
-                ]);
+        $searchForm->handleRequest($request);
+        $posts = $manager->getRepository(Post::class)->findByPostSearch($dto);
 
+        return $this->render(
+            'post/index.html.twig',
+            [
+                'posts' => $post,
+                'postForm' => $postForm->createView(),
+                'searchForm' => $searchForm->createView()
+            ]
+        );
 
-
-            
-        
-
-
-        
-        return $this->render('post/index.html.twig', [
-            'comments' => $manager->getRepository(Comment::class)->findAll(),
-                'commentForm' => $commentForm->createView()
-        ]);
     }
+
 }
