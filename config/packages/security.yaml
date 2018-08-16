@@ -12,11 +12,11 @@ security:
 
         main:
             pattern: .*
-            anonymous: true
+            anonymous: ~
             form_login:
                 check_path:         login
                 login_path:         login
-                default_target_path: /Chat
+                default_target_path: /post
             logout:
                 path: /logout
                 target: /

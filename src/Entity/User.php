@@ -7,6 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity
@@ -63,6 +64,7 @@ class User implements UserInterface, \Serializable
 
     /**
      * @ORM\Column(type="string", length=200, nullable=true)
+     * 
      */
     private $picture;
 
@@ -76,16 +78,18 @@ class User implements UserInterface, \Serializable
      */
     private $about;
 
-    private $roles;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Role")
+     */
+    private $roles;
 
 
 
     public function __construct()
     {
-        $this->isActive = true;
         $this->createdate = new \DateTime();
-        $this->roles = array('ROLE_USER');
+        $this->roles =new ArrayCollection();
     }
 
     public function getUsername()
@@ -142,6 +146,7 @@ class User implements UserInterface, \Serializable
 
     public function eraseCredentials()
     {
+        return null;
     }
 
     public function getAddress(): ?string
@@ -179,10 +184,7 @@ class User implements UserInterface, \Serializable
         return $this->about;
     }
 
-    public function getRoles()
-    {
-        return array("ROLE_USER");
-    }
+
 
     public function setAbout(?string $about): self
     {
@@ -214,4 +216,78 @@ class User implements UserInterface, \Serializable
          ) = unserialize($serialized, array('allowed_classes' => false));
      }
     
+
+    /**
+     * Get the value of id
+     */ 
+    public function getId()
+    {
+        return $this->id;
+    }
+
+
+    /**
+     * Get the value of isActive
+     */ 
+    public function getIsActive()
+    {
+        return $this->isActive;
+    }
+
+    /**
+     * Set the value of isActive
+     *
+     * @return  self
+     */ 
+    public function setIsActive($isActive)
+    {
+        $this->isActive = $isActive;
+
+        return $this;
+    }
+
+
+    /**
+     * Set the value of createdate
+     *
+     * @return  self
+     */ 
+    public function setCreateDate($createdate)
+    {
+        $this->createdate = $createdate;
+
+        return $this;
+    }
+    /**
+     * @return Role[]
+     */
+
+    public function getRoles() : array
+    {
+        return array_map('strval', $this->roles->toArray());
+    }
+
+    public function addRole(Role $role) : self
+    {
+        if (!$this->roles->contains($role)) {
+            $this->roles[] = $role;
+        }
+
+        return $this;
+    }
+
+    public function removeRole(Role $role) : self
+    {
+        if ($this->roles->contains($role)) {
+            $this->roles->removeElement($role);
+        }
+
+        return $this;
+    }
+
+ 
+
+
+
+
 }

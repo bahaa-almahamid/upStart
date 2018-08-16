@@ -1,13 +1,14 @@
 <?php
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
-use App\Form\UserFormType;
-use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\User;
+use App\Form\UserFormType;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class RegistrationController extends AbstractController
 {
@@ -31,6 +32,21 @@ class RegistrationController extends AbstractController
             array('form' => $form->createView())
         );
 
+    }
+
+    public function login(AuthenticationUtils $authenticationUtils)
+    {
+        // get the login error if there is one
+        $error = $authenticationUtils->getLastAuthenticationError();
+    
+        // last username entered by the user
+        $lastUsername = $authenticationUtils->getLastUsername();
+    
+        return $this->render('post/index.html.twig', array(
+            'username' => $username,
+            'error'    => $error,
+            'password' => $password
+        ));
     }
 }
 

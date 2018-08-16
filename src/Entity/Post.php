@@ -56,6 +56,11 @@ class Post
 
     private $createdate;
 
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $creationDate;
+
 
 
     public function __construct()
@@ -66,6 +71,7 @@ class Post
     {
         return $this->id;
     }
+    
 
     public function getTitle(): ?string
     {
@@ -115,9 +121,11 @@ class Post
         return $this;
     }
 
-    public function getCreateDate(): ?\DateTimeInterface
+
+    public function getCreationDate(): ?\DateTimeInterface
+
     {
-        return $this->createdate;
+        return $this->creationDate;
     }
 
     public function getUserId(): ?User
