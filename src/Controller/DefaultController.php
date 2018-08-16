@@ -2,10 +2,8 @@
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
-
 
 
 class DefaultController extends Controller
@@ -14,14 +12,6 @@ class DefaultController extends Controller
     {
         return $this->render('default/homepage.html.twig'); 
     }
-
-    
-    public function profile()
-    {
-        return $this->render('profile/profile.html.twig'); 
-    }
-}
-
 
     public function login(AuthenticationUtils $authenticationUtils)
     {
@@ -39,4 +29,3 @@ class DefaultController extends Controller
     }
 
 }
-

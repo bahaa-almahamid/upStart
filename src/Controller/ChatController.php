@@ -1,36 +1,37 @@
 <?php
-
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Routing\Annotation\Route;
-use App\Entity\Chat;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+
 use App\Form\ChatFormType;
+use App\Entity\Message;
 use Symfony\Component\HttpFoundation\Request;
 
-class ChatController extends AbstractController
+
+
+
+
+class ChatController extends Controller
 {
-    /**
-     * @Route("/chat", name="chat")
-     */
-    public function chatList(Request $request)
+    public function showChat(Request $request)
+
     {
         $manager = $this->getDoctrine()->getManager();
-        $project = new Chat();
-        $projectForm = $this->createForm(ChatFormType::class, $project, ['standalone' => true]);
-        
-        $projectForm->handleRequest($request);
-        if ($projectForm->isSubmitted() && $projectForm->isValid()) {
-            $manager->persist($project);
-            $manager->flush();
-            
-            return $this->redirectToRoute('chat');
-        }
+        $message = new Message();
+        $chatForm = $this->createForm(ChatFormType::class, $message);
 
-        return $this->render('chat/index.html.twig', [
-            'Chats' => $manager->getRepository(Chat::class)->findAll(),
-            'projectForm' => $projectForm->createView()
-        ]);
+        $chatForm->handleRequest($request);
+        if ($chatForm->isSubmitted() && $chatForm->isValid()){
+            $manager->persist($message);
+            $manager->flush();
+            return $this->redirectToRoute('Chat');
+        }
+        return $this->render(
+            'Default/Chat.html.twig',
+            [
+                'messages' => $manager->getRepository(Message::class)->findAll(),
+                'chatForm' => $chatForm->createView()
+            ]
+            );
     }
 }
-
