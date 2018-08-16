@@ -7,6 +7,7 @@ use Doctrine\ORM\EntityRepository;
 use App\DTO\PostSearch;
 use App\DTO\PostSearchFormType;
 use Symfony\Bridge\Doctrine\RegistryInterface;
+use App\Entity\Comment;
 
 /**
  * @method Post|null find($id, $lockMode = null, $lockVersion = null)
@@ -21,23 +22,27 @@ class PostRepository extends EntityRepository
 //    /**
 //     * @return Post[] Returns an array of Post objects
 //     */
-    
- 
+
+
     public function findByPostSearch(PostSearch $dto)
     {
         $queryBuilder = $this->createQueryBuilder('ta');
-        if (!empty($dto->post))
-        {
+        if (!empty($dto->post)) {
             $queryBuilder->andWhere('ta.post = :post');
-            $queryBuilder->setParameter('post',$dto->post);
+            $queryBuilder->setParameter('post', $dto->post);
         }
         if (!empty($dto->search)) {
 
             $queryBuilder->andWhere('ta.title like :search');
 
-            $queryBuilder->setParameter('search','%'.$dto->search.'%');
+            $queryBuilder->setParameter('search', '%' . $dto->search . '%');
         }
         return $queryBuilder->getQuery()->execute();
-        
+
+    }
+    public function listComment(Comment $comment)
+    {
+      
     }
 }
+

@@ -6,8 +6,18 @@
 
 
 {% block body %}
+	{% for post in posts %}
+						<tr>
+							{% if post.getPicture() is not empty %}
+								<td><img src="{{ path('download_document', {'document' : post.getPicture().getId()}) }}"></td>
+							{% else %}
+								<td></td>
+							{% endif %}
+							
+						</tr>
+					{% endfor %}
 
 {{ form(postForm) }}
 {{ form(searchForm) }}
-
+{{ form(commentForm) }}
 {% endblock %}
