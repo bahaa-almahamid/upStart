@@ -6,9 +6,14 @@ homepage:
   path:     /
   controller: App\Controller\RegistrationController::registerUser
 
-Chat:
-  path:   /chat
-  controller: App\Controller\ChatController::showChat
+
+chat:
+  path:     /chat
+  controller: App\Controller\ChatController::chatList
+
+profile:
+  path:     /profile
+  controller: App\Controller\DefaultController::profile
 
 
 
@@ -27,5 +32,6 @@ login:
 logout:
   path:     /logout
   controller: App\Controller\RegistrationController::registerUser
+
 
 
