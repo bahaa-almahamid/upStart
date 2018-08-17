@@ -6,6 +6,7 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Table(name="post")
@@ -40,6 +41,7 @@ class Post
      */
     private $picture;
 
+
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank()
@@ -47,22 +49,35 @@ class Post
     private $category;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\User")
+     * @ORM\Column(type="datetime")
      */
-    private $user_id;
-    /**
-     *  @ORM\Column(type="datetime")
-     */
+    private $creationDate;
 
-    private $createdate;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="posts")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $user;
+
+
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Comment", mappedBy="post", orphanRemoval=true)
+     */
+    private $comments;
 
 
 
 
     public function __construct()
     {
-        $this->createdate = new \DateTime();
+        $this->creationDate = new \DateTime();
+        $this->comments = new ArrayCollection();
     }
+
+    
+
     public function getId(): ?string
     {
         return $this->id;
@@ -124,15 +139,26 @@ class Post
         return $this->createdate;
     }
 
-    public function getUserId(): ?User
+    public function getUser(): ?User
     {
-        return $this->user_id;
+        return $this->user;
     }
-
-    public function setUserId(?User $user_id): self
+    
+    public function setUser(?User $user): self
     {
-        $this->user_id = $user_id;
-
+        $this->user = $user;
+        
         return $this;
     }
+
+
+    /**
+     * @return Collection|Comment[]
+     */
+    public function getComments(): Collection
+    {
+        return $this->comments;
+    }
+
+ 
 }

@@ -6,32 +6,37 @@
 
 {% block body %}
 	{% for post in posts %}
-						<tr>
-							{% if post.getPicture() is not empty %}
-								<td><img src="{{ path('download_document', {'document' : post.getPicture().getId()}) }}"></td>
-							{% else %}
-								<td></td>
-							{% endif %}
-							
-						</tr>
-					{% endfor %}
-
+            <tr>
+                {% if post.getPicture() is not empty %}
+                    <td><img src="{{ path('download_document', {'document' : post.getPicture().getId()}) }}"></td>
+                {% else %}
+                    <td></td>
+                {% endif %}
+                
+            </tr>
+        {% endfor %}
 
 <main class="main-container">
 
     <div class="margin_left">
-        <a href="{{ path('profile') }}">My profile</a>
-        <a href="{{ path('Chat') }}">Messages</a>
+        <a href="{{ path ('profile') }}">My profile</a>
+        <a href="{{ path ('Chat') }}">Messages</a>
+        <a href = "{{path ('login') }}">Login<a/>
+        <a href = "{{path ('post') }}">News<a/>
+        <a href = "{{path ('admin') }}">Admin panel<a/>
+        <a href = "{{path ('logout') }}">Logout<a/>
     </div>
 
     <div class="margin_right"></div>
 
     <div id="searchform">
-    {{ form_start(searchForm) }}
-        {{ form_row(searchForm.post)  }}
-        {{ form_row(searchForm.search) }}
-    {{ form_end(searchForm) }}
+        {{ form_start(searchForm) }}
+            {{ form_row(searchForm.post)  }}
+            <br>
+            {{ form_row(searchForm.search) }}
+        {{ form_end(searchForm) }}
     </div>
+
     <br>
 
     <div id="posting">
@@ -44,10 +49,11 @@
 
     {% if posts is empty %}
         <p>No Post found in the application</p>
-    {% else %}                   
+    {% else %}  
+                     
     {% for post in posts %}
 
-        <div class = "post">	
+        <div class = "post">
             {{ post.getCreateDate()| date('Y-m-d H:i:s') }}
             <br>
             {{ post.getCategory() }} 
@@ -56,11 +62,12 @@
             <br>
             {{ post.getText() }}    
             <td><a href="{{ path("post_detail", {post: post.getId()}) }}">Detail</a></td>
+
         </div>	      				
-        
     {% endfor %}             
     {% endif %}
 
 </main>
+
 
 {% endblock %}
