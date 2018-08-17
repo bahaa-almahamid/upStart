@@ -1,34 +1,34 @@
-
-
 {% extends 'base.html.twig' %}
+
 {% block title %}upSTART.lu{% endblock %}
+
 {% block body %}
-{% if messages is empty %}
+	{% if messages is empty %}
     		<p>No messages found in the application</p>
     	{% else %}
-            <table class="table table-striped">
-            	<thead>
-				<h1><a href='{{ path('logout') }}' > Logout </a></h1>
-            		<tr>
-            			<th>message</th>           			
-            		</tr>
-            	</thead>
-            	<tbody>
-            		{% for message in messages %}
-            			<tr>          				
-            				<td>{{ message.getContent() }}</td>           				
-            			</tr>
-            		{% endfor %}
-            	</tbody>
-            </table>
-    	{% endif %}
-	
-{{ form_start(chatForm) }}
-	{{ form_row(chatForm.content) }}
 
-	<button type="submit" class="login-form-submit" > Send </button>
-{{ form_end(chatForm) }}
+<div id="chat">
+		<table class="table table-striped">
+			<thead>
+				<h3><a href='{{ path('logout') }}' > Logout </a></h3>
+			</thead>
 
+		
+			<tbody>
+				{% for message in messages %}
+					<tr>          				
+						<td>{{ message.getContent() }}</td>           				
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	{% endif %}
+		
+	{{ form_start(chatForm) }}
+		{{ form_row(chatForm.content) }}
 
+		<button type="submit" class="login-form-submit" > Send </button>
+	{{ form_end(chatForm) }}
+</div>
 
 {% endblock %}
