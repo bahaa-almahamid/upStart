@@ -49,6 +49,8 @@ class PostController extends AbstractController
                 $post->setPicture($document);
                 $manager->persist($document);
             }
+
+            $post->setUser($this->getUser());
             $manager->persist($post);
             $manager->flush();
 

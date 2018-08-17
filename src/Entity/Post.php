@@ -133,10 +133,10 @@ class Post
     }
 
 
-    public function getCreateDate(): ?\DateTimeInterface
+    public function getCreationDate(): ?\DateTimeInterface
 
     {
-        return $this->createdate;
+        return $this->creationDate;
     }
 
     public function getUser(): ?User

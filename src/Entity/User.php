@@ -31,11 +31,7 @@ class User implements UserInterface, \Serializable
      */
     private $username;
 
-    /**
-     * @Assert\NotBlank()
-     * @Assert\Length(max=4096)
-     */
-    private $plainPassword;
+  
 
     /**
      * The below length depends on the "algorithm" you use for encoding
@@ -78,11 +74,11 @@ class User implements UserInterface, \Serializable
      */
     private $about;
 
-
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Role")
+     * @ORM\Column(type="array")
      */
     private $roles;
+
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Post", mappedBy="user", orphanRemoval=true)
@@ -102,6 +98,7 @@ class User implements UserInterface, \Serializable
         $this->posts = new ArrayCollection();
         $this->comment = new ArrayCollection();
         $this->isActive = true;
+        $this->roles = array('ROLE_USER');
     }
 
     public function getUsername()
@@ -121,15 +118,7 @@ class User implements UserInterface, \Serializable
         return null;
     }
     
-    public function getPlainPassword()
-    {
-        return $this->plainPassword;
-    }
-
-    public function setPlainPassword($password)
-    {
-        $this->plainPassword = $password;
-    }
+ 
  
 
     public function getPassword()
@@ -229,14 +218,6 @@ class User implements UserInterface, \Serializable
      }
     
 
-    /**
-     * Get the value of id
-     */ 
-    public function getId()
-    {
-        return $this->id;
-    }
-
 
     
     
@@ -253,33 +234,12 @@ class User implements UserInterface, \Serializable
 
         return $this;
     }
-    /**
-     * @return Role[]
-     */
 
-    public function getRoles() : array
+
+    public function getRoles()
     {
-        return array_map('strval', $this->roles->toArray());
+        return array('ROLE_USER');
     }
-
-    public function addRole(Role $role) : self
-    {
-        if (!$this->roles->contains($role)) {
-            $this->roles[] = $role;
-        }
-
-        return $this;
-    }
-
-    public function removeRoles(Roles $roles) : self
-    {
-        if ($this->roles->contains($roles)) {
-            $this->roles->removeElement($roles);
-        }
-
-        return $this;
-    }
-
 
     /**
      * @return Collection|Post[]
