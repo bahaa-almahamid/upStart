@@ -34,8 +34,6 @@ class PostController extends AbstractController
              * @var UploadFile $file
              * 
              */
-            $manager->persist($post);
-            $manager->flush();
             
             $file = $post->getPicture();
             if ($file) {
@@ -49,6 +47,8 @@ class PostController extends AbstractController
                 $post->setPicture($document);
                 $manager->persist($document);
             }
+            $manager->persist($post);
+            $manager->flush();
 
 
             return $this->redirectToRoute('post');
