@@ -25,7 +25,10 @@ class PostSearchFormType extends AbstractType
 
        if ($options['standalone']) {
 
-            $builder->add('submit', SubmitType::class, ['label' => 'search']);
+            $builder->add(
+                'submit', SubmitType::class, ['label' => 'search'],
+                ['attr' => ['class' => 'btn btn-info']]
+            );
        }
 
     }

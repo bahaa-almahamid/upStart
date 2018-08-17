@@ -34,8 +34,6 @@ class PostController extends AbstractController
              * @var UploadFile $file
              * 
              */
-            $manager->persist($post);
-            $manager->flush();
             
             $file = $post->getPicture();
             if ($file) {
@@ -49,6 +47,8 @@ class PostController extends AbstractController
                 $post->setPicture($document);
                 $manager->persist($document);
             }
+            $manager->persist($post);
+            $manager->flush();
 
 
             return $this->redirectToRoute('post');
@@ -61,49 +61,13 @@ class PostController extends AbstractController
 
         $searchForm->handleRequest($request);
         $posts = $manager->getRepository(Post::class)->findByPostSearch($dto);
-
-        //this is for comments
-        $comment = new Comment();
-        $commentForm = $this->createForm(
-            CommentFormType::class,
-            $comment,
-            ['standalone' => true]
-        );
-             if ($commentForm->isSubmitted() && $commentForm->isValid()) {
-                /**
-                 * @var UploadFile $file
-                 * 
-                 */
-                $manager->persist($comment);
-                $manager->flush();
-                $file = $comment->getPicture();
-                return $this->redirectToRoute('comment');
-                if ($file) 
-                {
-    
-                    $document = new Document();
-                    $document->setPath($this->getParameter('upload_dir'))
-                        ->setMimeType($file->getMimeType())
-                        ->setName($file->getFileName());
-    
-                    $file->move($this->getParameter('upload_dir'));
-                    $comment->setPicture($document);
-                    $manager->persist($document);
-                }
-    
-
-            }
-        $posts = $manager->getRepository(Post::class)->listComment($comment);
-
         return $this->render(
             'post/index.html.twig',
             [
 
                 'posts' => $manager->getRepository(Post::class)->findAll(),
-
                 'postForm' => $postForm->createView(),
-                'searchForm' => $searchForm->createView(),
-                'commentForm' => $commentForm->createView()
+                'searchForm' => $searchForm->createView()
             ]
         );
 

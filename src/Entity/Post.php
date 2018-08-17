@@ -61,10 +61,12 @@ class Post
     private $user;
 
 
+
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Comment", mappedBy="post", orphanRemoval=true)
      */
     private $comments;
+
 
 
 
@@ -106,12 +108,12 @@ class Post
         return $this;
     }
 
-    public function getPicture(): ?string
+    public function getPicture()
     {
         return $this->picture;
     }
 
-    public function setPicture(?string $picture): self
+    public function setPicture($picture): self
     {
         $this->picture = $picture;
 
@@ -131,10 +133,10 @@ class Post
     }
 
 
-    public function getCreationDate(): ?\DateTimeInterface
+    public function getCreateDate(): ?\DateTimeInterface
 
     {
-        return $this->creationDate;
+        return $this->createdate;
     }
 
     public function getUser(): ?User
