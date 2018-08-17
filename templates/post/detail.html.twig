@@ -5,7 +5,7 @@
 {% block body %}
 	<div class="container">
 		<p>id : {{ post.getId() }}</p>
-		<p>created date : {{ post.getCreateDate()|date('Y-m-d H:i:s') }}</p>
+		<p>created date : {{ post.getCreationDate()|date('Y-m-d H:i:s') }}</p>
 		<p>priority : {{ post.getText() }}</p>
 		<p>title : {{ post.getTitle() }}</p>
 		

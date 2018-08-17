@@ -98,7 +98,6 @@ class PostController extends AbstractController
             'post/detail.html.twig',
             [
                 'post' => $post,
-                'user' => $user,
                 'form' => $form->createView()
             ]
         );
