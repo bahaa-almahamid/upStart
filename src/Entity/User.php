@@ -31,11 +31,7 @@ class User implements UserInterface, \Serializable
      */
     private $username;
 
-    /**
-     * @Assert\NotBlank()
-     * @Assert\Length(max=4096)
-     */
-    private $plainPassword;
+  
 
     /**
      * The below length depends on the "algorithm" you use for encoding
@@ -78,18 +74,31 @@ class User implements UserInterface, \Serializable
      */
     private $about;
 
-
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Role")
+     * @ORM\Column(type="array")
      */
     private $roles;
+
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Post", mappedBy="user", orphanRemoval=true)
+     */
+    private $posts;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Comment", mappedBy="user", orphanRemoval=true)
+     */
+    private $comments;
 
 
 
     public function __construct()
     {
         $this->createdate = new \DateTime();
-        $this->roles =new ArrayCollection();
+        $this->posts = new ArrayCollection();
+        $this->comment = new ArrayCollection();
+        $this->isActive = true;
+        $this->roles = array('ROLE_USER');
     }
 
     public function getUsername()
@@ -109,15 +118,7 @@ class User implements UserInterface, \Serializable
         return null;
     }
     
-    public function getPlainPassword()
-    {
-        return $this->plainPassword;
-    }
-
-    public function setPlainPassword($password)
-    {
-        $this->plainPassword = $password;
-    }
+ 
  
 
     public function getPassword()
@@ -217,34 +218,9 @@ class User implements UserInterface, \Serializable
      }
     
 
-    /**
-     * Get the value of id
-     */ 
-    public function getId()
-    {
-        return $this->id;
-    }
 
-
-    /**
-     * Get the value of isActive
-     */ 
-    public function getIsActive()
-    {
-        return $this->isActive;
-    }
-
-    /**
-     * Set the value of isActive
-     *
-     * @return  self
-     */ 
-    public function setIsActive($isActive)
-    {
-        $this->isActive = $isActive;
-
-        return $this;
-    }
+    
+    
 
 
     /**
@@ -258,33 +234,28 @@ class User implements UserInterface, \Serializable
 
         return $this;
     }
+
+
+    public function getRoles()
+    {
+        return array('ROLE_USER');
+    }
+
     /**
-     * @return Role[]
+     * @return Collection|Post[]
      */
-
-    public function getRoles() : array
+    public function getPosts(): Collection
     {
-        return array_map('strval', $this->roles->toArray());
+        return $this->posts;
     }
 
-    public function addRole(Role $role) : self
+    /**
+     * @return Collection|Comment[]
+     */
+    public function getComments(): Collection
     {
-        if (!$this->roles->contains($role)) {
-            $this->roles[] = $role;
-        }
-
-        return $this;
+        return $this->comments;
     }
-
-    public function removeRole(Role $role) : self
-    {
-        if ($this->roles->contains($role)) {
-            $this->roles->removeElement($role);
-        }
-
-        return $this;
-    }
-
  
 
 
