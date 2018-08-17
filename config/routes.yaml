@@ -32,4 +32,8 @@ profile:
   path:     /profile
   controller: App\Controller\DefaultController::profile
 
+download_document:
+  path: /document/{document}
+  controller: App\Controller\DefaultController::downloadDocument
+
 
