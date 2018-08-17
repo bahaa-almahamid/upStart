@@ -19,7 +19,7 @@ class UserFormType extends AbstractType
             ->add('username', TextType::class)
             ->add('address', TextType::class)
             ->add('email', EmailType::class)
-            ->add('plainPassword', RepeatedType::class, array(
+            ->add('password', RepeatedType::class, array(
                 'type' => PasswordType::class,
                 'invalid_message' => 'The password fields must match.',
                 'first_options' => array('label' => 'Password'),

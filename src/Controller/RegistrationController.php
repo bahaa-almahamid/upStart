@@ -18,7 +18,7 @@ class RegistrationController extends AbstractController
         $form = $this->createForm(UserFormType::class, $user);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            $password = $passwordEncoder->encodePassword($user, $user->getPlainPassword());
+            $password = $passwordEncoder->encodePassword($user, $user->getPassword());
             $user->setPassword($password);
             
             $entityManager = $this->getDoctrine()->getManager();
