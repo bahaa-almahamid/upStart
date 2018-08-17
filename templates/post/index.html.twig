@@ -61,6 +61,10 @@
             {{ post.getTitle() }}
             <br>
             {{ post.getText() }}    
+
+            <td><a href="{{ path("post_detail", {post: post.getId()}) }}">Detail</a></td>
+
+
         </div>	      				
     {% endfor %}             
     {% endif %}

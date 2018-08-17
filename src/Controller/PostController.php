@@ -12,6 +12,8 @@ use App\Form\PostSearchFormType;
 use App\DTO\PostSearch;
 use App\Entity\Comment;
 use App\Form\CommentFormType;
+use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 
 class PostController extends AbstractController
@@ -34,7 +36,7 @@ class PostController extends AbstractController
              * @var UploadFile $file
              * 
              */
-            
+
             $file = $post->getPicture();
             if ($file) {
 
@@ -73,5 +75,31 @@ class PostController extends AbstractController
             ]
         );
 
+    }
+    public function postDetail(post $post, Request $request)
+    {
+        $picture = $post->getPicture();
+        if ($picture) {
+            $post->setPicture(new File($picture->getPath().'/'.$picture->getName()));
+        }
+        $form = $this->createForm(PostFormType::class, $post, ['standalone' => true]);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $this->getDoctrine()->getManager()->flush();
+
+            return $this->redirectToRoute('post_detail', ['post' => $post->getId()]);
+         
+        }
+
+
+        return $this->render(
+            'post/detail.html.twig',
+            [
+                'post' => $post,
+                'form' => $form->createView()
+            ]
+        );
     }
 }
