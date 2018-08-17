@@ -48,7 +48,7 @@
     {% for post in posts %}
 
         <div class = "post">	
-            {{ post.getCreateDate()| date('Y-m-d H:i:s') }}
+            {{ post.getCreationDate()| date('Y-m-d H:i:s') }}
             <br>
             {{ post.getCategory() }} 
             <br>
