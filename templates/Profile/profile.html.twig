@@ -1,27 +1,21 @@
 {% extends 'base.html.twig' %}
 
-{% block body %}
+{% block main %}
+
 	<div class="bgcpicture"></div>
 
-	<div class="margin_left">
-		<a href="{{ path('profile') }}">My profile</a>
-		<a href="{{ path('Chat') }}">Messages</a>
-	</div>
-
 	{% for user in users %}
+		{{ user.getCreateDate()| date('Y-m-d H:i:s') }}
+		<br>
+		{{ user.getUsername() }} 
+		<br>
+		{{ user.getEmail() }}    
+		<br>
+		{{ user.getAbout() }} 
+		<br>
+		{{ user.getAddress() }} 
+		<br>
+		{{ user.getPicture() }} 
+	{% endfor %}
 
-			{{ user.getCreateDate()| date('Y-m-d H:i:s') }}
-            <br>
-            {{ user.getUsername() }} 
-            <br>
-            {{ user.getEmail() }}    
-			<br>
-            {{ user.getAbout() }} 
-			<br>
-            {{ user.getAddress() }} 
-			<br>
-            {{ user.getPicture() }} 
-		{% endfor %}
-
-	<div class="margin_right"></div>
 {% endblock %}

@@ -4,7 +4,7 @@
 
 {% endblock %}
 
-{% block body %}
+{% block main %}
 	{% for post in posts %}
             <tr>
                 {% if post.getPicture() is not empty %}
@@ -15,19 +15,6 @@
                 
             </tr>
         {% endfor %}
-
-<main class="main-container">
-
-    <div class="margin_left">
-        <a href="{{ path ('profile') }}">My profile</a>
-        <a href="{{ path ('Chat') }}">Messages</a>
-        <a href = "{{path ('login') }}">Login<a/>
-        <a href = "{{path ('post') }}">News<a/>
-        <a href = "{{path ('admin') }}">Admin panel<a/>
-        <a href = "{{path ('logout') }}">Logout<a/>
-    </div>
-
-    <div class="margin_right"></div>
 
     <div id="searchform">
         {{ form_start(searchForm) }}
@@ -61,12 +48,8 @@
             <br>
             {{ post.getText() }}    
             <br>
-            {{ form(commentForm) }}	
         </div>	      				
     {% endfor %}             
     {% endif %}
-
-</main>
-
 
 {% endblock %}
