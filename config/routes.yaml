@@ -36,4 +36,8 @@ download_document:
   path: /document/{document}
   controller: App\Controller\DefaultController::downloadDocument
 
+post_detail:
+  path:     /post/detail/{post}
+  controller: App\Controller\PostController::postDetail
+
 
