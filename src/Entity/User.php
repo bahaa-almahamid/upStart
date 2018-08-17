@@ -261,4 +261,12 @@ class User implements UserInterface, \Serializable
 
 
 
+
+    /**
+     * Get the value of id for the admin dashboard
+     */ 
+    public function getId()
+    {
+        return $this->id;
+    }
 }
