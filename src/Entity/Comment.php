@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\CommentRepository")
@@ -17,16 +18,6 @@ class Comment
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Post", inversedBy="id")
-     */
-    private $id_post;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\User")
-     */
-    private $user_id;
-
-    /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $picture;
@@ -35,6 +26,19 @@ class Comment
      * @ORM\Column(type="text")
      */
     private $content;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Post", inversedBy="comments")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $post;
+
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="comments")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $user;
 
     /**
      * @ORM\Column(type="datetime")
@@ -51,29 +55,6 @@ class Comment
         return $this->id;
     }
 
-    public function getIdPost(): ?Post
-    {
-        return $this->id_post;
-    }
-
-    public function setIdPost(?Post $id_post): self
-    {
-        $this->id_post = $id_post;
-
-        return $this;
-    }
-
-    public function getUserId(): ?User
-    {
-        return $this->user_id;
-    }
-
-    public function setUserId(?User $user_id): self
-    {
-        $this->user_id = $user_id;
-
-        return $this;
-    }
 
     public function getPicture(): ?string
     {
@@ -102,6 +83,31 @@ class Comment
     public function getCreatedate(): ?\DateTimeInterface
     {
         return $this->createdate;
+    }
+
+    public function getPost(): ?Post
+    {
+        return $this->post;
+    }
+    
+    public function setPost(?Post $post): self
+    {
+        $this->post = $post;
+        
+        return $this;
+    }
+
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+    
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
+        
+        return $this;
     }
 
 }

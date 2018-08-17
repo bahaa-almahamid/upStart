@@ -84,12 +84,24 @@ class User implements UserInterface, \Serializable
      */
     private $roles;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Post", mappedBy="user", orphanRemoval=true)
+     */
+    private $posts;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Comment", mappedBy="user", orphanRemoval=true)
+     */
+    private $comments;
+
 
 
     public function __construct()
     {
         $this->createdate = new \DateTime();
-        $this->roles =new ArrayCollection();
+        $this->posts = new ArrayCollection();
+        $this->comment = new ArrayCollection();
+        $this->isActive = true;
     }
 
     public function getUsername()
@@ -226,25 +238,8 @@ class User implements UserInterface, \Serializable
     }
 
 
-    /**
-     * Get the value of isActive
-     */ 
-    public function getIsActive()
-    {
-        return $this->isActive;
-    }
-
-    /**
-     * Set the value of isActive
-     *
-     * @return  self
-     */ 
-    public function setIsActive($isActive)
-    {
-        $this->isActive = $isActive;
-
-        return $this;
-    }
+    
+    
 
 
     /**
@@ -276,15 +271,31 @@ class User implements UserInterface, \Serializable
         return $this;
     }
 
-    public function removeRole(Role $role) : self
+    public function removeRoles(Roles $roles) : self
     {
-        if ($this->roles->contains($role)) {
-            $this->roles->removeElement($role);
+        if ($this->roles->contains($roles)) {
+            $this->roles->removeElement($roles);
         }
 
         return $this;
     }
 
+
+    /**
+     * @return Collection|Post[]
+     */
+    public function getPosts(): Collection
+    {
+        return $this->posts;
+    }
+
+    /**
+     * @return Collection|Comment[]
+     */
+    public function getComments(): Collection
+    {
+        return $this->comments;
+    }
  
 
 
