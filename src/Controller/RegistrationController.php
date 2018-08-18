@@ -17,7 +17,7 @@ class RegistrationController extends AbstractController
         $user = new User();
         $form = $this->createForm(UserFormType::class, $user);
         $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid() && $this->captchaverify($request->get('g-recaptcha-response'))) {
             $password = $passwordEncoder->encodePassword($user, $user->getPassword());
             $user->setPassword($password);
             
@@ -27,12 +27,34 @@ class RegistrationController extends AbstractController
 
             return $this->redirectToRoute('post');
         }
+        if($form->isSubmitted() &&  $form->isValid() && !$this->captchaverify($request->get('g-recaptcha-response'))){
+                 
+            $this->addFlash(
+                'error',
+                'Captcha Require'
+            );}
         return $this->render(
             'registration/register.html.twig',
             array('form' => $form->createView())
         );
 
     }
+
+    function captchaverify($recaptcha){
+        $url = "https://www.google.com/recaptcha/api/siteverify";
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_HEADER, 0);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE); 
+        curl_setopt($ch, CURLOPT_POST, true);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, array(
+            "secret"=>"6LfolWoUAAAAAI0dVaJ4iIZgITSKc1kyAySxeokE","response"=>$recaptcha));
+        $response = curl_exec($ch);
+        curl_close($ch);
+        $data = json_decode($response);     
+    
+    return $data->success;        
+}
 
     public function login(AuthenticationUtils $authenticationUtils)
     {
