@@ -9,15 +9,33 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use App\Entity\Document;
 
 class RegistrationController extends AbstractController
 {
     public function registerUser(Request $request, UserPasswordEncoderInterface $passwordEncoder)
-    {
+    {   
+
+        $entityManager = $this->getDoctrine()->getManager();
         $user = new User();
         $form = $this->createForm(UserFormType::class, $user);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid() && $this->captchaverify($request->get('g-recaptcha-response'))) {
+
+            /**
+             * @var UploadFile $file 
+             * 
+             */
+            $file = $user->getPicture();
+            if ($file) {
+                $document = new Document();
+                $document->setPath($this->getParameter('upload_dir'))
+                         ->setMimeType($file->getMimeType())
+                         ->setName($file->getFileName());
+                $file->move($this->getParameter('upload_dir'));
+                $user->setPicture($document);
+                $entityManager->persist($document);
+            }
             $password = $passwordEncoder->encodePassword($user, $user->getPassword());
             $user->setPassword($password);
             
