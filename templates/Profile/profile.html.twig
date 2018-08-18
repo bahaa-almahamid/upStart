@@ -18,4 +18,22 @@
 		{{ user.getPicture() }} 
 	{% endfor %}
 
+
+			{{ user.getCreateDate()| date('Y-m-d H:i:s') }}
+            <br>
+            {{ user.getUsername() }} 
+            <br>
+            {{ user.getEmail() }}    
+			<br>
+            {{ user.getAbout() }} 
+			<br>
+            {{ user.getAddress() }} 
+			<br>
+            {{ user.getPicture() }} 
+		{% endfor %}
+
+	<div class="margin_right"></div>
 {% endblock %}
+
+{% endblock %}
+
