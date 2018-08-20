@@ -1,8 +1,7 @@
 {% extends 'base.html.twig' %}
 
-{% block main %}
-
-	
+{% block body %}
+<div>
 
 	{% for user in users %}      
 		 <img class="profile-pic" src="{{ path('download_document', {'document' : user.getPicture().getId()}) }}"> 
@@ -17,6 +16,9 @@
 		<br>
 		{{ user.getAddress() }} 
 		<br>
+
+		{#{{ user.getPicture() }}#}
+
 	{% endfor %}
 		{% for post in posts %}      
 		 <img class="profile-pic" src="{{ path('download_document', {'document' : post.getPicture().getId()}) }}">
@@ -34,6 +36,11 @@
 	{% endfor %}
 		
 
+</div>
+{% endblock %}
+
+
+
 
 
 
@@ -42,5 +49,4 @@
 	<div class="margin_right"></div>
 
 
-{% endblock %}
 
