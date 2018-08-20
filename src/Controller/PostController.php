@@ -14,6 +14,7 @@ use App\Entity\Comment;
 use App\Form\CommentFormType;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use App\Entity\User;
 
 
 class PostController extends AbstractController
@@ -58,17 +59,19 @@ class PostController extends AbstractController
             return $this->redirectToRoute('post');
 
 
-        }
+        
         //this is search function
         $dto = new PostSearch();
         $searchForm = $this->createForm(PostSearchFormType::class, $dto, ['standalone' => true]);
 
         $searchForm->handleRequest($request);
         $posts = $manager->getRepository(Post::class)->findByPostSearch($dto);
+        }
         return $this->render(
             'post/index.html.twig',
             [
-                 'posts' => $manager->getRepository(Post::class)->findAll(),
+                'posts' => $manager->getRepository(Post::class)->findAll(),                 
+                'users' => $manager->getRepository(User::class)->findAll(),
                 'postForm' => $postForm->createView(),
                 'searchForm' => $searchForm->createView(),
             ]

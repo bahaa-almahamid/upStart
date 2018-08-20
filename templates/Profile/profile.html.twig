@@ -5,7 +5,7 @@
 	
 
 	{% for user in users %}      
-		{# <img class="profile-pic" src="{{ path('download_document', {'document' : user.getPicture().getId()}) }}"> #}
+		 <img class="profile-pic" src="{{ path('download_document', {'document' : user.getPicture().getId()}) }}"> 
 		<br>
 		{{ user.getCreateDate()| date('Y-m-d H:i:s') }}
 		<br>
@@ -17,7 +17,20 @@
 		<br>
 		{{ user.getAddress() }} 
 		<br>
-		{{ user.getPicture() }}
+	{% endfor %}
+		{% for post in posts %}      
+		 <img class="profile-pic" src="{{ path('download_document', {'document' : post.getPicture().getId()}) }}">
+		<br>
+		{{ post.getCreationDate()| date('Y-m-d H:i:s') }}
+		<br>
+		{{ post.getTitle() }} 
+		<br>
+		{{ post.getCategory() }}    
+		<br>
+		{{ post.getText() }} 
+		<br>
+
+	
 	{% endfor %}
 		
 
