@@ -58,7 +58,7 @@ class PostController extends AbstractController
 
             return $this->redirectToRoute('post');
 
-
+        }
         
         //this is search function
         $dto = new PostSearch();
@@ -66,7 +66,7 @@ class PostController extends AbstractController
 
         $searchForm->handleRequest($request);
         $posts = $manager->getRepository(Post::class)->findByPostSearch($dto);
-        }
+        
         return $this->render(
             'post/index.html.twig',
             [
