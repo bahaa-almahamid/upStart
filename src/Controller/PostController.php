@@ -47,7 +47,7 @@ class PostController extends AbstractController
                     ->setName($file->getFileName());
 
                 $file->move($this->getParameter('upload_dir'));
-                $post->setPicture($document);
+                $comment->setPicture($document);
                 $manager->persist($document);
             }
 
