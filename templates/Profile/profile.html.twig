@@ -1,16 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block main %}
+{% block body %}
 
-	
-
-<<<<<<< HEAD
 <div>
-	{% for user in users %}
-=======
+
 	{% for user in users %}       
 		<br>
->>>>>>> aa0be3ca935b1df4246e273fe2dbe7ac8f7b265e
 		{{ user.getCreateDate()| date('Y-m-d H:i:s') }}
 		<br>
 		{{ user.getUsername() }} 
@@ -21,14 +16,18 @@
 		<br>
 		{{ user.getAddress() }} 
 		<br>
-		{# {{ user.getPicture() }}  #}
+		{#{{ user.getPicture() }}#}
 	{% endfor %}
-<<<<<<< HEAD
+
 </div>
 {% endblock %}
-=======
-	<div class="margin_right"></div>
 
-{% endblock %}
 
->>>>>>> aa0be3ca935b1df4246e273fe2dbe7ac8f7b265e
+
+
+
+
+
+
+
+
