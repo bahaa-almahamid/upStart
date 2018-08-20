@@ -125,7 +125,12 @@ class PostController extends AbstractController
             'post/detail.html.twig',
             [
 
+                
+                'post'=>$post,
+
+
                 'post'=> $post,
+
                 'commentForm' => $commentForm->createView(),
 
                 'post' => $post,
