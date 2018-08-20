@@ -12,6 +12,7 @@
             <link href="{{ asset('css/mainStyleSheet.css') }}" rel="stylesheet">
         {% endblock %}
     </head>
+
     <body id="body">
         {% block header %}
             {% include 'header.html.twig' %}
@@ -21,12 +22,11 @@
             {% block left_marge %}
                 <div class="main-container">
                     <div class="margin_left">
-                        <a href = "{{path ('login') }}">Login<a/>
-                        <a href="{{ path ('profile') }}">My profile</a>
-                        <a href="{{ path ('Chat') }}">Messages</a>
-                        <a href = "{{path ('post') }}">News<a/>
-                        <a href = "{{path ('admin') }}">Admin panel<a/>
-                        <a href = "{{path ('logout') }}">Logout<a/>
+                        <a href="{{ path ('profile') }}"><i class="fas fa-user-alt"></i> My profile</a>
+                        <a href="{{ path ('Chat') }}"><i class="fas fa-envelope"></i> Messages</a>
+                        <a href = "{{path ('post') }}"><i class="fas fa-list-alt"></i> Posts<a/>
+                        <a href = "{{path ('admin') }}"><i class="fas fa-columns"></i> Admin panel<a/>
+                        <a href = "{{path ('logout') }}"><i class="fas fa-sign-out-alt"></i> Log Out<a/>
                     </div>               
                 </div>
              {% endblock %}
@@ -40,6 +40,7 @@
         {% block footer %}
             {% include 'footer.html.twig' %}
         {% endblock %}
+        
         {% block javascripts %}
             <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
             <script type="text/javascript" src="{{ asset('script/mainScript.js') }}"></script>

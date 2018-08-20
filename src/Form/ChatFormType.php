@@ -22,6 +22,6 @@ class ChatFormType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Message::class],
-        ['attr' => ['id' => 'msg-container']]);
+        ['attr' => ['id' => 'container']]);
     }
 }
