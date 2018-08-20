@@ -16,7 +16,11 @@
             <br>
             {{ post.getText() }}   
 
-			<img src ="{{ path ('download_document',{document:post.getPicture().getId()}) }}"/> 
+			 {% if post.getPicture() is not empty %}
+                <td><img src="{{ path('download_document', {'document' : post.getPicture().getId()}) }}"></td>
+            {% else %}
+                <td></td>
+            {% endif %}
 			 
 
 		<p>id : {{ post.getId() }}</p>

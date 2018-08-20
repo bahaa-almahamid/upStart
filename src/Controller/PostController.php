@@ -47,7 +47,7 @@ class PostController extends AbstractController
                     ->setName($file->getFileName());
 
                 $file->move($this->getParameter('upload_dir'));
-                $comment->setPicture($document);
+                $post->setPicture($document);
                 $manager->persist($document);
             }
 
@@ -70,7 +70,8 @@ class PostController extends AbstractController
         return $this->render(
             'post/index.html.twig',
             [
-                'posts' => $manager->getRepository(Post::class)->findAll(),                 'users' => $manager->getRepository(User::class)->findAll(),
+                'posts' => $manager->getRepository(Post::class)->findAll(),               
+                'users' => $manager->getRepository(User::class)->findAll(),
                 'postForm' => $postForm->createView(),
                 'searchForm' => $searchForm->createView(),
             ]
@@ -120,7 +121,6 @@ class PostController extends AbstractController
 
 
         }
-
 
         return $this->render(
             'post/detail.html.twig',
