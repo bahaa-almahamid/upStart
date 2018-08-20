@@ -5,7 +5,7 @@
 	
 
 	{% for user in users %}       
-		<img class="profile-pic" src="{{ path('download_document', {'document' : user.getPicture().getId()}) }}">
+		{# <img class="profile-pic" src="{{ path('download_document', {'document' : user.getPicture().getId()}) }}"> #}
 		<br>
 		{{ user.getCreateDate()| date('Y-m-d H:i:s') }}
 		<br>
@@ -17,12 +17,11 @@
 		<br>
 		{{ user.getAddress() }} 
 		<br>
-		{# {{ user.getPicture() }}  #}
+
 	{% endfor %}
 
 
 
-	<div class="margin_right"></div>
 
 	<div class="margin_right"></div>
 

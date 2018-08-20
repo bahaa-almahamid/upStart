@@ -24,6 +24,7 @@ class DefaultController extends Controller
         );
         return new BinaryFileResponse($fileName);
     }
+    
     public function profile(Request $request)
     {
         $manager = $this->getDoctrine()->getManager();
