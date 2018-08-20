@@ -38,6 +38,6 @@ download_document:
 
 post_detail:
   path:     /post/detail/{post}
-  controller: App\Controller\PostController::postDetail
+  controller: App\Controller\PostController::commentDetail
 
 

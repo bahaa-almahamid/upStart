@@ -8,10 +8,11 @@
     margin: 0;
     padding: 0;
     font-family: 'Ubuntu', sans-serif;
-
 }
 
+
 /* homepage header content */
+
 header {
     padding-top: 7px;
     position: relative;
@@ -44,16 +45,19 @@ header {
     margin-left: 40px;
     color: grey;
 }
+
+
 /* end of header content */
 
 
 /* body content of the homepage */
+
 .main-container {
     position: relative;
     width: 90%;
     height: 100%;
     margin: 0 auto;
-    background-color:white;
+    background-color: white;
 }
 
 .main-text-container {
@@ -107,7 +111,7 @@ header {
     box-shadow: 0px 0px 15px #737373;
 }
 
-.login{
+.login {
     margin-right: 5px;
     margin-top: 5px;
 }
@@ -125,7 +129,7 @@ header {
     display: block;
 }
 
-button{
+button {
     margin-bottom: 7px;
 }
 
@@ -141,16 +145,16 @@ button{
     color: #fff;
 }
 
-.textarea{
-    border: #056675 1px solid; 
+.textarea {
+    border: #056675 1px solid;
     box-shadow: 0px 0px 15px #056675;
     width: 700px;
     height: 100px;
 }
 
-.buttonchat{
+.buttonchat {
     background-color: #056675;
-    border: #056675 solid; 
+    border: #056675 solid;
     border-radius: 3px;
     color: white;
     padding: 5px;
@@ -162,36 +166,41 @@ button{
     bottom: 103%;
 }
 
+
 /* body content*/
-.margin_left{
+
+.margin_left {
     width: 15%;
     position: absolute;
     left: 0px;
     display: flex;
     flex-direction: column;
     padding-top: 45px;
-    color:  #056675;
+    color: #056675;
     font-size: 2rem;
 }
 
-.white{
+.white {
     background-color: #fff;
     margin-left: 15%;
     margin-right: 15%;
 }
+
+
 /* end body content*/
 
+
 /* content of profile*/
-.bgcpicture{
-    background-color: #000066;
-    width: 70%;
-    height: 30%;
-    position: absolute;
-    left: 15%;
+
+.profile-pic {
+    margin: 0 auto;
+    width: 40%;
 }
 
+
 /* posts */
-#searchform{
+
+#searchform {
     position: absolute;
     left: 65%;
 }
@@ -206,55 +215,67 @@ button{
     width: 67%;
 }
 
-.post{
+.post-container {
     border: 1px solid lightgrey;
     width: 95%;
-    height: 200px;
     margin-left: 2%;
-    margin-top: 500px;
+    margin-top: 400px;
     margin-bottom: 2%;
     box-shadow: 0px 0px 15px #e4e4e4;
     padding: 3px;
     position: relative;
-
 }
+
+
 /* end posts*/
 
+
 /* chat */
-#chat{
+
+#chat {
     margin-left: 15%;
     margin-right: 15%;
 }
 
-#msg-container{
+#msg-container {
     width: 500px;
     height: 100px;
 }
 
+<<<<<<< HEAD
 .title {
     text-align: center;
     color: #737373;
 }
+=======
+
+>>>>>>> aa0be3ca935b1df4246e273fe2dbe7ac8f7b265e
 /* end chat */
+
 
 /* <<<<<<<<>>>>>>>>> */
 
-/* responsive design part */ 
+
+/* responsive design part */
+
 
 /* mobile */
+
 @media only screen and (max-width: 800px) {
-    .up-content, .start-content {
+    .up-content,
+    .start-content {
         font-size: 150px;
     }
-
-    .definition-first-para, .definition-second-para{
+    .definition-first-para,
+    .definition-second-para {
         font-size: 1.5rem;
     }
-
-    .main-forms-container{
+    .main-forms-container {
         width: 100%;
         position: relative;
         top: 65%;
     }
 }
+
+
 /* end of responsive */

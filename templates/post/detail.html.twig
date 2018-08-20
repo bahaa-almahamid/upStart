@@ -4,13 +4,29 @@
 
 {% block body %}
 	<div class="container">
+
+		
+            {{ post.getCreationDate()| date('Y-m-d H:i:s') }}
+            <br>
+            {{ post.getCategory() }} 
+            <br>
+            {{ post.getTitle() }}
+            <br>
+            {{ post.getText() }}   
+
+			<img src ="{{ path ('download_document',{document:post.getPicture().getId()}) }}"/> 
+			 
+
 		<p>id : {{ post.getId() }}</p>
-		<p>created date : {{ post.getCreateDate()|date('Y-m-d H:i:s') }}</p>
+		<p>created date : {{ post.getCreationDate()|date('Y-m-d H:i:s') }}</p>
 		<p>priority : {{ post.getText() }}</p>
 		<p>title : {{ post.getTitle() }}</p>
+
 		
 		<div class="element-warning mt-5">
-		    {{ form(form) }}
 		</div>
+		<div id="posting">
+       {{ form(commentForm) }}
+    </div>
 	</div>
 {% endblock %}

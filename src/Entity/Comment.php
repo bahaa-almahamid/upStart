@@ -18,7 +18,8 @@ class Comment
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\ManyToOne(targetEntity="App\Entity\Document")
+     * @ORM\JoinColumn(nullable=true)
      */
     private $picture;
 
@@ -43,11 +44,11 @@ class Comment
     /**
      * @ORM\Column(type="datetime")
      */
-    private $createdate;
+    private $createDate;
 
     public function __construct()
     {
-        $this->creationDate = new \DateTime();
+        $this->createDate = new \DateTime();
     }
 
     public function getId(): ?string
@@ -56,12 +57,12 @@ class Comment
     }
 
 
-    public function getPicture(): ?string
+    public function getPicture()
     {
         return $this->picture;
     }
 
-    public function setPicture(?string $picture): self
+    public function setPicture($picture): self
     {
         $this->picture = $picture;
 
@@ -82,7 +83,7 @@ class Comment
 
     public function getCreatedate(): ?\DateTimeInterface
     {
-        return $this->createdate;
+        return $this->createDate;
     }
 
     public function getPost(): ?Post
