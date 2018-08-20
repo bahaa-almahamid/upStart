@@ -5,29 +5,20 @@
 {% endblock %}
 
 {% block main %}
-    <div id="searchform">
-        {{ form_start(searchForm) }}
-            {{ form_row(searchForm.post)  }}
-            <br>
-            {{ form_row(searchForm.search) }}
-        {{ form_end(searchForm) }}
-    </div>
-
-    <br>
-
-    <div id="posting">
+<div id="posting">
         {{ form_start(postForm) }}
             {{ form_row(postForm.category) }}
             {{ form_row(postForm.title) }}
             {{ form_row(postForm.text) }}
         {{ form_end(postForm) }}
-    </div>
+ </div>
 
     {% if posts is empty %}
         <p>No Post found in the application</p>
     {% else %}  
                      
     {% for post in posts %}
+
 
 
  
@@ -49,5 +40,22 @@
             {% endfor %} 
     {% endfor %}            
     {% endif %}
+
+<div class = "post-container">
+    
+    <br>
+    <i class="fas fa-clock"></i> {{ post.getCreationDate()| date('Y-m-d H:i:s') }}
+    <br>
+    <i class="fas fa-question-circle"></i> {{ post.getCategory() }} 
+    <br>
+    <i class="fas fa-file-signature"></i> {{ post.getTitle() }}
+    <br>
+    {{ post.getText() }}    
+    <br>
+    <td><a href="{{ path("post_detail", {post: post.getId()}) }}"><i class="fas fa-comments"></i> Comments</a></td>
+</div>	      				
+{% endfor %}             
+{% endif %}
+
 
 {% endblock %}
