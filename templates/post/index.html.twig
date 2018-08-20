@@ -41,21 +41,6 @@
     {% endfor %}            
     {% endif %}
 
-<div class = "post-container">
-    
-    <br>
-    <i class="fas fa-clock"></i> {{ post.getCreationDate()| date('Y-m-d H:i:s') }}
-    <br>
-    <i class="fas fa-question-circle"></i> {{ post.getCategory() }} 
-    <br>
-    <i class="fas fa-file-signature"></i> {{ post.getTitle() }}
-    <br>
-    {{ post.getText() }}    
-    <br>
-    <td><a href="{{ path("post_detail", {post: post.getId()}) }}"><i class="fas fa-comments"></i> Comments</a></td>
-</div>	      				
-{% endfor %}             
-{% endif %}
 
 
 {% endblock %}
