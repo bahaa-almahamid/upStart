@@ -59,8 +59,9 @@ class User implements UserInterface, \Serializable
     private $address;
 
     /**
-     * @ORM\Column(type="string", length=200, nullable=true)
-     * 
+     * @ORM\OneToOne(targetEntity="App\Entity\Document")
+     * @ORM\JoinColumn(nullable=true)
+     * @Assert\File(mimeTypes={"image/*"})
      */
     private $picture;
 
@@ -162,12 +163,12 @@ class User implements UserInterface, \Serializable
         return $this;
     }
 
-    public function getPicture(): ?string
+    public function getPicture()
     {
         return $this->picture;
     }
 
-    public function setPicture(?string $picture): self
+    public function setPicture($picture): self
     {
         $this->picture = $picture;
 
@@ -261,4 +262,12 @@ class User implements UserInterface, \Serializable
 
 
 
+
+    /**
+     * Get the value of id for the admin dashboard
+     */ 
+    public function getId()
+    {
+        return $this->id;
+    }
 }

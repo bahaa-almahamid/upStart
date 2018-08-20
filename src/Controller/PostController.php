@@ -76,30 +76,61 @@ class PostController extends AbstractController
         );
 
     }
-    public function postDetail(post $post, Request $request)
+
+
+
+    public function commentDetail(post $post, Request $request)
     {
-        $picture = $post->getPicture();
-        if ($picture) {
-            $post->setPicture(new File($picture->getPath().'/'.$picture->getName()));
-        }
-        $form = $this->createForm(PostFormType::class, $post, ['standalone' => true]);
-        $form->handleRequest($request);
+        // for comment 
+        $manager = $this->getDoctrine()->getManager();
+        $comment = new Comment();
+        $commentForm = $this->createForm(
+            CommentFormType::class,
+            $comment,
+            ['standalone' => true]
+        );
+        $commentForm->handleRequest($request);
+        if ($commentForm->isSubmitted() && $commentForm->isValid()) {
+            /**
+             * @var UploadFile $file
+             * 
+             */
 
-        if ($form->isSubmitted() && $form->isValid()) {
+            $file = $comment->getPicture();
+            if ($file) {
 
-            $this->getDoctrine()->getManager()->flush();
+                $document = new Document();
+                $document->setPath($this->getParameter('upload_dir'))
+                    ->setMimeType($file->getMimeType())
+                    ->setName($file->getFileName());
 
-            return $this->redirectToRoute('post_detail', ['post' => $post->getId()]);
-         
+                $file->move($this->getParameter('upload_dir'));
+                $comment->setPicture($document);
+                $manager->persist($document);
+            }
+
+            $comment->setPost($post);
+            $comment->setUser($this->getUser());
+            $manager->persist($comment);
+            $manager->flush();
+
+
+            return $this->redirectToRoute('post_detail',array("post"=>$post->getId()));
+
+
         }
 
 
         return $this->render(
             'post/detail.html.twig',
             [
+
+                'post'=> $post,
+                'commentForm' => $commentForm->createView(),
+
                 'post' => $post,
-                'user' => $user,
                 'form' => $form->createView()
+
             ]
         );
     }

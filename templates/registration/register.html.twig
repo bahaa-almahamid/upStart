@@ -31,7 +31,11 @@
                                 {{ form_row(form.password.first, { 'attr': {'class': 'login-form-user'} }) }}
                                 <br>
                                 {{ form_row(form.password.second, { 'attr': {'class': 'login-form-user'} }) }}
+                                <br>
                                 {{ form_row(form.address, { 'attr': {'class': 'login-form-user'} }) }}
+                                <br>
+                                <div class="g-recaptcha" data-sitekey="6LfolWoUAAAAAD5cCJkwHXnQ0fJovGtiOA2LOVHG"></div>
+                                <br>
                                 <button type="submit"class="login-form-submit">Register</button>
                             {{ form_end(form) }}    
                     </div>
