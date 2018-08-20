@@ -230,6 +230,11 @@ button{
     width: 500px;
     height: 100px;
 }
+
+.title {
+    text-align: center;
+    color: #737373;
+}
 /* end chat */
 
 /* <<<<<<<<>>>>>>>>> */

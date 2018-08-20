@@ -4,6 +4,7 @@
 
 	<div class="bgcpicture"></div>
 
+<div>
 	{% for user in users %}
 		{{ user.getCreateDate()| date('Y-m-d H:i:s') }}
 		<br>
@@ -17,5 +18,5 @@
 		<br>
 		{{ user.getPicture() }} 
 	{% endfor %}
-
+</div>
 {% endblock %}

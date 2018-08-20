@@ -8,12 +8,9 @@
     	{% else %}
 
 <div id="chat">
-		<table class="table table-striped">
-			<thead>
-				<h3><a href='{{ path('logout') }}' > Logout </a></h3>
-			</thead>
 
-		
+		<h2 class = "title">Global Chat</h2>
+		<table class="table table-striped">
 			<tbody>
 				{% for message in messages %}
 					<tr>          				
@@ -30,5 +27,4 @@
 		<button type="submit" class="login-form-submit" > Send </button>
 	{{ form_end(chatForm) }}
 </div>
-
 {% endblock %}
