@@ -16,6 +16,7 @@ use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use App\Entity\User;
 
+
 class PostController extends AbstractController
 {
     /**
@@ -30,7 +31,6 @@ class PostController extends AbstractController
             $post,
             ['standalone' => true]
         );
-
         $postForm->handleRequest($request);
         if ($postForm->isSubmitted() && $postForm->isValid()) {
             /**
@@ -55,36 +55,30 @@ class PostController extends AbstractController
             $manager->persist($post);
             $manager->flush();
 
-            return $this->redirectToRoute('post');
 
+            return $this->redirectToRoute('post');
 
         }
         
-
-        }
-
-
         //this is search function
         $dto = new PostSearch();
         $searchForm = $this->createForm(PostSearchFormType::class, $dto, ['standalone' => true]);
 
         $searchForm->handleRequest($request);
         $posts = $manager->getRepository(Post::class)->findByPostSearch($dto);
-        
+    
         return $this->render(
             'post/index.html.twig',
             [
-
-                'posts' => $manager->getRepository(Post::class)->findAll(),                 
-                'users' => $manager->getRepository(User::class)->findAll(),
-
-
+                'posts' => $manager->getRepository(Post::class)->findAll(),                 'users' => $manager->getRepository(User::class)->findAll(),
                 'postForm' => $postForm->createView(),
                 'searchForm' => $searchForm->createView(),
             ]
         );
 
+    
     }
+
 
     public function commentDetail(post $post, Request $request)
     {
@@ -96,7 +90,6 @@ class PostController extends AbstractController
             $comment,
             ['standalone' => true]
         );
-
         $commentForm->handleRequest($request);
         if ($commentForm->isSubmitted() && $commentForm->isValid()) {
             /**
@@ -122,22 +115,18 @@ class PostController extends AbstractController
             $manager->persist($comment);
             $manager->flush();
 
+
             return $this->redirectToRoute('post_detail',array("post"=>$post->getId()));
+
+
         }
+
 
         return $this->render(
             'post/detail.html.twig',
-
             [                
                 'post'=>$post,
                 'commentForm' => $commentForm->createView(),
-
-            [            
-
-
-                'commentForm' => $commentForm->createView(),
-
-                'post' => $post,
 
             ]
         );
