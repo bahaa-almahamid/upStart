@@ -5,17 +5,6 @@
 {% endblock %}
 
 {% block main %}
-	{% for post in posts %}
-            <tr>
-                {% if post.getPicture() is not empty %}
-                    <td><img src="{{ path('download_document', {'document' : post.getPicture().getId()}) }}"></td>
-                {% else %}
-                    <td></td>
-                {% endif %}
-                
-            </tr>
-        {% endfor %}
-
     <div id="searchform">
         {{ form_start(searchForm) }}
             {{ form_row(searchForm.post)  }}
@@ -40,7 +29,9 @@
                      
     {% for post in posts %}
 
-        <div class = "post">
+        <div class = "post-container">
+            <img class="profile-pic" src="{{ path('download_document', {'document' : post.getPicture().getId()}) }}">
+            <br>
             {{ post.getCreationDate()| date('Y-m-d H:i:s') }}
             <br>
             {{ post.getCategory() }} 
