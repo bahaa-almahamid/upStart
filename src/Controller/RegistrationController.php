@@ -88,6 +88,23 @@ class RegistrationController extends AbstractController
             'password' => $password
         ));
     }
+
+    public function profile(){
+        $manager = $this->getDoctrine()->getManager();
+
+        
+        
+
+        return $this->redirectToRoute('profile',array("profile"=>$username->getId()
+        
+             [
+                'users' => $manager->getRepository(User::class)->findAll(),
+                'posts' => $manager->getRepository(Post::class)->findAll(),
+
+            ]
+            ));
+            
+}
 }
 
 
