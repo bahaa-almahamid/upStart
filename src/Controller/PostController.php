@@ -71,7 +71,6 @@ class PostController extends AbstractController
 
                 'posts' => $manager->getRepository(Post::class)->findAll(),
                 'postForm' => $postForm->createView(),
-                'searchForm' => $searchForm->createView()
             ]
         );
 
@@ -123,18 +122,9 @@ class PostController extends AbstractController
 
         return $this->render(
             'post/detail.html.twig',
-            [
-
-                
+            [                
                 'post'=>$post,
-
-
-                'post'=> $post,
-
                 'commentForm' => $commentForm->createView(),
-
-                'post' => $post,
-                'form' => $form->createView()
 
             ]
         );
