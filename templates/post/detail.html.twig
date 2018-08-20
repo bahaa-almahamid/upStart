@@ -6,6 +6,7 @@
 
 
 	<div class="container">
+
 		
             {{ post.getCreationDate()| date('Y-m-d H:i:s') }}
             <br>
@@ -17,6 +18,12 @@
 
 			<img src ="{{ path ('download_document',{document:post.getPicture().getId()}) }}"/> 
 			 
+
+		<p>id : {{ post.getId() }}</p>
+		<p>created date : {{ post.getCreationDate()|date('Y-m-d H:i:s') }}</p>
+		<p>priority : {{ post.getText() }}</p>
+		<p>title : {{ post.getTitle() }}</p>
+
 		
 		<div class="element-warning mt-5">
 		</div>
