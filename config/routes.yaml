@@ -30,7 +30,7 @@ logout:
 
 profile:
   path:     /profile
-  controller: App\Controller\RegistrationController::profile
+  controller: App\Controller\DefaultController::profile
 
 download_document:
   path: /document/{document}

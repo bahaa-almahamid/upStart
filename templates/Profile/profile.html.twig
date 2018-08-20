@@ -20,7 +20,12 @@
 
 		{% endfor %}
 			{% for post in posts %}      
-			<img class="profile-pic" src="{{ path('download_document', {'document' : post.getPicture().getId()}) }}">
+	            <div class = "post-container">
+            {% if post.getPicture() is not empty %}
+                <td><img src="{{ path('download_document', {'document' : post.getPicture().getId()}) }}"></td>
+            {% else %}
+                <td></td>
+            {% endif %}
 			<br>
 			{{ post.getCreationDate()| date('Y-m-d H:i:s') }}
 			<br>

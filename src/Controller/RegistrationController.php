@@ -11,6 +11,7 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use App\Entity\Document;
 
+
 class RegistrationController extends AbstractController
 {
     public function registerUser(Request $request, UserPasswordEncoderInterface $passwordEncoder)
@@ -89,22 +90,7 @@ class RegistrationController extends AbstractController
         ));
     }
 
-    public function profile(){
-        $manager = $this->getDoctrine()->getManager();
 
-        
-        
-
-        return $this->redirectToRoute('profile',array("profile"=>$username->getId()(
-        
-              [
-               'users' => $manager->getRepository(User::class)->findAll(),
-              'posts' => $manager->getRepository(Post::class)->findAll(),
-
-             ]
-            )));
-            
-    }
 }
 
 
