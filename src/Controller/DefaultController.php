@@ -7,6 +7,7 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use App\Entity\Document;
 use Symfony\Component\HttpFoundation\Request;
 use App\Entity\User;
+use App\Entity\Post;
 
 class DefaultController extends Controller
 {
@@ -24,15 +25,20 @@ class DefaultController extends Controller
         );
         return new BinaryFileResponse($fileName);
     }
-    public function profile(Request $request)
-    {
+    
+    public function profile(){
         $manager = $this->getDoctrine()->getManager();
+
         
+        
+
         return $this->render(
             'profile/profile.html.twig',
             [
-            'users' =>$manager->getRepository(User::class)->findAll() 
-            ]
+                'users' => $manager->getRepository(User::class)->findAll(),
+                'posts' => $manager->getRepository(Post::class)->findAll(),
+
+                ]
             );
 }
 }

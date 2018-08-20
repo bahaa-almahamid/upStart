@@ -19,6 +19,28 @@
                      
     {% for post in posts %}
 
+
+
+ 
+            <div class = "post-container">
+            <img class="profile-pic" src="{{ path('download_document', {'document' : post.getPicture().getId()}) }}">
+            <br>
+            {{ post.getCreationDate()| date('Y-m-d H:i:s') }}
+            <br>
+            {{ post.getCategory() }} 
+            <br>
+            {{ post.getTitle() }}
+            <br>
+            {{ post.getText() }}    
+            <br>
+            <td><a href="{{ path("post_detail", {post: post.getId()}) }}">Comments</a></td>
+         </div>	      				
+            {% for user in users %}
+                {{ user.getUsername() }} 
+            {% endfor %} 
+    {% endfor %}            
+    {% endif %}
+
 <div class = "post-container">
     
     <br>
@@ -34,5 +56,6 @@
 </div>	      				
 {% endfor %}             
 {% endif %}
+
 
 {% endblock %}

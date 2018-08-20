@@ -218,12 +218,6 @@ class User implements UserInterface, \Serializable
          ) = unserialize($serialized, array('allowed_classes' => false));
      }
     
-
-
-    
-    
-
-
     /**
      * Set the value of createdate
      *
@@ -242,18 +236,13 @@ class User implements UserInterface, \Serializable
         return array('ROLE_USER');
     }
 
-    /**
-     * @return Collection|Post[]
-     */
-    public function getPosts(): Collection
+    public function getPosts()
     {
         return $this->posts;
     }
 
-    /**
-     * @return Collection|Comment[]
-     */
-    public function getComments(): Collection
+
+    public function getComments()
     {
         return $this->comments;
     }
