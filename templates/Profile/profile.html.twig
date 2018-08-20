@@ -9,7 +9,6 @@
 	{% for user in users %}
 =======
 	{% for user in users %}       
-		<img class="profile-pic" src="{{ path('download_document', {'document' : user.getPicture().getId()}) }}">
 		<br>
 >>>>>>> aa0be3ca935b1df4246e273fe2dbe7ac8f7b265e
 		{{ user.getCreateDate()| date('Y-m-d H:i:s') }}
