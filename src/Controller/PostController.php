@@ -15,7 +15,6 @@ use App\Form\CommentFormType;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
-
 class PostController extends AbstractController
 {
     /**
@@ -30,6 +29,7 @@ class PostController extends AbstractController
             $post,
             ['standalone' => true]
         );
+
         $postForm->handleRequest($request);
         if ($postForm->isSubmitted() && $postForm->isValid()) {
             /**
@@ -54,11 +54,9 @@ class PostController extends AbstractController
             $manager->persist($post);
             $manager->flush();
 
-
             return $this->redirectToRoute('post');
-
-
         }
+
         //this is search function
         $dto = new PostSearch();
         $searchForm = $this->createForm(PostSearchFormType::class, $dto, ['standalone' => true]);
@@ -68,7 +66,6 @@ class PostController extends AbstractController
         return $this->render(
             'post/index.html.twig',
             [
-
                 'posts' => $manager->getRepository(Post::class)->findAll(),
                 'postForm' => $postForm->createView(),
                 'searchForm' => $searchForm->createView()
@@ -76,8 +73,6 @@ class PostController extends AbstractController
         );
 
     }
-
-
 
     public function commentDetail(post $post, Request $request)
     {
@@ -89,6 +84,7 @@ class PostController extends AbstractController
             $comment,
             ['standalone' => true]
         );
+
         $commentForm->handleRequest($request);
         if ($commentForm->isSubmitted() && $commentForm->isValid()) {
             /**
@@ -114,28 +110,17 @@ class PostController extends AbstractController
             $manager->persist($comment);
             $manager->flush();
 
-
             return $this->redirectToRoute('post_detail',array("post"=>$post->getId()));
-
-
         }
-
 
         return $this->render(
             'post/detail.html.twig',
-            [
+            [            
 
-                
-                'post'=>$post,
-
-
-                'post'=> $post,
 
                 'commentForm' => $commentForm->createView(),
 
                 'post' => $post,
-                'form' => $form->createView()
-
             ]
         );
     }

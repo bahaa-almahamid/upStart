@@ -12,7 +12,6 @@
 
 
 /* homepage header content */
-
 header {
     padding-top: 7px;
     position: relative;
@@ -45,13 +44,10 @@ header {
     margin-left: 40px;
     color: grey;
 }
-
-
 /* end of header content */
 
 
 /* body content of the homepage */
-
 .main-container {
     position: relative;
     width: 90%;
@@ -165,10 +161,9 @@ button {
     position: absolute;
     bottom: 103%;
 }
-
+/* end body */
 
 /* body content*/
-
 .margin_left {
     width: 15%;
     position: absolute;
@@ -184,76 +179,67 @@ button {
     background-color: #fff;
     margin-left: 15%;
     margin-right: 15%;
+    padding-top: 300px;
+   
 }
-
-
 /* end body content*/
 
 
 /* content of profile*/
-
 .profile-pic {
     margin: 0 auto;
     width: 40%;
 }
+/* end profile */
 
 
 /* posts */
-
-#searchform {
-    position: absolute;
-    left: 65%;
-}
-
 #posting {
-    margin-left: 2%;
-    margin-top: 7%;
+    margin-left: 1.5%;
+    margin-top: 15px;
     position: absolute;
     top: 50px;
     border: solid 1px lightgrey;
     padding: 5px;
     width: 67%;
+    box-shadow: 0px 0px 15px #e4e4e4;
 }
 
 .post-container {
     border: 1px solid lightgrey;
     width: 95%;
     margin-left: 2%;
-    margin-top: 400px;
-    margin-bottom: 2%;
+    margin-top: 50px;
     box-shadow: 0px 0px 15px #e4e4e4;
     padding: 3px;
+    padding-bottom: 5px;
     position: relative;
 }
-
-
 /* end posts*/
 
-
 /* chat */
-
 #chat {
     margin-left: 15%;
     margin-right: 15%;
+    margin-top: 1px;
 }
 
-#msg-container {
-    width: 500px;
+#chat_form_content {
+    width: 80%;
     height: 100px;
 }
 
-
+.title {
+    text-align: center;
+    color: #737373;
+}
 /* end chat */
-
 
 /* <<<<<<<<>>>>>>>>> */
 
-
 /* responsive design part */
 
-
 /* mobile */
-
 @media only screen and (max-width: 800px) {
     .up-content,
     .start-content {
@@ -269,6 +255,5 @@ button {
         top: 65%;
     }
 }
-
-
 /* end of responsive */
+

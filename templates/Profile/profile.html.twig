@@ -1,8 +1,7 @@
 {% extends 'base.html.twig' %}
 
-{% block main %}
-
-	
+{% block body %}
+<div>
 
 	{% for user in users %}       
 		<br>
@@ -16,15 +15,18 @@
 		<br>
 		{{ user.getAddress() }} 
 		<br>
-		{{ user.getPicture() }}
+		{#{{ user.getPicture() }}#}
 	{% endfor %}
 
-
-
-
-	<div class="margin_right"></div>
-
-
-
+</div>
 {% endblock %}
+
+
+
+
+
+
+
+
+
 
