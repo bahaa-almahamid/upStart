@@ -17,6 +17,7 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 use App\Entity\User;
 
 
+
 class PostController extends AbstractController
 {
     /**
@@ -111,7 +112,7 @@ class PostController extends AbstractController
                 $manager->persist($document);
             }
 
-            $comment->setPost($post);
+            
             $comment->setUser($this->getUser());
             $manager->persist($comment);
             $manager->flush();
@@ -127,8 +128,10 @@ class PostController extends AbstractController
             [                
                 'post'=>$post,
                 'commentForm' => $commentForm->createView(),
+                'comments'=>$manager->getRepository(Comment::class)->findAll(),
 
             ]
         );
     }
 }
+

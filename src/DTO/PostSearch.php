@@ -3,9 +3,8 @@ namespace App\DTO;
 
 
 class PostSearch
-{
-  
-    public $post;
+{ 
+   public $post;
 
     public $search;
 }
