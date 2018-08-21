@@ -19,25 +19,7 @@
 
 
 		{% endfor %}
-			{% for post in posts %}      
-	            <div class = "post-container">
-            {% if post.getPicture() is not empty %}
-                <td><img src="{{ path('download_document', {'document' : post.getPicture().getId()}) }}"></td>
-            {% else %}
-                <td></td>
-            {% endif %}
-			<br>
-			{{ post.getCreationDate()| date('Y-m-d H:i:s') }}
-			<br>
-			{{ post.getTitle() }} 
-			<br>
-			{{ post.getCategory() }}    
-			<br>
-			{{ post.getText() }} 
-			<br>
 
-	
-		{% endfor %}
 		
 
 	</div>

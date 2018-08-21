@@ -18,7 +18,7 @@
     {% else %}  
                      
     {% for post in posts %}
-
+            {{ post.getUser.getUsername() }} 
             <div class = "post-container">
             {% if post.getPicture() is not empty %}
                 <td><img src="{{ path('download_document', {'document' : post.getPicture().getId()}) }}"></td>
@@ -37,7 +37,7 @@
 
          </div>	      				
     
-                {{ post.getUser.getUsername() }} 
+                
 
             <br>
               				
