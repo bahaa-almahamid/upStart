@@ -13,7 +13,8 @@
 			<tbody>
 				{% for message in messages %}
 					<tr>          				
-						<td>{{ message.getContent() }}</td>           				
+						<td>{{ message.getContent() }}</td>   
+						<td>{{ message.getUser.getUsername() }}</td>           				
 					</tr>
 				{% endfor %}
 			</tbody>
