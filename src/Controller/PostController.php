@@ -70,7 +70,8 @@ class PostController extends AbstractController
         return $this->render(
             'post/index.html.twig',
             [
-                'posts' => $manager->getRepository(Post::class)->findAll(),                 'users' => $manager->getRepository(User::class)->findAll(),
+                'posts' => $manager->getRepository(Post::class)->findAll(),                 
+                'users' => $manager->getRepository(User::class)->findAll(),
                 'postForm' => $postForm->createView(),
                 'searchForm' => $searchForm->createView(),
             ]
