@@ -25,19 +25,26 @@ class DefaultController extends Controller
         );
         return new BinaryFileResponse($fileName);
     }
-    
     public function profile(){
         $manager = $this->getDoctrine()->getManager();
 
-        
-        
-
         return $this->render(
             'profile/profile.html.twig',
+
             [
                 'users' => $manager->getRepository(User::class)->findAll(),
                 ]
+
+        
+              [
+               'users' => $manager->getRepository(User::class)->findAll(),
+
+             ]
+
             );
-}
+            
+    }
+    
+
 }
 
