@@ -260,14 +260,37 @@ class User implements UserInterface, \Serializable
  
 
 
-
-
-
     /**
      * Get the value of id for the admin dashboard
      */ 
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Get the value of isActive
+     */ 
+    public function getIsActive()
+    {
+        return $this->isActive;
+    }
+
+    public function __toString()
+    {
+        return $this->getUsername();
+    }
+
+
+    /**
+     * Set the value of comments
+     *
+     * @return  self
+     */ 
+    public function setComments($comments)
+    {
+        $this->comments = $comments;
+
+        return $this;
     }
 }
