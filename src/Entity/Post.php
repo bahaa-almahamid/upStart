@@ -152,12 +152,41 @@ class Post
     }
 
 
+    
+    public function __toString()
+    {
+        return $this->getTitle();
+    }
+
     /**
-     * @return Collection|Comment[]
-     */
-    public function getComments(): Collection
+     * Get the value of comments
+     */ 
+    public function getComments()
     {
         return $this->comments;
     }
 
+    /**
+     * Set the value of comments
+     *
+     * @return  self
+     */ 
+    public function setComments($comments)
+    {
+        $this->comments = $comments;
+
+        return $this;
+    }
+
+    /**
+     * Set the value of creationDate
+     *
+     * @return  self
+     */ 
+    public function setCreationDate($creationDate)
+    {
+        $this->creationDate = $creationDate;
+
+        return $this;
+    }
 }
