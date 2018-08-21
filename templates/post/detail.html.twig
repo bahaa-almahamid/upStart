@@ -32,8 +32,11 @@
 
 		<p>id : {{ post.getId() }}</p>
 		 {{ post.getCreationDate()|date('Y-m-d H:i:s') }}
+         <br>
 		 {{ post.getText() }}
+         <br>
 		 {{ post.getTitle() }}
+         <br>
 
 		<div class="element-warning mt-5">
 		</div>
@@ -51,6 +54,7 @@
             {% else %}
                 <td></td>
             {% endif %}
+            <br>
             {{ comment.getContent() }}    
     {% endfor %}
     {% endif %}

@@ -4,8 +4,8 @@
 <div>
 
 	{% for user in users %}  
-	            {% if user.getPicture() is not empty %}    
-		 		<img class="profile-pic" src="{{ path('download_document', {'document' : user.getPicture().getId()}) }}"> 
+		{% if user.getPicture() is not empty %}    
+			<img class="profile-pic" src="{{ path('download_document', {'document' : user.getPicture().getId()}) }}"> 
 		{% else %}
 			<td></td>
 		{% endif %}
@@ -23,8 +23,6 @@
 
 	{% endfor %}
 
-		{% endfor %}
-
 		
 
 	</div>
@@ -33,18 +31,8 @@
 {% endblock %}
 
 
-</div>
-<div class="margin_right"></div>
 
 
-
-
-		{% endfor %}
-
-
-	<div class="margin_right"></div>
-
-{% endblock %}
 
 
 
