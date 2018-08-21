@@ -18,7 +18,7 @@
     {% else %}  
                      
     {% for post in posts %}
-
+            {{ post.getUser.getUsername() }} 
             <div class = "post-container">
             {% if post.getPicture() is not empty %}
 
@@ -40,7 +40,7 @@
 
          </div>	      				
     
-                {{ post.getUser.getUsername() }} 
+                
 
             <br>
               				
