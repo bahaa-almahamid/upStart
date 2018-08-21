@@ -16,6 +16,7 @@ use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use App\Entity\User;
 
+
 class PostController extends AbstractController
 {
     /**
@@ -30,7 +31,6 @@ class PostController extends AbstractController
             $post,
             ['standalone' => true]
         );
-
         $postForm->handleRequest($request);
         if ($postForm->isSubmitted() && $postForm->isValid()) {
             /**
@@ -56,14 +56,8 @@ class PostController extends AbstractController
             $manager->flush();
 
             return $this->redirectToRoute('post');
-
-
         }
         
-
-        }
-
-
         //this is search function
         $dto = new PostSearch();
         $searchForm = $this->createForm(PostSearchFormType::class, $dto, ['standalone' => true]);
@@ -74,16 +68,12 @@ class PostController extends AbstractController
         return $this->render(
             'post/index.html.twig',
             [
-
                 'posts' => $manager->getRepository(Post::class)->findAll(),                 
                 'users' => $manager->getRepository(User::class)->findAll(),
-
-
                 'postForm' => $postForm->createView(),
                 'searchForm' => $searchForm->createView(),
             ]
         );
-
     }
 
     public function commentDetail(post $post, Request $request)
@@ -127,19 +117,11 @@ class PostController extends AbstractController
 
         return $this->render(
             'post/detail.html.twig',
-
             [                
                 'post'=>$post,
                 'commentForm' => $commentForm->createView(),
-
-            [            
-
-
-                'commentForm' => $commentForm->createView(),
-
-                'post' => $post,
-
             ]
         );
     }
 }
+
