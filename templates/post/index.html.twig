@@ -21,10 +21,13 @@
             {{ post.getUser.getUsername() }} 
             <div class = "post-container">
             {% if post.getPicture() is not empty %}
-                <td><img src="{{ path('download_document', {'document' : post.getPicture().getId()}) }}"></td>
-            {% else %}
-                <td></td>
-            {% endif %}
+
+								<td><img id ="img" src="{{ path('download_document', {'document' : post.getPicture().getId()}) }}"></td>
+							{% else %}
+								<td></td>
+							{% endif %}
+
+
             {{ post.getCreationDate()| date('Y-m-d H:i:s') }}
             <br>
             {{ post.getCategory() }} 

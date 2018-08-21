@@ -30,11 +30,17 @@ class DefaultController extends Controller
 
         return $this->render(
             'profile/profile.html.twig',
+
+            [
+                'users' => $manager->getRepository(User::class)->findAll(),
+                ]
+
         
               [
                'users' => $manager->getRepository(User::class)->findAll(),
 
              ]
+
             );
             
     }

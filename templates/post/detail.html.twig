@@ -16,6 +16,12 @@
             <br>
             {{ post.getText() }}   
 
+            {% if post.getPicture() is not empty %}
+				<td><img src="{{ path('download_document', {'document' : post.getPicture().getId()}) }}"></td>
+			{% else %}
+				<td></td>
+			{% endif %}			 
+
 			 {% if post.getPicture() is not empty %}
                 <td><img src="{{ path('download_document', {'document' : post.getPicture().getId()}) }}"></td>
             {% else %}
@@ -23,12 +29,12 @@
             {% endif %}
 			 
 
+
 		<p>id : {{ post.getId() }}</p>
 		 {{ post.getCreationDate()|date('Y-m-d H:i:s') }}
 		 {{ post.getText() }}
 		 {{ post.getTitle() }}
 
-		
 		<div class="element-warning mt-5">
 		</div>
 		<div id="posting">

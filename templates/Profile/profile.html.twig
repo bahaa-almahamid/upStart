@@ -1,10 +1,14 @@
 {% extends 'base.html.twig' %}
 
-{% block body %}
+{% block main %}
 <div>
 
-	{% for user in users %}      
-		 <img class="profile-pic" src="{{ path('download_document', {'document' : user.getPicture().getId()}) }}"> 
+	{% for user in users %}  
+	            {% if user.getPicture() is not empty %}    
+		 		<img class="profile-pic" src="{{ path('download_document', {'document' : user.getPicture().getId()}) }}"> 
+		{% else %}
+			<td></td>
+		{% endif %}
 		<br>
 		{{ user.getCreateDate()| date('Y-m-d H:i:s') }}
 		<br>
@@ -17,6 +21,7 @@
 		{{ user.getAddress() }} 
 		<br>
 
+	{% endfor %}
 
 		{% endfor %}
 
@@ -28,11 +33,18 @@
 {% endblock %}
 
 
+</div>
+<div class="margin_right"></div>
 
 
 
 
+		{% endfor %}
 
+
+	<div class="margin_right"></div>
+
+{% endblock %}
 
 
 
