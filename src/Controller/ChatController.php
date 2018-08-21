@@ -22,6 +22,7 @@ class ChatController extends Controller
 
         $chatForm->handleRequest($request);
         if ($chatForm->isSubmitted() && $chatForm->isValid()){
+            $message->setUser($this->getUser());
             $manager->persist($message);
             $manager->flush();
             return $this->redirectToRoute('Chat');
