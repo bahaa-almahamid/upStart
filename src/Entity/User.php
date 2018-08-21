@@ -91,6 +91,11 @@ class User implements UserInterface, \Serializable
      */
     private $comments;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Message", mappedBy="user", orphanRemoval=true)
+     */
+    private $messages;
+
 
 
     public function __construct()
@@ -246,6 +251,14 @@ class User implements UserInterface, \Serializable
     {
         return $this->comments;
     }
+
+    public function getMessages()
+    {
+        return $this->messages;
+    }
+ 
+ 
+
 
     /**
      * Get the value of id for the admin dashboard

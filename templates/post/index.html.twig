@@ -18,16 +18,16 @@
     {% else %}  
                      
     {% for post in posts %}
-
-
-
- 
+            {{ post.getUser.getUsername() }} 
             <div class = "post-container">
             {% if post.getPicture() is not empty %}
-								<td><img src="{{ path('download_document', {'document' : post.getPicture().getId()}) }}"></td>
+
+								<td><img id ="img" src="{{ path('download_document', {'document' : post.getPicture().getId()}) }}"></td>
 							{% else %}
 								<td></td>
 							{% endif %}
+
+
             {{ post.getCreationDate()| date('Y-m-d H:i:s') }}
             <br>
             {{ post.getCategory() }} 
@@ -37,10 +37,14 @@
             {{ post.getText() }}    
             <br>
             <td><a href="{{ path("post_detail", {post: post.getId()}) }}">Comments</a></td>
+
+         </div>	      				
+    
+                
+
             <br>
               				
-                {{ post.getUser.getUsername() }} 
-            </div>	 
+
     {% endfor %}            
     {% endif %}
 

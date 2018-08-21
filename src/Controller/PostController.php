@@ -70,7 +70,9 @@ class PostController extends AbstractController
         return $this->render(
             'post/index.html.twig',
             [
-                'posts' => $manager->getRepository(Post::class)->findAll(),                 'users' => $manager->getRepository(User::class)->findAll(),
+
+                'posts' => $manager->getRepository(Post::class)->findAll(),
+                'users' => $manager->getRepository(User::class)->findAll(),
                 'postForm' => $postForm->createView(),
                 'searchForm' => $searchForm->createView(),
             ]
@@ -109,7 +111,7 @@ class PostController extends AbstractController
                 $comment->setPicture($document);
                 $manager->persist($document);
             }
-
+            
             $comment->setPost($post);
             $comment->setUser($this->getUser());
             $manager->persist($comment);
@@ -121,14 +123,15 @@ class PostController extends AbstractController
 
         }
 
-
         return $this->render(
             'post/detail.html.twig',
             [                
                 'post'=>$post,
                 'commentForm' => $commentForm->createView(),
+                'comments'=>$manager->getRepository(Comment::class)->findAll(),
 
             ]
         );
     }
 }
+

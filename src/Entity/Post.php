@@ -159,8 +159,13 @@ class Post
     }
 
     /**
+
      * Get the value of comments
      */ 
+
+     * @return Comment[]
+     */
+
     public function getComments()
     {
         return $this->comments;

@@ -8,13 +8,13 @@
     	{% else %}
 
 <div id="chat">
-
 		<h2 class = "title">Global Chat</h2>
 		<table class="table table-striped">
 			<tbody>
 				{% for message in messages %}
 					<tr>          				
-						<td>{{ message.getContent() }}</td>           				
+						<td>{{ message.getContent() }}</td>   
+						<td>{{ message.getUser.getUsername() }}</td>           				
 					</tr>
 				{% endfor %}
 			</tbody>
