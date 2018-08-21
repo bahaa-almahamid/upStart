@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block main %}
+
 	<div class="profile">
 		{% for user in users %}  
 			{% if user.getPicture() is not empty %}    
@@ -18,8 +19,7 @@
 
 		{% endfor %}
 	</div>
-{% endblock %}
 
+<div>
 
-
-
+	

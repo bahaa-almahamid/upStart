@@ -11,6 +11,7 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use App\Entity\Document;
 
+
 class RegistrationController extends AbstractController
 {
     public function registerUser(Request $request, UserPasswordEncoderInterface $passwordEncoder)
@@ -88,6 +89,8 @@ class RegistrationController extends AbstractController
             'password' => $password
         ));
     }
+
+
 }
 
 

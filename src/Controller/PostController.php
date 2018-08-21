@@ -55,7 +55,9 @@ class PostController extends AbstractController
             $manager->persist($post);
             $manager->flush();
 
+
             return $this->redirectToRoute('post');
+
         }
         
         //this is search function
@@ -64,17 +66,21 @@ class PostController extends AbstractController
 
         $searchForm->handleRequest($request);
         $posts = $manager->getRepository(Post::class)->findByPostSearch($dto);
-        
+    
         return $this->render(
             'post/index.html.twig',
             [
-                'posts' => $manager->getRepository(Post::class)->findAll(),                 
+
+                'posts' => $manager->getRepository(Post::class)->findAll(),
                 'users' => $manager->getRepository(User::class)->findAll(),
                 'postForm' => $postForm->createView(),
                 'searchForm' => $searchForm->createView(),
             ]
         );
+
+    
     }
+
 
     public function commentDetail(post $post, Request $request)
     {
@@ -86,7 +92,6 @@ class PostController extends AbstractController
             $comment,
             ['standalone' => true]
         );
-
         $commentForm->handleRequest($request);
         if ($commentForm->isSubmitted() && $commentForm->isValid()) {
             /**
@@ -106,13 +111,16 @@ class PostController extends AbstractController
                 $comment->setPicture($document);
                 $manager->persist($document);
             }
-
+            
             $comment->setPost($post);
             $comment->setUser($this->getUser());
             $manager->persist($comment);
             $manager->flush();
 
+
             return $this->redirectToRoute('post_detail',array("post"=>$post->getId()));
+
+
         }
 
         return $this->render(
@@ -120,6 +128,8 @@ class PostController extends AbstractController
             [                
                 'post'=>$post,
                 'commentForm' => $commentForm->createView(),
+                'comments'=>$manager->getRepository(Comment::class)->findAll(),
+
             ]
         );
     }

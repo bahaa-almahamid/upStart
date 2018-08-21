@@ -2,7 +2,7 @@
 
 {% block title %}wf3tm posts detail{% endblock %}
 
-{% block body %}
+{% block main %}
 
 
 	<div class="container">
@@ -21,16 +21,38 @@
 			{% else %}
 				<td></td>
 			{% endif %}			 
+			 
+
 
 		<p>id : {{ post.getId() }}</p>
-		<p>created date : {{ post.getCreationDate()|date('Y-m-d H:i:s') }}</p>
-		<p>priority : {{ post.getText() }}</p>
-		<p>title : {{ post.getTitle() }}</p>
+		 {{ post.getCreationDate()|date('Y-m-d H:i:s') }}
+         <br>
+		 {{ post.getText() }}
+         <br>
+		 {{ post.getTitle() }}
+         <br>
 
 		<div class="element-warning mt-5">
 		</div>
 		<div id="posting">
        {{ form(commentForm) }}
     </div>
+    {% if comments is empty %}
+        <p>No Comments found in the application</p>
+    {% else %}  
+                     
+    {% for comment in comments %}
+        {{ comment.getCreateDate()| date('Y-m-d H:i:s') }}
+        {% if comment.getPicture() is not empty %}
+            <td><img src="{{ path('download_document', {'document' : comment.getPicture().getId()}) }}"></td>
+            {% else %}
+                <td></td>
+            {% endif %}
+            <br>
+            {{ comment.getContent() }}    
+    {% endfor %}
+    {% endif %}
+
+
 	</div>
 {% endblock %}

@@ -153,9 +153,9 @@ class Post
 
 
     /**
-     * @return Collection|Comment[]
+     * @return Comment[]
      */
-    public function getComments(): Collection
+    public function getComments()
     {
         return $this->comments;
     }
