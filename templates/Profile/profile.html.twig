@@ -1,31 +1,24 @@
 {% extends 'base.html.twig' %}
 
 {% block main %}
-<div>
+	<div class="profile">
+		{% for user in users %}  
+			{% if user.getPicture() is not empty %}    
+				<img class="profile-pic" src="{{ path('download_document', {'document' : user.getPicture().getId()}) }}"> 
+			{% else %}
+				<td></td>
+			{% endif %}
 
-	{% for user in users %}  
-	            {% if user.getPicture() is not empty %}    
-		 		<img class="profile-pic" src="{{ path('download_document', {'document' : user.getPicture().getId()}) }}"> 
-		{% else %}
-			<td></td>
-		{% endif %}
-		<br>
-		{{ user.getCreateDate()| date('Y-m-d H:i:s') }}
-		<br>
-		{{ user.getUsername() }} 
-		<br>
-		{{ user.getEmail() }}    
-		<br>
-		{{ user.getAbout() }} 
-		<br>
-		{{ user.getAddress() }} 
-		<br>
-	{% endfor %}
+			<br>
+			<p><i class="fas fa-clock"></i> Joined on: {{ user.getCreateDate()| date('Y-m-d H:i:s') }}</p>
+			<p><i class="fas fa-user-alt"></i> Username: {{ user.getUsername() }}</p>
+			<p><i class="fas fa-envelope"></i> E-Mail: {{ user.getEmail() }}</p>   
+			<p><i class="fas fa-info-circle"></i> About: {{ user.getAbout() }}</p> 
+			<p><i class="fas fa-map-marker-alt"></i> Address: {{ user.getAddress() }}</p> 
 
-</div>
-<div class="margin_right"></div>
+		{% endfor %}
+	</div>
 {% endblock %}
-
 
 
 
