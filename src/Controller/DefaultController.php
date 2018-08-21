@@ -32,14 +32,8 @@ class DefaultController extends Controller
             'profile/profile.html.twig',
 
             [
-                'users' => $manager->getRepository(User::class)->findAll(),
+                'users' =>$manager->getRepository(User::class)->findBy(['username' => $this->getUser()->getId()]),
                 ]
-
-        
-              [
-               'users' => $manager->getRepository(User::class)->findAll(),
-
-             ]
 
             );
             

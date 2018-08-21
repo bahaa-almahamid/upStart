@@ -41,21 +41,8 @@
                 </div>
              {% endblock %}
 
-    {% block body %}
-        {% block left_marge %}
-            <div class="main-container">
-                <div id="margin_left">
-                    <a href = "{{ path ('profile') }}"><i class="fas fa-user-alt"></i> My profile</a>
-                    <a href = "{{ path ('Chat') }}"><i class="fas fa-envelope"></i> Messages</a>
-                    <a href = "{{path ('post') }}"><i class="fas fa-list-alt"></i> Posts<a/>
-                    <a href = "{{path ('admin') }}"><i class="fas fa-columns"></i> Admin panel<a/>
-                    <a href = "{{path ('logout') }}"><i class="fas fa-sign-out-alt"></i> Log Out<a/>
-                </div>               
-            </div>
 
-        {% endblock %}
     {% endblock %}
-
     <div class="white">
         {% block main %}
         {% endblock %}
