@@ -127,7 +127,7 @@ class PostController extends AbstractController
             [                
                 'post'=>$post,
                 'commentForm' => $commentForm->createView(),
-                'comments'=>$manager->getRepository(Comment::class)->findAll(),
+                'comments'=>$post->getComments(),
 
             ]
         );

@@ -2,8 +2,7 @@
 
 {% block main %}
 <div>
-
-	{% for user in users %}  
+	
 		{% if user.getPicture() is not empty %}    
 			<img class="profile-pic" src="{{ path('download_document', {'document' : user.getPicture().getId()}) }}"> 
 		{% else %}
@@ -21,13 +20,11 @@
 		{{ user.getAddress() }} 
 		<br>
 
-	{% endfor %}
 
 		
 
 	</div>
 
-	<div class="margin_right"></div>
 {% endblock %}
 
 

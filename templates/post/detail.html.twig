@@ -17,16 +17,10 @@
             {{ post.getText() }}   
 
             {% if post.getPicture() is not empty %}
-				<td><img src="{{ path('download_document', {'document' : post.getPicture().getId()}) }}"></td>
+				<img src="{{ path('download_document', {'document' : post.getPicture().getId()}) }}">
 			{% else %}
 				<td></td>
 			{% endif %}			 
-
-			 {% if post.getPicture() is not empty %}
-                <td><img src="{{ path('download_document', {'document' : post.getPicture().getId()}) }}"></td>
-            {% else %}
-                <td></td>
-            {% endif %}
 			 
 
 
@@ -49,7 +43,7 @@
                      
     {% for comment in comments %}
         {{ comment.getCreateDate()| date('Y-m-d H:i:s') }}
-        {% if post.getPicture() is not empty %}
+        {% if comment.getPicture() is not empty %}
             <td><img src="{{ path('download_document', {'document' : comment.getPicture().getId()}) }}"></td>
             {% else %}
                 <td></td>
