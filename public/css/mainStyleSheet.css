@@ -173,6 +173,7 @@ button {
 
 #margin_left {
     width: 15%;
+    height: 400px;
     position: absolute;
     left: 0px;
     display: flex;
@@ -209,8 +210,9 @@ button {
 #posting {
     margin-left: 1.5%;
     margin-top: 30px;
+    margin-top: 00px;
     position: absolute;
-    top: 50px;
+    top: 60px;
     border: solid 1px #fff;
     border-radius: 5px;
     padding: 5px;
@@ -234,6 +236,7 @@ button {
     padding: 10px;
 }
 
+
 .post-pic {
     max-width: 815px;
     border-radius: 5px;
@@ -244,6 +247,28 @@ button {
     height: 300px;
     overflow: hidden;
     border-bottom: 2px solid #000;
+
+.post-user-display {
+    margin-left: 30px;
+    width: 44px;
+    height: 44px;
+}
+
+.post-user-display-username {
+    color: red;
+}
+
+.post-user-display-picture {
+    width: 50px;
+    height: 50px;
+    overflow: hidden;
+}
+
+.small-user-container {
+    width: 50px;
+    height: 50px;
+    border: 1px solid green;
+    border-radius: 25px;
 }
 
 
@@ -344,7 +369,12 @@ footer a{
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    
+    position: fixed;
+    background-color: #056675;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 30px;
 }
 
 
@@ -429,7 +459,7 @@ footer a{
         position: absolute;
         right: 16%;
     }
-<<<<<<< HEAD
+
 
     #posting{
         width: 97%;
@@ -439,10 +469,9 @@ footer a{
 
     .post-container{
        
-=======
+
     .margin_left {
         font-size: 1rem;
->>>>>>> aece31520593857d35bc3a62841356e94d3b00d7
     }
 }
 

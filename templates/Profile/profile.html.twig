@@ -2,10 +2,11 @@
 
 {% block main %}
 
+
 <div class="white">
 
-	<div class="profile">
 
+	<div class="profile">
 			{% if user.getPicture() is not empty %}    
 				<img class="profile-pic" src="{{ path('download_document', {'document' : user.getPicture().getId()}) }}"> 
 			{% else %}
@@ -23,6 +24,7 @@
 	</div>
 {% endblock %}
 
+{% endblock %}
 
 </div>
 {% endblock %}

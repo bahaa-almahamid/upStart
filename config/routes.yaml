@@ -80,3 +80,41 @@ contact:
   path:     /contact
   controller: App\Controller\DefaultController::contact
 
+post_edit:
+  path:       /post/edit/{post}
+  controller: App\Controller\PostController::editPost
+
+comment_edit:
+  path:       /comment/edit/{comment}
+  controller: App\Controller\PostController::editComment
+
+delete_post:
+  path:       /post/delete/{post}
+  controller: App\Controller\PostController::deletePost
+
+delete_comment:
+  path:       /comment/delete/{comment}
+  controller: App\Controller\PostController::deleteComment
+
+
+
+
+
+
+about:
+  path:     /about
+  controller: App\Controller\DefaultController::aboutUs
+
+terms:
+  path:     /terms
+  controller: App\Controller\DefaultController::termsOfUse
+
+privacy:
+  path:     /privacy
+  controller: App\Controller\DefaultController::privacyPolicy
+
+contact:
+  path:     /contact
+  controller: App\Controller\DefaultController::contactUs.
+
+

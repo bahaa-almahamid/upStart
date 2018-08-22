@@ -13,7 +13,27 @@ class DefaultController extends Controller
 {
     public function homepage()
     {
-        return $this->render('default/homepage.html.twig'); 
+        return $this->render('default/homepage.html.twig');
+    }
+
+    public function aboutUs()
+    {
+        return $this->render('default/about.html.twig'); 
+    }
+
+    public function termsOfUse()
+    {
+        return $this->render('default/terms.html.twig'); 
+    }
+
+    public function privacyPolicy()
+    {
+        return $this->render('default/privacy.html.twig'); 
+    }
+
+    public function contactUs()
+    {
+        return $this->render('default/contact.html.twig'); 
     }
 
     public function downloadDocument(Document $document)
@@ -27,11 +47,16 @@ class DefaultController extends Controller
     }
 
     public function profile(){
+=======
+
+    public function profile()
+    {
         $manager = $this->getDoctrine()->getManager();
 
         return $this->render(
             'profile/profile.html.twig',
             [
+
                 'user' =>$this->getUser(),
                 ]
             );          
@@ -85,6 +110,13 @@ class DefaultController extends Controller
     public function contact()
     {
         return $this->render('default/contact.html.twig'); 
+    }
+
+                'user' => $this->getUser(),
+            ]
+
+        );
+
     }
 
 
