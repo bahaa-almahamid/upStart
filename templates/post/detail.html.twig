@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}wf3tm posts detail{% endblock %}
+{% block title %} post Comments{% endblock %}
 
 {% block main %}
 
@@ -49,7 +49,12 @@
                 <td></td>
             {% endif %}
             <br>
-            {{ comment.getContent() }}    
+            {{ comment.getUser.getUsername() }} 
+            {{ comment.getContent() }} 
+
+                <td><a href="{{ path("comment_edit", {comment: comment.getId()}) }}">Edit Comment</a></td>
+
+                <td><a href="{{ path("delete_comment", {comment: comment.getId()}) }}">Delete Comment</a></td>    
     {% endfor %}
     {% endif %}
 

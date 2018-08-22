@@ -22,10 +22,10 @@
             <div class = "post-container">
             {% if post.getPicture() is not empty %}
 
-								<td><img id ="img" src="{{ path('download_document', {'document' : post.getPicture().getId()}) }}"></td>
-							{% else %}
-								<td></td>
-							{% endif %}
+                <td><img id ="img" src="{{ path('download_document', {'document' : post.getPicture().getId()}) }}"></td>
+            {% else %}
+                <td></td>
+            {% endif %}
 
 
             {{ post.getCreationDate()| date('Y-m-d H:i:s') }}
@@ -37,6 +37,9 @@
             {{ post.getText() }}    
             <br>
             <td><a href="{{ path("post_detail", {post: post.getId()}) }}">Comments</a></td>
+            <td><a href="{{ path("post_edit", {post: post.getId()}) }}">Edit Post</a></td>
+            <td><a href="{{ path("delete_post", {post: post.getId()}) }}">Delete Post</a></td>
+
 
          </div>	      				
     
