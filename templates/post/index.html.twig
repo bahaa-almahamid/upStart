@@ -27,7 +27,6 @@
 								<td></td>
 							{% endif %}
 
-
             {{ post.getCreationDate()| date('Y-m-d H:i:s') }}
             <br>
             {{ post.getCategory() }} 
@@ -39,15 +38,8 @@
             <td><a href="{{ path("post_detail", {post: post.getId()}) }}">Comments</a></td>
 
          </div>	      				
-    
-                
-
             <br>
-              				
-
+        
     {% endfor %}            
     {% endif %}
-
-
-
 {% endblock %}

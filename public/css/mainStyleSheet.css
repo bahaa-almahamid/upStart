@@ -170,7 +170,7 @@ button {
     flex-direction: column;
     padding-top: 45px;
     color: #056675;
-    font-size: 2rem;
+    font-size: 20px;
 }
 
 .white {
@@ -191,7 +191,7 @@ button {
 /* posts */
 #posting {
     margin-left: 1.5%;
-    margin-top: 15px;
+    margin-top: 30px;
     position: absolute;
     top: 50px;
     border: solid 1px #fff;
@@ -283,8 +283,6 @@ footer p {
     #margin_left{
         width: 20px;
         font-size: 1.5rem;
-        display: flex;
-        flex-direction: column;
     }
 
     #chat {
@@ -311,6 +309,16 @@ footer p {
     #search-input-container{
         position: absolute;
         right: 16%;
+    }
+
+    #posting{
+        width: 97%;
+        position: absolute;
+        left: 0px;          
+    }                
+
+    .post-container{
+       
     }
 }
 /* end of responsive */

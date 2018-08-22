@@ -40,4 +40,26 @@ post_detail:
   path:     /post/detail/{post}
   controller: App\Controller\PostController::commentDetail
 
+about_us:
+  path: /about
+  controller: App\Controller\DefaultController::about
 
+tamara:
+  path:     /tamara
+  controller: App\Controller\DefaultController::tamara
+
+miro:
+  path:     /miro
+  controller: App\Controller\DefaultController::miro
+
+ibrahem:
+  path:     /ibrahem 
+  controller: App\Controller\DefaultController::ibrahem 
+
+bahaa:
+  path:     /bahaa 
+  controller: App\Controller\DefaultController::bahaa 
+
+joao:
+  path:     /joao 
+  controller: App\Controller\DefaultController::joao 

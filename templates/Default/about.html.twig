@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="tamara">
+        <img src="{{ asset ('bundles/img/tamara.jpg') }}"><br> 
+        <a href="{{ path ('tamara') }}"> Tamara Pupac </a>
+    </div><br>
+    <div class="miro">
+        <img src="./miro.jpg" alt="photo of miro"><br>
+        <a href="{{ path ('miro') }}"> Miroslav Nedeljković </a>
+    </div><br>
+    <div class="ibrahem">
+        <img src="/ibrahim.jpg" alt="photo of ibrahem"><br>
+        <a href="{{ path ('ibrahem') }}"> Ibrahem Ayyed </a>
+    </div><br>
+    <div class="bahaa">
+        <img src="/bahaa.jpg" alt="photo of bahaa"><br>
+        <a href="{{ path ('bahaa') }}">Bahaa Al Mahamid </a>
+    </div><br>
+    <div class="joao">
+        <img src="/joao.jpg" alt="photo of joão"><br>
+        <a href="{{ path ('joao') }}"> João Nuno Onofre </a>
+    </div>
+
+{% endblock %}

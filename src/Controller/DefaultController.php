@@ -25,20 +25,47 @@ class DefaultController extends Controller
         );
         return new BinaryFileResponse($fileName);
     }
+
     public function profile(){
         $manager = $this->getDoctrine()->getManager();
 
         return $this->render(
             'profile/profile.html.twig',
-
             [
-                'users' =>$manager->getRepository(User::class)->findBy(['username' => $this->getUser()->getId()]),
+                'user' =>$this->getUser(),
                 ]
-
-            );
-            
+            );          
     }
-    
+
+     public function about()
+    {
+        return $this->render('Default/about.html.twig'); 
+    }
+
+    public function tamara()
+    {
+        return $this->render('members/tamara.html.twig'); 
+    }
+
+    public function miro()
+    {
+        return $this->render('members/miro.html.twig'); 
+    }
+
+    public function ibrahem()
+    {
+        return $this->render('members/ibrahem.html.twig'); 
+    }
+
+    public function bahaa()
+    {
+        return $this->render('members/bahaa.html.twig'); 
+    }
+
+    public function joao()
+    {
+        return $this->render('members/joao.html.twig'); 
+    }
 
 }
 
