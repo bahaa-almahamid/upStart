@@ -2,10 +2,12 @@
 
 {% block main %}
 
+
 <div class="white">
 
+
 	<div class="profile">
-		{% for user in users %}  
+ 
 			{% if user.getPicture() is not empty %}    
 				<img class="profile-pic" src="{{ path('download_document', {'document' : user.getPicture().getId()}) }}"> 
 			{% else %}
@@ -19,10 +21,13 @@
 			<p><i class="fas fa-info-circle"></i> About: {{ user.getAbout() }}</p> 
 			<p><i class="fas fa-map-marker-alt"></i> Address: {{ user.getAddress() }}</p> 
 
-		{% endfor %}
+
 	</div>
 
-<div>
+
+{% endblock %}
+
+
 
 </div>
 {% endblock %}

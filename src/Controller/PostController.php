@@ -128,10 +128,131 @@ class PostController extends AbstractController
             [                
                 'post'=>$post,
                 'commentForm' => $commentForm->createView(),
-                'comments'=>$manager->getRepository(Comment::class)->findAll(),
+                'comments'=>$post->getComments(),
 
             ]
         );
     }
+
+    public function editPost(Post $post, Request $request)
+    {
+        $editForm = $this->createForm(PostFormType::class, $post, ['standalone'=>true]);
+        $editForm->handleRequest($request);
+
+        $editError = false;
+        $idUser = $this->getUser();
+            /**
+             * @var UploadFile $file
+             * 
+             */
+
+        $file = $post->getPicture();
+            if ($file) {
+
+                $document = new Document();
+                $document->setPath($this->getParameter('upload_dir'))
+                    ->setMimeType($file->getMimeType())
+                    ->setName($file->getFileName());
+
+                $file->move($this->getParameter('upload_dir'));
+                $post->setPicture($document);
+            }
+        
+        if ($editForm->isSubmitted() && $editForm->isValid()) {
+            
+            if(($idUser == $post->getUser()))
+            {
+                $this->getDoctrine()->getManager()->flush();
+            
+                return $this->redirectToRoute('post');
+            }
+            else
+            {
+                $editError = true;
+            }
+
+        }
+        
+        return $this->render(
+            'post/editPost.html.twig',
+            [
+                'post'=>$post,
+                'editError'=>$editError,
+                'editForm'=>$editForm->createView()
+            ]
+        );
+    }
+    /////////////////////////////////////////////////
+    public function deletePost(Request $request, Post $post)
+    {
+        $idUser = $this->getUser();
+        $deletionError = false;
+        
+        if(($idUser == $post->getUser()))
+        {
+            $manager = $this->getDoctrine()->getManager();
+            $manager->remove($post);
+            $manager->flush();
+        } 
+        else
+        {
+            $deletionError = true;  
+        }
+        return $this->redirectToRoute('post');
+    }
+
+    public function deleteComment(Request $request, Comment $comment)
+    {
+        $idUser = $this->getUser();
+        $deletionError = false;
+        
+        if(($idUser == $comment->getUser()))
+        {
+            $manager = $this->getDoctrine()->getManager();
+            $manager->remove($comment);
+            $manager->flush();
+        } 
+        else
+        {
+            $deletionError = true;  
+        }
+    
+        return $this->redirectToRoute('post');
+    }
+
+    public function editComment(Comment $comment, Request $request)
+    {
+        $editForm = $this->createForm(CommentFormType::class, $comment, ['standalone'=>true]);
+        $editForm->handleRequest($request);
+
+        $editError = false;
+        $idUser = $this->getUser();
+
+        if ($editForm->isSubmitted() && $editForm->isValid()) {
+            
+            if(($idUser == $comment->getUser()))
+            {
+                $this->getDoctrine()->getManager()->flush();
+            
+                return $this->redirectToRoute('post');
+            }
+            else
+            {
+                $editError = true;
+            }
+  
+        }
+        
+        return $this->render(
+            'post/editComment.html.twig',
+            [
+                'comment'=>$comment,
+                'editError'=>$editError,
+                'edit_form'=>$editForm->createView()
+            ]
+        );
+    }
 }
+    
+
 
