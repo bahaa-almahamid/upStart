@@ -8,6 +8,10 @@ use App\Entity\Document;
 use Symfony\Component\HttpFoundation\Request;
 use App\Entity\User;
 use App\Entity\Post;
+use App\Form\UserFormType;
+use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use App\Form\ProfileEditFormType;
 
 class DefaultController extends Controller
 {
@@ -41,6 +45,58 @@ class DefaultController extends Controller
         );
 
     }
+    // Edit Profile /*********************** */
+    public function profileEdit(Request $request)
+    {
+        $manager = $this->getDoctrine()->getManager();
+        $user = $this->getUser();
+
+        $picture = $user->getPicture();
+        if($picture)
+        {
+            $file = new File($picture->getPath() . '/' . $picture->getName());
+            $user->setPicture($file);
+        }
+
+        $profileForm = $this->createForm(ProfileEditFormType::class, $user, ['standalone' => true]);
+        $profileForm->handleRequest($request);
+        
+        if ($profileForm->isSubmitted() && $profileForm->isValid()) {
+            
+            $file = $user->getPicture();
+            if($file){
+                $document = new Document();
+                $document->setPath($this->getParameter('upload_dir'))
+                    ->setMimeType($file->getMimeType())
+                    ->setName($file->getFilename());
+                $file->move($this->getParameter('upload_dir'));
+                
+                $user->setPicture($document);
+                
+                $manager->persist($document);
+                $manager->remove($picture);
+            }
+            else
+            {
+                $user->setPicture($picture);
+            }
+
+            $manager->flush();
+            
+            return $this->redirectToRoute('profile');
+        }
+
+        $user->setPicture($picture);
+        
+        return $this->render(
+            'profile/profileEdit.html.twig',
+            [
+                'user'=>$user,
+                'profileForm' => $profileForm->createView()
+            ]
+        );
+    }
+
 
 
 }
