@@ -63,3 +63,20 @@ bahaa:
 joao:
   path:     /joao 
   controller: App\Controller\DefaultController::joao 
+
+about:
+  path:     /about
+  controller: App\Controller\DefaultController::aboutUs
+
+terms:
+  path:     /terms
+  controller: App\Controller\DefaultController::termsOfUse
+
+privacy:
+  path:     /privacy
+  controller: App\Controller\DefaultController::privacyPolicy
+
+contact:
+  path:     /contact
+  controller: App\Controller\DefaultController::contact
+

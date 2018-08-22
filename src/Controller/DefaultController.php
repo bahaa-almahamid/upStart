@@ -67,5 +67,26 @@ class DefaultController extends Controller
         return $this->render('members/joao.html.twig'); 
     }
 
+    public function aboutUs()
+    {
+        return $this->render('default/about.html.twig'); 
+    }
+
+    public function termsOfUse()
+    {
+        return $this->render('default/terms.html.twig'); 
+    }
+
+    public function privacyPolicy()
+    {
+        return $this->render('default/privacy.html.twig'); 
+    }
+    
+    public function contact()
+    {
+        return $this->render('default/contact.html.twig'); 
+    }
+
+
 }
 

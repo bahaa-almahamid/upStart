@@ -3,6 +3,7 @@
 {% block title %}upSTART.lu{% endblock %}
 
 {% block main %}
+<div class="white">
 	{% if messages is empty %}
     		<p>No messages found in the application</p>
     	{% else %}
@@ -26,5 +27,6 @@
 
 		<button type="submit" class="login-form-submit" > Send </button>
 	{{ form_end(chatForm) }}
+</div>
 </div>
 {% endblock %}
