@@ -40,6 +40,7 @@ post_detail:
   path:     /post/detail/{post}
   controller: App\Controller\PostController::commentDetail
 
+
 post_edit:
   path:       /post/edit/{post}
   controller: App\Controller\PostController::editPost
@@ -59,5 +60,22 @@ delete_comment:
 
 
 
+
+
+about:
+  path:     /about
+  controller: App\Controller\DefaultController::aboutUs
+
+terms:
+  path:     /terms
+  controller: App\Controller\DefaultController::termsOfUse
+
+privacy:
+  path:     /privacy
+  controller: App\Controller\DefaultController::privacyPolicy
+
+contact:
+  path:     /contact
+  controller: App\Controller\DefaultController::contactUs.
 
 

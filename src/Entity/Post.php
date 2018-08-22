@@ -159,10 +159,10 @@ class Post
     }
 
     /**
-
      * Get the value of comments
      */ 
     /**
+
      * @return Comment[]
      */
 
@@ -173,7 +173,6 @@ class Post
 
     /**
      * Set the value of comments
-     *
      * @return  self
      */ 
     public function setComments($comments)

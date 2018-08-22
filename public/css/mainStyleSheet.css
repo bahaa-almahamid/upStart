@@ -1,6 +1,7 @@
 * {
     box-sizing: border-box;
 }
+
 #body {
     background-color: #d6ddde;
     margin: 0;
@@ -10,6 +11,7 @@
 
 
 /* homepage header content */
+
 header {
     padding-top: 7px;
     position: relative;
@@ -17,12 +19,14 @@ header {
     height: 50px;
     background-color: #056675;
 }
+
 #logo-us {
     margin-left: 100px;
     display: inline;
     color: #fff;
     vertical-align: middle;
 }
+
 #search-input {
     height: 30px;
     border: none;
@@ -30,6 +34,7 @@ header {
     color: #fff;
     border-radius: 5px;
 }
+
 #search-input-container {
     padding: 0 5px;
     border: none;
@@ -39,8 +44,13 @@ header {
     margin-left: 40px;
     color: grey;
 }
+
+
 /* end of header content */
+
+
 /* body content of the homepage */
+
 .main-container {
     position: relative;
     width: 90%;
@@ -48,23 +58,27 @@ header {
     margin: 0 auto;
     background-color: white;
 }
+
 .main-text-container {
     position: absolute;
     width: 60%;
     height: 900px;
     margin-left: 20px;
 }
+
 .up-content {
     font-size: 200px;
     font-weight: bolder;
     color: #056675;
     text-shadow: 0px 15px 15px #9e9e9e;
 }
+
 .start-content {
     font-size: 200px;
     font-weight: bolder;
     color: #89a8ae;
 }
+
 .main-forms-container {
     background-color: #d6ddde;
     width: 30%;
@@ -72,16 +86,19 @@ header {
     height: 1000px;
     right: 0%;
 }
+
 .definition-first-para {
     color: #89a8ae;
     text-align: center;
     font-size: 2rem;
 }
+
 .definition-second-para {
     color: #89a8ae;
     text-align: center;
     font-size: 2rem;
 }
+
 .login-form,
 .signup-form {
     background-color: #fff;
@@ -92,10 +109,12 @@ header {
     border-radius: 5px;
     box-shadow: 0px 0px 15px #737373;
 }
+
 .login {
     margin-right: 5px;
     margin-top: 5px;
 }
+
 .login-form-user,
 .login-form-password {
     width: 90%;
@@ -108,9 +127,11 @@ header {
     background-color: #fff;
     display: block;
 }
+
 button {
     margin-bottom: 7px;
 }
+
 .login-form-submit {
     cursor: pointer;
     width: 60px;
@@ -122,12 +143,14 @@ button {
     background-color: #056675;
     color: #fff;
 }
+
 .textarea {
     border: #056675 1px solid;
     box-shadow: 0px 0px 15px #056675;
     width: 700px;
     height: 100px;
 }
+
 .buttonchat {
     background-color: #056675;
     border: #056675 solid;
@@ -141,10 +164,16 @@ button {
     position: absolute;
     bottom: 103%;
 }
+
+
 /* end body */
+
+
 /* body content*/
+
 #margin_left {
     width: 15%;
+    height: 400px;
     position: absolute;
     left: 0px;
     display: flex;
@@ -153,27 +182,36 @@ button {
     color: #056675;
     font-size: 2rem;
 }
+
 .white {
-    background-color:  #d6ddde;
+    background-color: #fff;
     margin-left: 15%;
     margin-right: 15%;
-    padding-top: 300px; 
+    padding-top: 300px;
 }
+
+
 /* end body content*/
 
+
 /* content of profile*/
+
 .profile-pic {
     margin: 0 auto;
     width: 40%;
 }
+
+
 /* end profile */
 
+
 /* posts */
+
 #posting {
     margin-left: 1.5%;
-    margin-top: 15px;
+    margin-top: 00px;
     position: absolute;
-    top: 50px;
+    top: 60px;
     border: solid 1px #fff;
     border-radius: 5px;
     padding: 5px;
@@ -182,6 +220,7 @@ button {
     background-color: #fff;
     padding: 10px;
 }
+
 .post-container {
     border: 1px solid #fff;
     border-radius: 5px;
@@ -195,101 +234,146 @@ button {
     background-color: #fff;
     padding: 10px;
 }
+
+.post-user-display {
+    margin-left: 30px;
+    width: 44px;
+    height: 44px;
+}
+
+.post-user-display-username {
+    color: red;
+}
+
+.post-user-display-picture {
+    width: 50px;
+    height: 50px;
+    overflow: hidden;
+}
+
+.small-user-container {
+    width: 50px;
+    height: 50px;
+    border: 1px solid green;
+    border-radius: 25px;
+}
+
+
 /* end posts*/
+
+
 /* chat */
+
 #chat {
     margin-left: 15%;
     margin-right: 15%;
     margin-top: 1px;
 }
+
 #chat_form_content {
     width: 80%;
     height: 100px;
 }
+
 .title {
     text-align: center;
     color: #737373;
 }
+
+
 /* end chat */
 
 
 /* profile */
-.profile{
+
+.profile {
     background-color: #ffff;
     border: 1px solid #adadad;
     box-shadow: 0px 0px 15px #adadad;
     padding: 5px;
 }
+
+
 /* end profile */
 
+
 /* footer */
-footer{
+
+footer {
+    position: fixed;
     background-color: #056675;
-    width: 100%;
-    height: 20px;
-    margin-top: 96px;
-    color: white; 
-    padding-left: 20px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 30px;
 }
-footer p {
-    margin-top: -20px;
+
+.post-pic {
+    max-width: 815px;
+    border-radius: 5px;
 }
+
+.pic-container {
+    width: 815px;
+    height: 300px;
+    overflow: hidden;
+    border-bottom: 2px solid #000;
+}
+
+
 /* end footer */
 
+
 /* <<<<<<<<>>>>>>>>> */
+
+
 /* responsive design part */
+
+
 /* mobile */
+
 @media only screen and (max-width: 800px) {
     .up-content,
     .start-content {
         font-size: 150px;
     }
-
     .definition-first-para,
     .definition-second-para {
         font-size: 1.5rem;
     }
-
     .main-forms-container {
         width: 100%;
         position: absolute;
         top: 90%;
     }
-
-    #margin_left{
+    #margin_left {
         width: 20px;
         font-size: 1.5rem;
         display: flex;
         flex-direction: column;
     }
-
     #chat {
         margin-left: 0px;
         margin-right: 0px;
         margin-top: 1px;
     }
-
     #chat_form_content {
         width: 100%;
         height: 100px;
     }
-
-    #img{
-        width: 189px;
-    }
-
-    #logo-us{
+    #logo-us {
         position: absolute;
         left: -25%;
         bottom: 0%;
     }
-
-    #search-input-container{
+    #search-input-container {
         position: absolute;
         right: 16%;
     }
-    .margin_left{
+    .margin_left {
         font-size: 1rem;
     }
 }
+
+
 /* end of responsive */
