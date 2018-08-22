@@ -173,6 +173,7 @@ button {
 
 #margin_left {
     width: 15%;
+    height: 400px;
     position: absolute;
     left: 0px;
     display: flex;
@@ -208,9 +209,9 @@ button {
 
 #posting {
     margin-left: 1.5%;
-    margin-top: 15px;
+    margin-top: 00px;
     position: absolute;
-    top: 50px;
+    top: 60px;
     border: solid 1px #fff;
     border-radius: 5px;
     padding: 5px;
@@ -232,6 +233,29 @@ button {
     position: relative;
     background-color: #fff;
     padding: 10px;
+}
+
+.post-user-display {
+    margin-left: 30px;
+    width: 44px;
+    height: 44px;
+}
+
+.post-user-display-username {
+    color: red;
+}
+
+.post-user-display-picture {
+    width: 50px;
+    height: 50px;
+    overflow: hidden;
+}
+
+.small-user-container {
+    width: 50px;
+    height: 50px;
+    border: 1px solid green;
+    border-radius: 25px;
 }
 
 
@@ -276,10 +300,12 @@ button {
 /* footer */
 
 footer {
+    position: fixed;
     background-color: #056675;
-    width: 100%;
-    height: 20px;
-    margin-bottom: 0%;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 30px;
 }
 
 .post-pic {
