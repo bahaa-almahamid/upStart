@@ -15,37 +15,64 @@
         {{ form_end(postForm) }}
  </div>
 
-    {% if posts is empty %}
+    {% if posts.getTotalItemCount == 0 %}
         <p>No Post found in the application</p>
     {% else %}  
-                     
-    {% for post in posts %}
-           <div class="post-user-display" >
-             <div class="post-user-display-username"> {{ post.getUser.getUsername() }} </div>
-             {% if post.getUser.getPicture() is not empty %}
-
-						 <div class="small-user-container"><img class="post-user-pic" style="width:40px;height:40px;border-radius:50%;border:1px solid green;"  src="{{ path('download_document', {'document' : post.getUser.getPicture().getId()}) }}"> </div>
+        {% for post in posts %}
+               <div class="post-user-display" >
+                 <div class="post-user-display-username"> {{ post.getUser.getUsername() }} </div>
+                 {% if post.getUser.getPicture() is not empty %}
+    
+    						 <div class="small-user-container"><img class="post-user-pic" style="width:40px;height:40px;border-radius:50%;border:1px solid green;"  src="{{ path('download_document', {'document' : post.getUser.getPicture().getId()}) }}"> </div>
+                    <br>
+    							{% else %}
+    								<div></div>
+                    <br>
+    							{% endif %}
+    
+               </div> 
+                <div class = "post-container">
+                {% if post.getPicture() is not empty %}
+    
+    
+                    <td><img id ="img" src="{{ path('download_document', {'document' : post.getPicture().getId()}) }}"></td>
+                {% else %}
+                    <td></td>
+                {% endif %}
+    
+    								<div class="pic-container"><img class="post-pic"  src="{{ path('download_document', {'document' : post.getPicture().getId()}) }}"> </div>
+                    <br>
+    							{% else %}
+    								<td></td>
+                    <br>
+    							{% endif %}
+    
+    
+    
+                {{ post.getCreationDate()| date('Y-m-d H:i:s') }}
                 <br>
-							{% else %}
-								<div></div>
+                {{ post.getCategory() }} 
                 <br>
-							{% endif %}
-
-           </div> 
-            <div class = "post-container">
-            {% if post.getPicture() is not empty %}
-
-
-                <td><img id ="img" src="{{ path('download_document', {'document' : post.getPicture().getId()}) }}"></td>
-            {% else %}
-                <td></td>
-            {% endif %}
-
-								<div class="pic-container"><img class="post-pic"  src="{{ path('download_document', {'document' : post.getPicture().getId()}) }}"> </div>
+                {{ post.getTitle() }}
                 <br>
-							{% else %}
-								<td></td>
+                {{ post.getText() }}    
                 <br>
+                <td><a href="{{ path("post_detail", {post: post.getId()}) }}">Comments</a></td>
+                <td><a href="{{ path("post_edit", {post: post.getId()}) }}">Edit Post</a></td>
+                <td><a href="{{ path("delete_post", {post: post.getId()}) }}">Delete Post</a></td>
+    
+    
+             </div>	      				
+        
+                    
+    
+                <br>
+                  		
+            <div class="navigation">
+                {{ knp_pagination_render(pagination) }}
+            </div>		
+    
+        {% endfor %}            
 							{% endif %}
 
 
