@@ -13,7 +13,40 @@ class DefaultController extends Controller
 {
     public function homepage()
     {
-        return $this->render('default/homepage.html.twig'); 
+        return $this->render('default/homepage.html.twig');
+    }
+
+    public function profile()
+    {
+        $manager = $this->getDoctrine()->getManager();
+
+        return $this->render(
+            'profile/profile.html.twig',
+            [
+                'user' =>$this->getUser(),
+
+                ]
+            );          
+    }
+
+    public function aboutUs()
+    {
+        return $this->render('default/about.html.twig'); 
+    }
+
+    public function termsOfUse()
+    {
+        return $this->render('default/terms.html.twig'); 
+    }
+
+    public function privacyPolicy()
+    {
+        return $this->render('default/privacy.html.twig'); 
+    }
+
+    public function contactUs()
+    {
+        return $this->render('default/contact.html.twig'); 
     }
 
     public function downloadDocument(Document $document)
@@ -26,20 +59,24 @@ class DefaultController extends Controller
         return new BinaryFileResponse($fileName);
     }
 
-    public function profile(){
-        $manager = $this->getDoctrine()->getManager();
-
-        return $this->render(
-            'profile/profile.html.twig',
-            [
-                'user' =>$this->getUser(),
-                ]
-            );          
-    }
-
      public function about()
     {
         return $this->render('Default/about.html.twig'); 
+    }
+
+    public function termsOfUse()
+    {
+        return $this->render('Default/terms.html.twig'); 
+    }
+
+    public function privacyPolicy()
+    {
+        return $this->render('Default/privacy.html.twig'); 
+    }
+    
+    public function contact()
+    {
+        return $this->render('Default/contact.html.twig'); 
     }
 
     public function tamara()
@@ -67,25 +104,15 @@ class DefaultController extends Controller
         return $this->render('members/joao.html.twig'); 
     }
 
-    public function aboutUs()
-    {
-        return $this->render('default/about.html.twig'); 
-    }
 
-    public function termsOfUse()
-    {
-        return $this->render('default/terms.html.twig'); 
-    }
 
-    public function privacyPolicy()
-    {
-        return $this->render('default/privacy.html.twig'); 
-    }
+
+
+
+
+ 
+
     
-    public function contact()
-    {
-        return $this->render('default/contact.html.twig'); 
-    }
 
 
 }

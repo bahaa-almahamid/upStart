@@ -22,9 +22,26 @@
     {% else %}  
                      
     {% for post in posts %}
-            {{ post.getUser.getUsername() }} 
+           <div class="post-user-display" >
+             <div class="post-user-display-username"> {{ post.getUser.getUsername() }} </div>
+             {% if post.getUser.getPicture() is not empty %}
+
+						 <div class="small-user-container"><img class="post-user-pic" style="width:40px;height:40px;border-radius:50%;border:1px solid green;"  src="{{ path('download_document', {'document' : post.getUser.getPicture().getId()}) }}"> </div>
+                <br>
+							{% else %}
+								<div></div>
+                <br>
+							{% endif %}
+
+           </div> 
             <div class = "post-container">
             {% if post.getPicture() is not empty %}
+
+
+                <td><img id ="img" src="{{ path('download_document', {'document' : post.getPicture().getId()}) }}"></td>
+            {% else %}
+                <td></td>
+            {% endif %}
 
 								<div class="pic-container"><img class="post-pic"  src="{{ path('download_document', {'document' : post.getPicture().getId()}) }}"> </div>
                 <br>
@@ -32,6 +49,7 @@
 								<td></td>
                 <br>
 							{% endif %}
+
 
             {{ post.getCreationDate()| date('Y-m-d H:i:s') }}
             <br>
@@ -42,15 +60,18 @@
             {{ post.getText() }}    
             <br>
             <td><a href="{{ path("post_detail", {post: post.getId()}) }}">Comments</a></td>
+            <td><a href="{{ path("post_edit", {post: post.getId()}) }}">Edit Post</a></td>
+            <td><a href="{{ path("delete_post", {post: post.getId()}) }}">Delete Post</a></td>
+
 
          </div>	      				
             <br>
         
     {% endfor %}            
     {% endif %}
-<<<<<<< HEAD
-=======
+
     <div class="paginator" style="text-align:center;">
+    <div class="paginator" style="text-align:center;margin-bottom:40px;">
 
       <nav aria-label="...">
         <ul class="pagination">
@@ -73,7 +94,6 @@
     </div>
 </div>
 
->>>>>>> aece31520593857d35bc3a62841356e94d3b00d7
 {% endblock %}
 
 
