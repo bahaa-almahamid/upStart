@@ -22,7 +22,8 @@
         {% block body %}
             {% block left_marge %}
                     <div class="margin_left">
-                    {% if is_granted('ROLE_USER') %}
+                        {% if is_granted('ROLE_USER') %}
+
 
                         <a href="{{ path ('profile') }}"><i class="fas fa-user-alt"></i> My profile | </a>
                         <br>
@@ -43,6 +44,7 @@
                         {% endif %}
 
                     {% endif %}
+
                     </div>               
              {% endblock %}
 
@@ -54,7 +56,9 @@
 
         {# {% block footer %}
             {% include 'footer.html.twig' %}
+
         {% endblock %} #}
+
         
         {% block javascripts %}
             <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
