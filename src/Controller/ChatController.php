@@ -2,19 +2,13 @@
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
 use App\Form\ChatFormType;
 use App\Entity\Message;
 use Symfony\Component\HttpFoundation\Request;
 
-
-
-
-
 class ChatController extends Controller
 {
     public function showChat(Request $request)
-
     {
         $manager = $this->getDoctrine()->getManager();
         $message = new Message();
@@ -27,6 +21,7 @@ class ChatController extends Controller
             $manager->flush();
             return $this->redirectToRoute('Chat');
         }
+        
         return $this->render(
             'Default/Chat.html.twig',
             [
