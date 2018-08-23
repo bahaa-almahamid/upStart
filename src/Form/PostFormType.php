@@ -32,13 +32,11 @@ class PostFormType extends AbstractType
         }
     }
     
-
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
             'data_class' => Post::class,
             'standalone' => false
-
         ]);
     }
 }

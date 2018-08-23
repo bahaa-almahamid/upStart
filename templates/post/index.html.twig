@@ -39,8 +39,11 @@
                 <h3 class="title-show">{{ post.getTitle() }}</h3>
                 <p class="body-show">{{ post.getText() }}<p>
                 <p class="post-detail-show"><a class="click-link" href="{{ path("post_detail", {post: post.getId()}) }}">Comments</a></p>
+                
+                {% if app.user == post.getUser() %}
                 <p class="post-edit-show"><a class="click-link" href="{{ path("post_edit", {post: post.getId()}) }}">Edit Post</a></p>
                 <p class="post-delete-show"><a class="click-link" href="{{ path("delete_post", {post: post.getId()}) }}">Delete Post</a></p>
+                {% endif %}
              </div>
             <div class="navigation">
                 {{ knp_pagination_render(posts) }}
@@ -48,5 +51,3 @@
         {% endfor %}
     {% endif %}
 </div>
-{% endblock %}
-

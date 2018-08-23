@@ -56,7 +56,6 @@ class Comment
         return $this->id;
     }
 
-
     public function getPicture()
     {
         return $this->picture;
@@ -97,7 +96,6 @@ class Comment
         
         return $this;
     }
-
 
     public function getUser(): ?User
     {

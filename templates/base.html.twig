@@ -13,58 +13,46 @@
             <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
         {% endblock %}
     </head>
-
     <body id="body">
         {% block header %}
             {% include 'header.html.twig' %}
         {% endblock %}
-
         {% block body %}
             {% block left_marge %}
-                    <div class="margin_left">
+                    <div id="left-navbar">
                         {% if is_granted('ROLE_USER') %}
-
-
-                        <a href="{{ path ('profile') }}"><i class="fas fa-user-alt"></i> My profile | </a>
+                        <a href="{{ path ('profile') }}"><i class="fas fa-user-alt"></i>  My profile | </a>
                         <br>
                         <br>
-                        <a href="{{ path ('Chat') }}"><i class="fas fa-envelope"></i> Messages | </a>
+                        <a href="{{ path ('Chat') }}"><i class="fas fa-envelope"></i>   Messages | </a>
                         <br>
                         <br>                        
-                        <a href = "{{path ('post') }}"><i class="fas fa-list-alt"></i> Posts | <a/>
+                        <a href = "{{path ('post') }}"><i class="fas fa-list-alt"></i>  Posts | <a/>
                         <br>
                         <br>
                         {% if is_granted('ROLE_ADMIN') %}
-                            <a href = "{{path ('admin') }}"><i class="fas fa-columns"></i> Admin panel | <a/>
+                            <a href = "{{path ('admin') }}"><i class="fas fa-columns"></i>  Admin panel | <a/>
                         {% endif %}
                         <br>
                         <br>
                         {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                            <a href = "{{path ('logout') }}"><i class="fas fa-sign-out-alt"></i> Log Out | <a/>
+                            <a href = "{{path ('logout') }}"><i class="fas fa-sign-out-alt"></i>  Log Out | <a/>
                         {% endif %}
-
                     {% endif %}
-
                     </div>               
              {% endblock %}
-
     {% endblock %}
-
         {% block main %}
         {% endblock %}
      
-
-        {# {% block footer %}
+        {% block footer %}
             {% include 'footer.html.twig' %}
-
-        {% endblock %} #}
-
+        {% endblock %} 
         
         {% block javascripts %}
             <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
             <script type="text/javascript" src="{{ asset('script/mainScript.js') }}"></script>
             <script src='https://www.google.com/recaptcha/api.js'></script>
         {% endblock %}
-
     </body>
 </html>

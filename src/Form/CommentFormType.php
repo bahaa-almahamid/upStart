@@ -25,8 +25,7 @@ class CommentFormType extends AbstractType
                 SubmitType::class, 
                 ['attr' => ['class' => 'btn-success']]
             );
-        }
-           
+        }          
     }
 
     public function configureOptions(OptionsResolver $resolver)

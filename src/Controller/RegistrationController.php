@@ -40,6 +40,7 @@ class RegistrationController extends AbstractController
                 $user->setPicture($document);
                 $entityManager->persist($document);
             }
+
             $password = $passwordEncoder->encodePassword($user, $user->getPassword());
             $user->setPassword($password);
             
@@ -55,17 +56,18 @@ class RegistrationController extends AbstractController
 
             return $this->redirectToRoute('post');
         }
+
         if($form->isSubmitted() &&  $form->isValid() && !$this->captchaverify($request->get('g-recaptcha-response'))){
                  
             $this->addFlash(
                 'error',
                 'Captcha Require'
             );}
+
         return $this->render(
             'registration/register.html.twig',
             array('form' => $form->createView())
         );
-
     }
 
     function captchaverify($recaptcha){

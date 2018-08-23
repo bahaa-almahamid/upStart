@@ -13,6 +13,7 @@ use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use App\Form\ProfileEditFormType;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class DefaultController extends Controller
 {
@@ -105,7 +106,7 @@ class DefaultController extends Controller
     }
 
     // Edit Profile /*********************** */
-    public function profileEdit(Request $request)
+    public function profileEdit(Request $request, UserPasswordEncoderInterface $passwordEncoder)
     {
         $manager = $this->getDoctrine()->getManager();
         $user = $this->getUser();
@@ -133,13 +134,13 @@ class DefaultController extends Controller
                 $user->setPicture($document);
                 
                 $manager->persist($document);
-                $manager->remove($picture);
-            }
 
-            else
+            } else
             {
                 $user->setPicture($picture);
             }
+            $password = $passwordEncoder->encodePassword($user, $user->getPassword());
+            $user->setPassword($password);
 
             $manager->flush();
             
@@ -165,7 +166,7 @@ class DefaultController extends Controller
             $manager->flush();
 
             $tokenStorage->setToken(null);
-            
+
             return $this->redirectToRoute('homepage');
         } 
         else

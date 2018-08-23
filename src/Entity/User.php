@@ -93,7 +93,6 @@ class User implements UserInterface, \Serializable
      */
     private $messages;
 
-
     public function __construct()
     {
         $this->createdate = new \DateTime();
@@ -107,6 +106,7 @@ class User implements UserInterface, \Serializable
     {
         return $this->username;
     }
+
     public function setUsername($username)
     {
         $this->username = $username;
@@ -186,6 +186,7 @@ class User implements UserInterface, \Serializable
 
         return $this;
     }
+    
      /** @see \Serializable::serialize() */
      public function serialize()
      {
