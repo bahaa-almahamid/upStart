@@ -70,11 +70,11 @@ about:
 
 terms:
   path:     /terms
-  controller: App\Controller\DefaultController::termsOfUse
+  controller: App\Controller\DefaultController::termsUse
 
 privacy:
   path:     /privacy
-  controller: App\Controller\DefaultController::privacyPolicy
+  controller: App\Controller\DefaultController::privacy
 
 contact:
   path:     /contact

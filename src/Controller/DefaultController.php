@@ -64,12 +64,12 @@ class DefaultController extends Controller
         return $this->render('Default/about.html.twig'); 
     }
 
-    public function termsOfUse()
+    public function termsUse()
     {
         return $this->render('Default/terms.html.twig'); 
     }
 
-    public function privacyPolicy()
+    public function privacy()
     {
         return $this->render('Default/privacy.html.twig'); 
     }
