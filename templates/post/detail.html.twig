@@ -55,9 +55,11 @@
             {{ comment.getUser.getUsername() }} 
             {{ comment.getContent() }} 
 
-                <td><a href="{{ path("comment_edit", {comment: comment.getId()}) }}">Edit Comment</a></td>
+                {% if app.user == comment.getUser() %}
+                    <td><a class="btn btn-danger btn-lg" href="{{ path("comment_edit", {comment: comment.getId()}) }}">Edit Comment</a></td>
 
-                <td><a href="{{ path("delete_comment", {comment: comment.getId()}) }}">Delete Comment</a></td>    
+                    <td><a class="btn btn-danger btn-lg" href="{{ path("delete_comment", {comment: comment.getId()}) }}">Delete Comment</a></td>  
+                {% endif %}  
     {% endfor %}
     {% endif %}
 
