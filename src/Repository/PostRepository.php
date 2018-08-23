@@ -8,6 +8,8 @@ use App\DTO\PostSearch;
 use App\DTO\PostSearchFormType;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 use App\Entity\Comment;
+use Symfony\Component\HttpFoundation\Request;
+use Knp\Component\Pager\Paginator;
 
 /**
  * @method Post|null find($id, $lockMode = null, $lockVersion = null)
@@ -27,22 +29,41 @@ class PostRepository extends EntityRepository
     public function findByPostSearch(PostSearch $dto)
     {
         $queryBuilder = $this->createQueryBuilder('ta');
-        if (!empty($dto->post)) {
-            $queryBuilder->andWhere('ta.post = :post');
-            $queryBuilder->setParameter('post', $dto->post);
-        }
+        
         if (!empty($dto->search)) {
 
             $queryBuilder->andWhere('ta.title like :search');
 
             $queryBuilder->setParameter('search', '%' . $dto->search . '%');
         }
+        
         return $queryBuilder->getQuery()->execute();
 
     }
     public function listComment(Comment $comment)
     {
       
+    }
+    
+    public function findPaginates(Request $request, Paginator $paginator, PostSearch $dto)
+    {
+        $limit = 10;
+        $query = $this->createQueryBuilder('p');
+        
+        if (!empty($dto->search)) {
+            $query->andWhere('ta.title like :search');
+            $query->setParameter('search', '%' . $dto->search . '%');
+            
+            $limit = 100;
+        }
+        
+        $pagination = $paginator->paginate(
+            $query,
+            $request->query->getInt('page', 1),
+            $limit
+        );
+        
+        return $pagination;
     }
   
 }
