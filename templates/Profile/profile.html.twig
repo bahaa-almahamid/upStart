@@ -1,26 +1,31 @@
 {% extends 'base.html.twig' %}
 
-{% block body %}
+{% block main %}
+
 
 <div class="white">
 
-	<div class="profile">
-			{% if user.getPicture() is not empty %}    
-				<img class="profile-pic" src="{{ path('download_document', {'document' : user.getPicture().getId()}) }}"> 
-			{% else %}
-				<td></td>
-			{% endif %}
 
-			<br>
-			<p><i class="fas fa-clock"></i> Joined on: {{ user.getCreateDate()| date('Y-m-d H:i:s') }}</p>
-			<p><i class="fas fa-user-alt"></i> Username: {{ user.getUsername() }}</p>
-			<p><i class="fas fa-envelope"></i> E-Mail: {{ user.getEmail() }}</p>   
-			<p><i class="fas fa-info-circle"></i> About: {{ user.getAbout() }}</p> 
-			<p><i class="fas fa-map-marker-alt"></i> Address: {{ user.getAddress() }}</p> 
+	<div class="profile">
+
+		{% if user.getPicture() is not empty %}    
+			<img class="profile-pic" src="{{ path('download_document', {'document' : user.getPicture().getId()}) }}"> 
+		{% else %}
+			<td></td>
+		{% endif %}
+
+		<br>
+		<p><i class="fas fa-clock"></i> Joined on: {{ user.getCreateDate()| date('Y-m-d H:i:s') }}</p>
+		<p><i class="fas fa-user-alt"></i> Username: {{ user.getUsername() }}</p>
+		<p><i class="fas fa-envelope"></i> E-Mail: {{ user.getEmail() }}</p>   
+		<p><i class="fas fa-info-circle"></i> About: {{ user.getAbout() }}</p> 
+		<p><i class="fas fa-map-marker-alt"></i> Address: {{ user.getAddress() }}</p> 
+
+
 
 	</div>
 	<a href="{{ path("profile_edit") }}" class="btn btn-primary btn-lg" role="button">Edit profile</a>
-	</div>
+
 	<a href="{{ path("delete_profile", {user: user.getId()}) }}" class="btn btn-danger btn-lg">Delete User</a> 
 
 

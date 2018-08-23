@@ -1,11 +1,16 @@
 {% extends 'base.html.twig' %}
 
-{% block title %} post Comments {% endblock %}
+{% block title %} post Comments{% endblock %}
 
-{% block body %}
+
+{% block main %}
 
 <div class="white">
+
+
 	<div class="container">
+
+		
             {{ post.getCreationDate()| date('Y-m-d H:i:s') }}
             <br>
             {{ post.getCategory() }} 
@@ -20,6 +25,8 @@
 				<td></td>
 			{% endif %}			 
 			 
+
+
 		<p>id : {{ post.getId() }}</p>
 		 {{ post.getCreationDate()|date('Y-m-d H:i:s') }}
          <br>
@@ -28,12 +35,11 @@
 		 {{ post.getTitle() }}
          <br>
 
-		<div class="element-warning mt-5"></div>
-
-	<div id="posting">
+		<div class="element-warning mt-5">
+		</div>
+		<div id="posting">
        {{ form(commentForm) }}
     </div>
-
     {% if comments is empty %}
         <p>No Comments found in the application</p>
     {% else %}  
@@ -49,13 +55,18 @@
             {{ comment.getUser.getUsername() }} 
             {{ comment.getContent() }} 
 
-                <td><a href="{{ path("comment_edit", {comment: comment.getId()}) }}">Edit Comment</a></td>
-                <td><a href="{{ path("delete_comment", {comment: comment.getId()}) }}">Delete Comment</a></td>    
+                {% if app.user == comment.getUser() %}
+                    <td><a class="btn btn-danger btn-lg" href="{{ path("comment_edit", {comment: comment.getId()}) }}">Edit Comment</a></td>
+
+                    <td><a class="btn btn-danger btn-lg" href="{{ path("delete_comment", {comment: comment.getId()}) }}">Delete Comment</a></td>  
+                {% endif %}  
     {% endfor %}
     {% endif %}
 
+
 	</div>
- </div>
+    </div>
 {% endblock %}
+
 
 
