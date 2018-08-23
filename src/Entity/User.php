@@ -31,8 +31,6 @@ class User implements UserInterface, \Serializable
      */
     private $username;
 
-  
-
     /**
      * The below length depends on the "algorithm" you use for encoding
      * the password, but this works well with bcrypt.
@@ -80,7 +78,6 @@ class User implements UserInterface, \Serializable
      */
     private $roles;
 
-
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Post", mappedBy="user", orphanRemoval=true)
      */
@@ -96,8 +93,6 @@ class User implements UserInterface, \Serializable
      */
     private $messages;
 
-
-
     public function __construct()
     {
         $this->createdate = new \DateTime();
@@ -111,6 +106,7 @@ class User implements UserInterface, \Serializable
     {
         return $this->username;
     }
+
     public function setUsername($username)
     {
         $this->username = $username;
@@ -123,22 +119,17 @@ class User implements UserInterface, \Serializable
         // see section on salt below
         return null;
     }
-    
- 
- 
 
     public function getPassword()
     {
         return $this->password;
     }
 
-
     public function setPassword($password)
     {
         $this->password = $password;
         return $this;
     }
-
 
     public function getEmail()
     {
@@ -149,7 +140,6 @@ class User implements UserInterface, \Serializable
         $this->email = $email;
         return $this;
     }
-
 
     public function eraseCredentials()
     {
@@ -191,14 +181,13 @@ class User implements UserInterface, \Serializable
         return $this->about;
     }
 
-
-
     public function setAbout(?string $about): self
     {
         $this->about = $about;
 
         return $this;
     }
+    
      /** @see \Serializable::serialize() */
      public function serialize()
      {
@@ -235,7 +224,6 @@ class User implements UserInterface, \Serializable
         return $this;
     }
 
-
     public function getRoles()
     {
         return array('ROLE_USER');
@@ -246,7 +234,6 @@ class User implements UserInterface, \Serializable
         return $this->posts;
     }
 
-
     public function getComments()
     {
         return $this->comments;
@@ -256,9 +243,6 @@ class User implements UserInterface, \Serializable
     {
         return $this->messages;
     }
- 
- 
-
 
     /**
      * Get the value of id for the admin dashboard
@@ -280,7 +264,6 @@ class User implements UserInterface, \Serializable
     {
         return $this->getUsername();
     }
-
 
     /**
      * Set the value of comments

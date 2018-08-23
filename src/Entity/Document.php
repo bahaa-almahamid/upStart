@@ -45,6 +45,7 @@ class Document
 
         return $this;
     }
+
     public function getPath(): ?string
     {
         return $this->path;
@@ -67,7 +68,5 @@ class Document
         $this->name = $name;
 
         return $this;
-    }
-
-    
+    }   
 }

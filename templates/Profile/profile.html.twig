@@ -1,13 +1,10 @@
 {% extends 'base.html.twig' %}
 
-{% block main %}
-
+{% block body %}
 
 <div class="white">
 
-
 	<div class="profile">
-
 			{% if user.getPicture() is not empty %}    
 				<img class="profile-pic" src="{{ path('download_document', {'document' : user.getPicture().getId()}) }}"> 
 			{% else %}
@@ -21,11 +18,8 @@
 			<p><i class="fas fa-info-circle"></i> About: {{ user.getAbout() }}</p> 
 			<p><i class="fas fa-map-marker-alt"></i> Address: {{ user.getAddress() }}</p> 
 
-
-
 	</div>
 <a href="{{ path("profile_edit") }}" class="btn btn-primary btn-lg" role="button">Edit profile</a>
-
 
 	</div>
 

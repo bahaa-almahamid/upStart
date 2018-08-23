@@ -3,21 +3,48 @@
 }
 
 #body {
-    background-color: #d6ddde;
+    background-color: #eaf2f3;
     margin: 0;
     padding: 0;
     font-family: 'Ubuntu', sans-serif;
 }
+,
+/* navbar*/
+#left-navbar {
+    font-size: 12x;
+    margin-left: 30px;
+    margin-top: 30px;
+    font-style: normal;
+    background-color: #056675;   
+    width: 10%;
+    padding: 15px;
+    border-radius: 15px;
+}
+#left-navbar a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.5 rem;
+}
 
+#left-navbar a:hover{
+    text-decoration: none;
+    border: 0.5px solid lightgray;
+    padding: 5px;
+    color: white;
+    border-radius: 4px;
+} 
+
+/* end navbar*/
 
 /* homepage header content */
 
 header {
     padding-top: 7px;
-    position: relative;
     width: 100%;
     height: 50px;
     background-color: #056675;
+    position: sticky;
+    top: 0%;
 }
 
 #logo-us {
@@ -45,6 +72,11 @@ header {
     color: grey;
 }
 
+header a{
+    color: rgb(250, 248, 248);
+    font-size: 1.5rem;
+    margin-left: 20px;
+}
 
 /* end of header content */
 
@@ -167,39 +199,12 @@ button {
 
 /* end body */
 
-
-/* body content*/
-
-#margin_left {
-    width: 15%;
-    height: 400px;
-    position: absolute;
-    left: 0px;
-    display: flex;
-    flex-direction: column;
-    padding-top: 45px;
-    color: #056675;
-    font-size: 20px;
-}
-
-.white {
-    background-color: #fff;
-    margin-left: 15%;
-    margin-right: 15%;
-    padding-top: 300px;
-}
-
-
-/* end body content*/
-
-
 /* content of profile*/
 
 .profile-pic {
     margin: 0 auto;
     width: 40%;
 }
-
 
 /* end profile */
 
@@ -239,8 +244,6 @@ button {
     border-radius: 5px;
 }
 
-
-
 .post-pic {
     max-width: 815px;
     border-radius: 5px;
@@ -276,28 +279,35 @@ button {
     border-radius: 25px;
 }
 
-
 /* end posts*/
 
 
 /* chat */
 
 #chat {
-    margin-left: 15%;
-    margin-right: 15%;
     margin-top: 1px;
+    background-color: #fff;
+    box-shadow: 0px 0px 15px #adadad;
+    width: 50%;
+    margin-left: 23%;
+}
+
+#chat td:hover{
+    text-decoration: none;
 }
 
 #chat_form_content {
-    width: 80%;
     height: 100px;
+    width: 100%;
+    box-shadow: 0px 0px 15px #adadad;
+    width: 50%;
+    margin-left: 20%;
 }
 
 .title {
     text-align: center;
     color: #737373;
 }
-
 
 /* end chat */
 
@@ -311,7 +321,6 @@ button {
     padding: 5px;
 }
 
-
 /* end profile */
 
 
@@ -319,18 +328,17 @@ button {
 
 footer {
     position: sticky;
-    position: absolute;
-    bottom:0%; 
-    width:100%; 
-    height: 40px;
+    bottom: 0%; 
+    width: 100%; 
+    height: 30px;
     background:#056675; 
     padding-top: 5px;
     padding-bottom: 5px;
-    padding-left: 25%;
+    padding-left: 30%;
     display: flex;  
     flex-direction: row; 
     justify-content: space-around;
-    font-size: 2rem;
+    font-size: 1.5rem;
 }
 
 footer a{
@@ -344,6 +352,14 @@ footer a{
     box-shadow: 0px 0px 15px #adadad;
     padding: 10px;
     margin-top: 20px;
+}
+
+#footer a:hover{
+    text-decoration: none;
+    border: 0.5px solid lightgray;
+    padding: 5px;
+    color: white;
+    border-radius: 4px;
 }
 
 /* end footer */
@@ -363,12 +379,6 @@ footer a{
 }
 
 #photos{
-    /*margin-right: 15%;
-    background-color: #fff;
-    box-shadow: 0px 0px 15px #adadad;
-    padding: 20px;
-    margin-top: 20px;
-    margin-bottom: 20px;*/
     width: 100%;
     height: 400px;
     position: absolute;
@@ -412,10 +422,6 @@ footer a{
     text-decoration: none;
 }
 
-
-
-
-
 /* end about */
 
 
@@ -424,7 +430,6 @@ footer a{
 
 /* responsive design part */
 
-
 /* mobile */
 
 @media only screen and (max-width: 800px) {
@@ -432,50 +437,50 @@ footer a{
     .start-content {
         font-size: 150px;
     }
+
     .definition-first-para,
     .definition-second-para {
         font-size: 1.5rem;
     }
+
     .main-forms-container {
         width: 100%;
         position: absolute;
         top: 90%;
     }
+
     #margin_left {
         width: 20px;
         font-size: 1.5rem;
     }
+
     #chat {
         margin-left: 0px;
         margin-right: 0px;
         margin-top: 1px;
     }
+
     #chat_form_content {
         width: 100%;
         height: 100px;
     }
+
     #logo-us {
         position: absolute;
         left: -25%;
         bottom: 0%;
     }
+
     #search-input-container {
         position: absolute;
         right: 16%;
     }
-
 
     #posting{
         width: 97%;
         position: absolute;
         left: 0px;          
     }                
-       
-
-    .margin_left {
-        font-size: 1rem;
-    }
 }
-
 
 /* end of responsive */

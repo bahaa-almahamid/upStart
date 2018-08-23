@@ -16,7 +16,6 @@ use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use App\Entity\User;
 
-
 class PostController extends AbstractController
 {
     /**
@@ -31,6 +30,7 @@ class PostController extends AbstractController
             $post,
             ['standalone' => true]
         );
+
         $postForm->handleRequest($request);
         if ($postForm->isSubmitted() && $postForm->isValid()) {
             /**
@@ -55,9 +55,7 @@ class PostController extends AbstractController
             $manager->persist($post);
             $manager->flush();
 
-
             return $this->redirectToRoute('post');
-
         }
         
         //this is search function
@@ -70,16 +68,12 @@ class PostController extends AbstractController
         return $this->render(
             'post/index.html.twig',
             [
-
                 'posts' => $manager->getRepository(Post::class)->findAll(),
                 'users' => $manager->getRepository(User::class)->findAll(),
                 'postForm' => $postForm->createView(),
-                'searchForm' => $searchForm->createView(),
-          
+                'searchForm' => $searchForm->createView(),        
                 ]
-        );
-
-    
+            );   
     }
 
 //this is just test as comment to push the stuff
@@ -93,6 +87,7 @@ class PostController extends AbstractController
             $comment,
             ['standalone' => true]
         );
+
         $commentForm->handleRequest($request);
         if ($commentForm->isSubmitted() && $commentForm->isValid()) {
             /**
@@ -118,10 +113,7 @@ class PostController extends AbstractController
             $manager->persist($comment);
             $manager->flush();
 
-
             return $this->redirectToRoute('post_detail',array("post"=>$post->getId()));
-
-
         }
 
         return $this->render(
@@ -130,7 +122,6 @@ class PostController extends AbstractController
                 'post'=>$post,
                 'commentForm' => $commentForm->createView(),
                 'comments'=>$post->getComments(),
-
             ]
         );
     }
@@ -143,6 +134,7 @@ class PostController extends AbstractController
             );
             $post->setPicture($file);
         }
+
         $editForm = $this->createForm(PostFormType::class, $post, ['standalone'=>true]);
         $editForm->handleRequest($request);
 
@@ -154,9 +146,7 @@ class PostController extends AbstractController
              */
 
         $file = $post->getPicture();
-
-        
-        
+              
         if ($editForm->isSubmitted() && $editForm->isValid() && $idUser == $post->getUser()) {
             
                 if ($file) {
@@ -172,7 +162,6 @@ class PostController extends AbstractController
                 $this->getDoctrine()->getManager()->flush();
             
                 return $this->redirectToRoute('post');
-
         }
         
         return $this->render(
@@ -184,6 +173,7 @@ class PostController extends AbstractController
             ]
         );
     }
+
     /////////////////////////////////////////////////
     public function deletePost(Request $request, Post $post)
     {
@@ -196,10 +186,12 @@ class PostController extends AbstractController
             $manager->remove($post);
             $manager->flush();
         } 
+
         else
         {
             $deletionError = true;  
         }
+
         return $this->redirectToRoute('post');
     }
 
@@ -214,6 +206,7 @@ class PostController extends AbstractController
             $manager->remove($comment);
             $manager->flush();
         } 
+
         else
         {
             $deletionError = true;  
@@ -241,8 +234,7 @@ class PostController extends AbstractController
             else
             {
                 $editError = true;
-            }
-  
+            }  
         }
         
         return $this->render(

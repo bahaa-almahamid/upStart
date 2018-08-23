@@ -10,19 +10,15 @@ Chat:
   path:   /Chat
   controller: App\Controller\ChatController::showChat
 
-
-
 post:
   path: /post
   controller: App\Controller\PostController::postList
-
 
 login:
   path:     /registration
   controller: App\Controller\RegistrationController::login
 
 # When you login you will be redirected to the HomePage!...The logout Button is already on the home page, is just place it in place.
-
 
 logout:
   path:     /logout
@@ -40,45 +36,6 @@ post_detail:
   path:     /post/detail/{post}
   controller: App\Controller\PostController::commentDetail
 
-about_us:
-  path: /about
-  controller: App\Controller\DefaultController::about
-
-tamara:
-  path:     /tamara
-  controller: App\Controller\DefaultController::tamara
-
-miro:
-  path:     /miro
-  controller: App\Controller\DefaultController::miro
-
-ibrahem:
-  path:     /ibrahem 
-  controller: App\Controller\DefaultController::ibrahem 
-
-bahaa:
-  path:     /bahaa 
-  controller: App\Controller\DefaultController::bahaa 
-
-joao:
-  path:     /joao 
-  controller: App\Controller\DefaultController::joao 
-
-about:
-  path:     /about
-  controller: App\Controller\DefaultController::aboutUs
-
-terms:
-  path:     /terms
-  controller: App\Controller\DefaultController::termsUse
-
-privacy:
-  path:     /privacy
-  controller: App\Controller\DefaultController::privacy
-
-contact:
-  path:     /contact
-  controller: App\Controller\DefaultController::contact
 
 post_edit:
   path:       /post/edit/{post}
@@ -100,25 +57,42 @@ profile_edit:
     path:       /profile/edit
     controller: App\Controller\DefaultController::profileEdit
 
-
-
-
-
-
 about:
   path:     /about
   controller: App\Controller\DefaultController::aboutUs
 
 terms:
   path:     /terms
-  controller: App\Controller\DefaultController::termsOfUse
+  controller: App\Controller\DefaultController::terms
 
 privacy:
   path:     /privacy
-  controller: App\Controller\DefaultController::privacyPolicy
+  controller: App\Controller\DefaultController::privacy
 
 contact:
   path:     /contact
-  controller: App\Controller\DefaultController::contactUs.
+  controller: App\Controller\DefaultController::contact
+
+joao:
+  path:     /joao
+  controller: App\Controller\DefaultController::joao
+
+bahaa:
+  path:     /bahaa
+  controller: App\Controller\DefaultController::bahaa
+
+miro:
+  path:     /miro
+  controller: App\Controller\DefaultController::miro
+
+tamara:
+  path:     /tamara
+  controller: App\Controller\DefaultController::tamara
+  
+ibrahem:
+  path:     /ibrahem
+  controller: App\Controller\DefaultController::ibrahem
+
+
 
 

@@ -41,7 +41,6 @@ class Post
      */
     private $picture;
 
-
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank()
@@ -53,22 +52,16 @@ class Post
      */
     private $creationDate;
 
-
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="posts")
      * @ORM\JoinColumn(nullable=false)
      */
     private $user;
 
-
-
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Comment", mappedBy="post", orphanRemoval=true)
      */
     private $comments;
-
-
-
 
     public function __construct()
     {
@@ -76,14 +69,11 @@ class Post
         $this->comments = new ArrayCollection();
     }
 
-    
-
     public function getId(): ?string
     {
         return $this->id;
     }
     
-
     public function getTitle(): ?string
     {
         return $this->title;
@@ -132,7 +122,6 @@ class Post
         return $this;
     }
 
-
     public function getCreationDate(): ?\DateTimeInterface
 
     {
@@ -150,9 +139,7 @@ class Post
         
         return $this;
     }
-
-
-    
+  
     public function __toString()
     {
         return $this->getTitle();

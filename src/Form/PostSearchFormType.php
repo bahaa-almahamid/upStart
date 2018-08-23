@@ -2,7 +2,6 @@
 
 namespace App\Form;
 
-
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -13,15 +12,12 @@ use App\Entity\Post;
 use App\DTO\PostSearch;
 use App\Form\PostSearchFormType;
 
-
-
 class PostSearchFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
        $builder->add('post', EntityType::class, ['class'=>Post::class, 'choice_label'=> 'title'])
        ->add('search', TextType::class, ['required'=>false]);
-
 
        if ($options['standalone']) {
 
@@ -30,10 +26,7 @@ class PostSearchFormType extends AbstractType
                 ['attr' => ['class' => 'btn btn-info']]
             );
        }
-
     }
-
-
 
     public function configureOptions(OptionsResolver $resolver)
     {
