@@ -40,45 +40,6 @@ post_detail:
   path:     /post/detail/{post}
   controller: App\Controller\PostController::commentDetail
 
-about_us:
-  path: /about
-  controller: App\Controller\DefaultController::about
-
-tamara:
-  path:     /tamara
-  controller: App\Controller\DefaultController::tamara
-
-miro:
-  path:     /miro
-  controller: App\Controller\DefaultController::miro
-
-ibrahem:
-  path:     /ibrahem 
-  controller: App\Controller\DefaultController::ibrahem 
-
-bahaa:
-  path:     /bahaa 
-  controller: App\Controller\DefaultController::bahaa 
-
-joao:
-  path:     /joao 
-  controller: App\Controller\DefaultController::joao 
-
-about:
-  path:     /about
-  controller: App\Controller\DefaultController::aboutUs
-
-terms:
-  path:     /terms
-  controller: App\Controller\DefaultController::termsUse
-
-privacy:
-  path:     /privacy
-  controller: App\Controller\DefaultController::privacy
-
-contact:
-  path:     /contact
-  controller: App\Controller\DefaultController::contact
 
 post_edit:
   path:       /post/edit/{post}
@@ -97,11 +58,8 @@ delete_comment:
   controller: App\Controller\PostController::deleteComment
 
 profile_edit:
-    path:       /profile/edit
-    controller: App\Controller\DefaultController::profileEdit
-
-
-
+  path:       /profile/edit
+  controller: App\Controller\DefaultController::profileEdit
 
 
 
