@@ -96,6 +96,10 @@ delete_comment:
   path:       /comment/delete/{comment}
   controller: App\Controller\PostController::deleteComment
 
+profile_edit:
+    path:       /profile/edit
+    controller: App\Controller\DefaultController::profileEdit
+
 
 
 
