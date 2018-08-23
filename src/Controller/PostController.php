@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use App\Form\PostFormType;
@@ -15,9 +15,7 @@ use App\Form\CommentFormType;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use App\Entity\User;
-
-
-class PostController extends AbstractController
+class PostController extends Controller
 {
     /**
      * @Route("/post", name="post")
@@ -65,13 +63,12 @@ class PostController extends AbstractController
         $searchForm = $this->createForm(PostSearchFormType::class, $dto, ['standalone' => true]);
 
         $searchForm->handleRequest($request);
-        $posts = $manager->getRepository(Post::class)->findByPostSearch($dto);
     
         return $this->render(
             'post/index.html.twig',
             [
 
-                'posts' => $manager->getRepository(Post::class)->findAll(),
+                'posts' => $manager->getRepository(Post::class)->findPaginates($request, $this->get('knp_paginator'), $dto),
                 'users' => $manager->getRepository(User::class)->findAll(),
                 'postForm' => $postForm->createView(),
                 'searchForm' => $searchForm->createView(),

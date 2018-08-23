@@ -97,6 +97,8 @@ ibrahem:
   path:     /ibrahem
   controller: App\Controller\DefaultController::ibrahem
 
+
 delete_profile:
   path:       /user/delete/{user}
   controller: App\Controller\DefaultController::deleteUser
+

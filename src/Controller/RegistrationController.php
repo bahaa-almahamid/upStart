@@ -10,11 +10,14 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use App\Entity\Document;
+use App\Entity\Role;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
+use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 
 
 class RegistrationController extends AbstractController
 {
-    public function registerUser(Request $request, UserPasswordEncoderInterface $passwordEncoder)
+    public function registerUser(Request $request, UserPasswordEncoderInterface $passwordEncoder, TokenStorageInterface $tokenStorage)
     {   
 
         $entityManager = $this->getDoctrine()->getManager();
@@ -41,8 +44,14 @@ class RegistrationController extends AbstractController
             $user->setPassword($password);
             
             $entityManager = $this->getDoctrine()->getManager();
+
+            $userRole = $entityManager->getRepository(Role::class)->findOneByLabel('ROLE_USER');
+            $user->addRole($userRole);
+
             $entityManager->persist($user);
             $entityManager->flush();
+
+            $tokenStorage->setToken(new UsernamePasswordToken($user, null, 'main', $user->getRoles()));
 
             return $this->redirectToRoute('post');
         }
@@ -89,8 +98,6 @@ class RegistrationController extends AbstractController
             'password' => $password
         ));
     }
-
-
 }
 
 
