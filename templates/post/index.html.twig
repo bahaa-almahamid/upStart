@@ -1,8 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}
-
-{% endblock %}
+{% block title %} Posts {% endblock %}
 
 
 
@@ -75,7 +73,30 @@
             </div>		
     
         {% endfor %}            
+							{% endif %}
+
+
+            {{ post.getCreationDate()| date('Y-m-d H:i:s') }}
+            <br>
+            {{ post.getCategory() }} 
+            <br>
+            {{ post.getTitle() }}
+            <br>
+            {{ post.getText() }}    
+            <br>
+            <td><a href="{{ path("post_detail", {post: post.getId()}) }}">Comments</a></td>
+            <td><a href="{{ path("post_edit", {post: post.getId()}) }}">Edit Post</a></td>
+            <td><a href="{{ path("delete_post", {post: post.getId()}) }}">Delete Post</a></td>
+
+
+         </div>	      				
+            <br>
+        
+    {% endfor %}            
     {% endif %}
+
+    <div class="paginator" style="text-align:center;">
+
     <div class="paginator" style="text-align:center;margin-bottom:40px;">
 
       <nav aria-label="...">

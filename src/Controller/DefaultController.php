@@ -8,12 +8,29 @@ use App\Entity\Document;
 use Symfony\Component\HttpFoundation\Request;
 use App\Entity\User;
 use App\Entity\Post;
+use App\Form\UserFormType;
+use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use App\Form\ProfileEditFormType;
 
 class DefaultController extends Controller
 {
     public function homepage()
     {
         return $this->render('default/homepage.html.twig');
+    }
+
+    public function profile()
+    {
+        $manager = $this->getDoctrine()->getManager();
+
+        return $this->render(
+            'profile/profile.html.twig',
+            [
+                'user' =>$this->getUser(),
+
+                ]
+            );          
     }
 
     public function aboutUs()
@@ -26,10 +43,7 @@ class DefaultController extends Controller
         return $this->render('default/terms.html.twig'); 
     }
 
-    public function privacyPolicy()
-    {
-        return $this->render('default/privacy.html.twig'); 
-    }
+
 
     public function contactUs()
     {
@@ -46,22 +60,104 @@ class DefaultController extends Controller
         return new BinaryFileResponse($fileName);
     }
 
-
-    public function profile()
+     public function about()
     {
-        $manager = $this->getDoctrine()->getManager();
+        return $this->render('Default/about.html.twig'); 
+    }
 
-        return $this->render(
-            'profile/profile.html.twig',
-
-            [
-                'user' => $this->getUser(),
-            ]
-
-        );
+    public function termsUse()
+    {
+        return $this->render('Default/terms.html.twig'); 
 
     }
 
+    public function privacy()
+    {
+        return $this->render('Default/privacy.html.twig'); 
+    }
+    
+   
+
+    public function tamara()
+    {
+        return $this->render('members/tamara.html.twig'); 
+    }
+
+    public function miro()
+    {
+        return $this->render('members/miro.html.twig'); 
+    }
+    // Edit Profile /*********************** */
+    public function profileEdit(Request $request)
+    {
+        $manager = $this->getDoctrine()->getManager();
+        $user = $this->getUser();
+
+        $picture = $user->getPicture();
+        if($picture)
+        {
+            $file = new File($picture->getPath() . '/' . $picture->getName());
+            $user->setPicture($file);
+        }
+
+        $profileForm = $this->createForm(ProfileEditFormType::class, $user, ['standalone' => true]);
+        $profileForm->handleRequest($request);
+        
+        if ($profileForm->isSubmitted() && $profileForm->isValid()) {
+            
+            $file = $user->getPicture();
+            if($file){
+                $document = new Document();
+                $document->setPath($this->getParameter('upload_dir'))
+                    ->setMimeType($file->getMimeType())
+                    ->setName($file->getFilename());
+                $file->move($this->getParameter('upload_dir'));
+                
+                $user->setPicture($document);
+                
+                $manager->persist($document);
+                $manager->remove($picture);
+            }
+            else
+            {
+                $user->setPicture($picture);
+            }
+
+            $manager->flush();
+            
+            return $this->redirectToRoute('profile');
+        }
+
+        $user->setPicture($picture);
+        
+        return $this->render(
+            'profile/profileEdit.html.twig',
+            [
+                'user'=>$user,
+                'profileForm' => $profileForm->createView()
+            ]
+        );
+    }
+
+
+    public function ibrahem()
+    {
+        return $this->render('members/ibrahem.html.twig'); 
+    }
+
+    public function bahaa()
+    {
+        return $this->render('members/bahaa.html.twig'); 
+    }
+
+    public function joao()
+    {
+        return $this->render('members/joao.html.twig'); 
+    }
+
+    public function contact()
+    {
+        return $this->render('default/contact.html.twig'); 
+    }
 
 }
-
