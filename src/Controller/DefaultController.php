@@ -12,6 +12,7 @@ use App\Form\UserFormType;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use App\Form\ProfileEditFormType;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 
 class DefaultController extends Controller
 {
@@ -28,7 +29,6 @@ class DefaultController extends Controller
             'profile/profile.html.twig',
             [
                 'user' =>$this->getUser(),
-
                 ]
             );          
     }
@@ -42,8 +42,6 @@ class DefaultController extends Controller
     {
         return $this->render('default/terms.html.twig'); 
     }
-
-
 
     public function contactUs()
     {
@@ -65,7 +63,7 @@ class DefaultController extends Controller
         return $this->render('Default/about.html.twig'); 
     }
 
-    public function termsUse()
+    public function terms()
     {
         return $this->render('Default/terms.html.twig'); 
 
@@ -75,8 +73,6 @@ class DefaultController extends Controller
     {
         return $this->render('Default/privacy.html.twig'); 
     }
-    
-   
 
     public function tamara()
     {
@@ -87,6 +83,27 @@ class DefaultController extends Controller
     {
         return $this->render('members/miro.html.twig'); 
     }
+
+    public function joao()
+    {
+        return $this->render('members/joao.html.twig'); 
+    }
+
+    public function bahaa()
+    {
+        return $this->render('members/bahaa.html.twig'); 
+    }
+
+    public function ibrahem()
+    {
+        return $this->render('members/ibrahem.html.twig'); 
+    }
+
+    public function contact()
+    {
+        return $this->render('members/contact.html.twig'); 
+    }
+
     // Edit Profile /*********************** */
     public function profileEdit(Request $request)
     {
@@ -118,6 +135,7 @@ class DefaultController extends Controller
                 $manager->persist($document);
                 $manager->remove($picture);
             }
+
             else
             {
                 $user->setPicture($picture);
@@ -138,26 +156,23 @@ class DefaultController extends Controller
             ]
         );
     }
-
-
-    public function ibrahem()
+    public function deleteUser(Request $request, User $user, TokenStorageInterface $tokenStorage)
     {
-        return $this->render('members/ibrahem.html.twig'); 
-    }
+        if(($user == $this->getUser()))
+        {
+            $manager = $this->getDoctrine()->getManager();
+            $manager->remove($user);
+            $manager->flush();
 
-    public function bahaa()
-    {
-        return $this->render('members/bahaa.html.twig'); 
-    }
-
-    public function joao()
-    {
-        return $this->render('members/joao.html.twig'); 
-    }
-
-    public function contact()
-    {
-        return $this->render('default/contact.html.twig'); 
+            $tokenStorage->setToken(null);
+            
+            return $this->redirectToRoute('homepage');
+        } 
+        else
+        {
+            $deletionError = true;  
+        }
+       
     }
 
 }

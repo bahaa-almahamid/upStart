@@ -58,10 +58,8 @@ delete_comment:
   controller: App\Controller\PostController::deleteComment
 
 profile_edit:
-  path:       /profile/edit
-  controller: App\Controller\DefaultController::profileEdit
-
-
+    path:       /profile/edit
+    controller: App\Controller\DefaultController::profileEdit
 
 about:
   path:     /about
@@ -69,15 +67,38 @@ about:
 
 terms:
   path:     /terms
-  controller: App\Controller\DefaultController::termsOfUse
+  controller: App\Controller\DefaultController::terms
 
 privacy:
   path:     /privacy
-  controller: App\Controller\DefaultController::privacyPolicy
+  controller: App\Controller\DefaultController::privacy
 
 contact:
   path:     /contact
-  controller: App\Controller\DefaultController::contactUs.
+  controller: App\Controller\DefaultController::contact
+
+joao:
+  path:     /joao
+  controller: App\Controller\DefaultController::joao
+
+bahaa:
+  path:     /bahaa
+  controller: App\Controller\DefaultController::bahaa
+
+miro:
+  path:     /miro
+  controller: App\Controller\DefaultController::miro
+
+tamara:
+  path:     /tamara
+  controller: App\Controller\DefaultController::tamara
+
+ibrahem:
+  path:     /ibrahem
+  controller: App\Controller\DefaultController::ibrahem
 
 
+delete_profile:
+  path:       /user/delete/{user}
+  controller: App\Controller\DefaultController::deleteUser
 
