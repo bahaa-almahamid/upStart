@@ -165,7 +165,6 @@ button {
     bottom: 103%;
 }
 
-
 /* end body */
 
 
@@ -288,7 +287,7 @@ button {
 /* footer */
 
 footer {
-    position:absolute;
+    position: sticky;
     bottom:0%; 
     width:100%; 
     height: 40px;
@@ -324,6 +323,7 @@ footer a{
     border-radius: 10px;
     margin-top: -300px;
 }
+
 .nonono{
     margin-top: -100px;
     height: 40px;
@@ -346,9 +346,6 @@ footer a{
     justify-content: space-around;
     
 }
-
-
-
 
 #about-us{
     margin-left: 15%;
@@ -429,7 +426,6 @@ footer a{
         position: absolute;
         right: 16%;
     }
-<<<<<<< HEAD
 
     #posting{
         width: 97%;
@@ -439,10 +435,9 @@ footer a{
 
     .post-container{
        
-=======
+
     .margin_left {
         font-size: 1rem;
->>>>>>> aece31520593857d35bc3a62841356e94d3b00d7
     }
 }
 
