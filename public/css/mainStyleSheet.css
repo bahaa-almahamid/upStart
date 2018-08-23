@@ -318,6 +318,8 @@ button {
 /* footer */
 
 footer {
+    position: absolute;
+
     position: sticky;
     position: absolute;
     bottom:0%; 
@@ -378,7 +380,7 @@ footer a{
     justify-content: space-around;
     position: fixed;
     background-color: #056675;
-    bottom: 0;
+    bottom: -144px;
     left: 0;
     right: 0;
     height: 30px;

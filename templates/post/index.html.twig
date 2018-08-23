@@ -39,20 +39,24 @@
                 {% else %}
                     <td></td>
                 {% endif %}
-    
-    								<div class="pic-container"><img class="post-pic"  src="{{ path('download_document', {'document' : post.getPicture().getId()}) }}"> </div>
-                    <br>
-    							{% else %}
-    								<td></td>
-                    <br>
-    							{% endif %}
-    
-    
-    
+
                 {{ post.getCreationDate()| date('Y-m-d H:i:s') }}
                 <br>
                 {{ post.getCategory() }} 
                 <br>
+
+							{% endif %}
+
+           </div> 
+            <div class = "post-container">
+            {% if post.getPicture() is not empty %}
+
+                <td><img id ="img" src="{{ path('download_document', {'document' : post.getPicture().getId()}) }}"></td>
+            {% else %}
+                <td></td>
+            {% endif %}
+
+
                 {{ post.getTitle() }}
                 <br>
                 {{ post.getText() }}    
@@ -74,6 +78,7 @@
     
         {% endfor %}            
 							{% endif %}
+
 
 
             {{ post.getCreationDate()| date('Y-m-d H:i:s') }}
