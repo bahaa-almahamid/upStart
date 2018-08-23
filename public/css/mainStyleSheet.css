@@ -300,9 +300,9 @@ button {
 /* footer */
 
 footer {
-    position: fixed;
+    position: absolute;
     background-color: #056675;
-    bottom: 0;
+    bottom: -144px;
     left: 0;
     right: 0;
     height: 30px;
