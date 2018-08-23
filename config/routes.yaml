@@ -10,15 +10,19 @@ Chat:
   path:   /Chat
   controller: App\Controller\ChatController::showChat
 
+
+
 post:
   path: /post
   controller: App\Controller\PostController::postList
+
 
 login:
   path:     /registration
   controller: App\Controller\RegistrationController::login
 
 # When you login you will be redirected to the HomePage!...The logout Button is already on the home page, is just place it in place.
+
 
 logout:
   path:     /logout
@@ -88,11 +92,13 @@ miro:
 tamara:
   path:     /tamara
   controller: App\Controller\DefaultController::tamara
-  
+
 ibrahem:
   path:     /ibrahem
   controller: App\Controller\DefaultController::ibrahem
 
 
-
+delete_profile:
+  path:       /user/delete/{user}
+  controller: App\Controller\DefaultController::deleteUser
 

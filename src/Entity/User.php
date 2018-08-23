@@ -74,7 +74,7 @@ class User implements UserInterface, \Serializable
     private $about;
 
     /**
-     * @ORM\Column(type="array")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Role")
      */
     private $roles;
 
@@ -99,7 +99,7 @@ class User implements UserInterface, \Serializable
         $this->posts = new ArrayCollection();
         $this->comment = new ArrayCollection();
         $this->isActive = true;
-        $this->roles = array('ROLE_USER');
+        $this->roles = new ArrayCollection();
     }
 
     public function getUsername()
@@ -175,7 +175,6 @@ class User implements UserInterface, \Serializable
         return $this->createdate;
     }
 
-
     public function getAbout(): ?string
     {
         return $this->about;
@@ -226,7 +225,26 @@ class User implements UserInterface, \Serializable
 
     public function getRoles()
     {
-        return array('ROLE_USER');
+        return array_map('strval', $this->roles->toArray());
+    }
+
+    public function addRole(Role $role): self
+    {
+        if (!$this->roles->contains($role)) {
+            $this->roles[] = $role;
+        }
+        return $this;
+    }
+    /**
+     * Set the value of roles
+     *
+     * @return  self
+     */ 
+    public function setRoles($roles)
+    {
+        $this->roles = $roles;
+
+        return $this;
     }
 
     public function getPosts()
@@ -273,6 +291,18 @@ class User implements UserInterface, \Serializable
     public function setComments($comments)
     {
         $this->comments = $comments;
+
+        return $this;
+    }
+
+    /**
+     * Set the value of messages
+     *
+     * @return  self
+     */ 
+    public function setMessages($messages)
+    {
+        $this->messages = $messages;
 
         return $this;
     }

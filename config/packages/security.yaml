@@ -43,7 +43,7 @@ security:
         ROLE_ADMIN:   ROLE_USER
 
     access_control:
-        - { path: ^/(profile|Chat|post), roles: ROLE_USER }
-        - { path: ^/admin, roles: ROLE_ADMIN }
+        # - { path: ^/(profile|Chat|post), roles: ROLE_USER }
+        # - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
 

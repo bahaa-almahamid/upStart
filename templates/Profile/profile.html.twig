@@ -19,9 +19,10 @@
 			<p><i class="fas fa-map-marker-alt"></i> Address: {{ user.getAddress() }}</p> 
 
 	</div>
-<a href="{{ path("profile_edit") }}" class="btn btn-primary btn-lg" role="button">Edit profile</a>
-
+	<a href="{{ path("profile_edit") }}" class="btn btn-primary btn-lg" role="button">Edit profile</a>
 	</div>
+	<a href="{{ path("delete_profile", {user: user.getId()}) }}" class="btn btn-danger btn-lg">Delete User</a> 
+
 
 {% endblock %}
 

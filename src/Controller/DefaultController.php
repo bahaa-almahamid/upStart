@@ -12,6 +12,8 @@ use App\Form\UserFormType;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use App\Form\ProfileEditFormType;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class DefaultController extends Controller
 {
@@ -100,11 +102,11 @@ class DefaultController extends Controller
 
     public function contact()
     {
-        return $this->render('Default/contact.html.twig'); 
+        return $this->render('members/contact.html.twig'); 
     }
 
     // Edit Profile /*********************** */
-    public function profileEdit(Request $request)
+    public function profileEdit(Request $request, UserPasswordEncoderInterface $passwordEncoder)
     {
         $manager = $this->getDoctrine()->getManager();
         $user = $this->getUser();
@@ -132,13 +134,13 @@ class DefaultController extends Controller
                 $user->setPicture($document);
                 
                 $manager->persist($document);
-                $manager->remove($picture);
-            }
 
-            else
+            } else
             {
                 $user->setPicture($picture);
             }
+            $password = $passwordEncoder->encodePassword($user, $user->getPassword());
+            $user->setPassword($password);
 
             $manager->flush();
             
@@ -155,4 +157,23 @@ class DefaultController extends Controller
             ]
         );
     }
+    public function deleteUser(Request $request, User $user, TokenStorageInterface $tokenStorage)
+    {
+        if(($user == $this->getUser()))
+        {
+            $manager = $this->getDoctrine()->getManager();
+            $manager->remove($user);
+            $manager->flush();
+
+            $tokenStorage->setToken(null);
+
+            return $this->redirectToRoute('homepage');
+        } 
+        else
+        {
+            $deletionError = true;  
+        }
+       
+    }
+
 }
