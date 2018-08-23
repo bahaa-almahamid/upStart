@@ -1,93 +1,53 @@
 {% extends 'base.html.twig' %}
 
-{% block title %} Posts {% endblock %}
+{% block title %}
+
+{% endblock %}
 
 
 
 {% block main %}
 
 <div class="white">
-<div id="posting">
-        {{ form_start(postForm) }}
-            {{ form_row(postForm.category) }}
-            {{ form_row(postForm.title) }}
-            {{ form_row(postForm.text) }}
-        {{ form_end(postForm) }}
- </div>
-
-    {% if posts is empty %}
-        <p>No Post found in the application</p>
-    {% else %}  
-                     
-    {% for post in posts %}
-           <div class="post-user-display" >
-             <div class="post-user-display-username"> {{ post.getUser.getUsername() }} </div>
-             {% if post.getUser.getPicture() is not empty %}
-
-						 <div class="small-user-container"><img class="post-user-pic" style="width:40px;height:40px;border-radius:50%;border:1px solid green;"  src="{{ path('download_document', {'document' : post.getUser.getPicture().getId()}) }}"> </div>
-                <br>
-							{% else %}
-								<div></div>
-                <br>
-							{% endif %}
-
-           </div> 
-            <div class = "post-container">
-            {% if post.getPicture() is not empty %}
-
-
-                <td><img id ="img" src="{{ path('download_document', {'document' : post.getPicture().getId()}) }}"></td>
-            {% else %}
-                <td></td>
-            {% endif %}
-
-
-
-
-            {{ post.getCreationDate()| date('Y-m-d H:i:s') }}
-            <br>
-            {{ post.getCategory() }} 
-            <br>
-            {{ post.getTitle() }}
-            <br>
-            {{ post.getText() }}    
-            <br>
-            <td><a href="{{ path("post_detail", {post: post.getId()}) }}">Comments</a></td>
-            <td><a href="{{ path("post_edit", {post: post.getId()}) }}">Edit Post</a></td>
-            <td><a href="{{ path("delete_post", {post: post.getId()}) }}">Delete Post</a></td>
-
-
-         </div>	      				
-            <br>
-        
-    {% endfor %}            
-    {% endif %}
-
-    <div class="paginator" style="text-align:center;">
-
-    <div class="paginator" style="text-align:center;margin-bottom:40px;">
-
-      <nav aria-label="...">
-        <ul class="pagination">
-          <li class="page-item disabled">
-            <span class="page-link">Previous</span>
-          </li>
-          <li class="page-item"><a class="page-link" href="#">1</a></li>
-          <li class="page-item active">
-            <span class="page-link">
-              2
-              <span class="sr-only">(current)</span>
-            </span>
-          </li>
-          <li class="page-item"><a class="page-link" href="#">3</a></li>
-          <li class="page-item">
-            <a class="page-link" href="#">Next</a>
-          </li>
-        </ul>
-      </nav>
+    <div class="posting">
+            {{ form_start(postForm) }}
+                {{ form_row(postForm.category) }}
+                {{ form_row(postForm.title) }}
+                {{ form_row(postForm.text) }}
+            {{ form_end(postForm) }}
     </div>
+
+    {% if posts.getTotalItemCount == 0 %}
+        <p>No Post found in the application</p>
+    {% else %}
+        {% for post in posts %}
+            <div class="post-user-display" >
+                <div class="post-user-display-username"> {{ post.getUser.getUsername() }} </div>
+                {% if post.getUser.getPicture() is not empty %}
+                    <div class="small-user-container"><img class="post-user-pic"   src="{{ path('download_document', {'document' : post.getUser.getPicture().getId()}) }}"> </div>
+    			{% else %}
+    				<div></div>
+    			{% endif %}
+            </div>
+            <div class = "post-container">
+                {% if post.getPicture() is not empty %}
+                    <div><img id ="img" src="{{ path('download_document', {'document' : post.getPicture().getId()}) }}"></div>
+                {% else %}
+                    <div></div>
+                {% endif %}
+                <p>{{ post.getCreationDate()| date('Y-m-d H:i:s') }}</p>
+                <p>{{ post.getCategory() }}</p>
+                <p>{{ post.getTitle() }}</p>
+                <p>{{ post.getText() }}<p>
+                <p><a href="{{ path("post_detail", {post: post.getId()}) }}">Comments</a></p>
+                <p><a href="{{ path("post_edit", {post: post.getId()}) }}">Edit Post</a></p>
+                <p><a href="{{ path("delete_post", {post: post.getId()}) }}">Delete Post</a></p>
+             </div>
+            <div class="navigation">
+                {{ knp_pagination_render(posts) }}
+            </div>
+        {% endfor %}
+    {% endif %}
 </div>
-
 {% endblock %}
-
 
