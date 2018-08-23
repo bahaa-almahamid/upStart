@@ -75,13 +75,14 @@ class PostController extends AbstractController
                 'users' => $manager->getRepository(User::class)->findAll(),
                 'postForm' => $postForm->createView(),
                 'searchForm' => $searchForm->createView(),
-            ]
+          
+                ]
         );
 
     
     }
 
-
+//this is just test as comment to push the stuff
     public function commentDetail(post $post, Request $request)
     {
         // for comment 
@@ -136,40 +137,41 @@ class PostController extends AbstractController
 
     public function editPost(Post $post, Request $request)
     {
+        if ($post->getPicture()) {
+            $file = new File(
+                $post->getPicture()->getPath() . '/'. $post->getPicture()->getName()
+            );
+            $post->setPicture($file);
+        }
         $editForm = $this->createForm(PostFormType::class, $post, ['standalone'=>true]);
         $editForm->handleRequest($request);
 
         $editError = false;
         $idUser = $this->getUser();
             /**
-             * @var UploadFile $file
+             * @var Document $file
              * 
              */
 
         $file = $post->getPicture();
-            if ($file) {
 
-                $document = new Document();
-                $document->setPath($this->getParameter('upload_dir'))
-                    ->setMimeType($file->getMimeType())
-                    ->setName($file->getFileName());
-
-                $file->move($this->getParameter('upload_dir'));
-                $post->setPicture($document);
-            }
         
-        if ($editForm->isSubmitted() && $editForm->isValid()) {
+        
+        if ($editForm->isSubmitted() && $editForm->isValid() && $idUser == $post->getUser()) {
             
-            if(($idUser == $post->getUser()))
-            {
+                if ($file) {
+
+                    $document = new Document();
+                    $document->setPath($this->getParameter('upload_dir'))
+                        ->setMimeType($file->getMimeType())
+                        ->setName($file->getFileName());
+
+                    $file->move($this->getParameter('upload_dir'));
+                    $post->setPicture($document);
+                }
                 $this->getDoctrine()->getManager()->flush();
             
                 return $this->redirectToRoute('post');
-            }
-            else
-            {
-                $editError = true;
-            }
 
         }
         
