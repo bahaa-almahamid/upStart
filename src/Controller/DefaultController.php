@@ -20,6 +20,19 @@ class DefaultController extends Controller
         return $this->render('default/homepage.html.twig');
     }
 
+    public function profile()
+    {
+        $manager = $this->getDoctrine()->getManager();
+
+        return $this->render(
+            'profile/profile.html.twig',
+            [
+                'user' =>$this->getUser(),
+
+                ]
+            );          
+    }
+
     public function aboutUs()
     {
         return $this->render('default/about.html.twig'); 
@@ -30,10 +43,7 @@ class DefaultController extends Controller
         return $this->render('default/terms.html.twig'); 
     }
 
-    public function privacyPolicy()
-    {
-        return $this->render('default/privacy.html.twig'); 
-    }
+
 
     public function contactUs()
     {
@@ -50,20 +60,32 @@ class DefaultController extends Controller
         return new BinaryFileResponse($fileName);
     }
 
-
-    public function profile()
+     public function about()
     {
-        $manager = $this->getDoctrine()->getManager();
+        return $this->render('Default/about.html.twig'); 
+    }
 
-        return $this->render(
-            'profile/profile.html.twig',
+    public function termsUse()
+    {
+        return $this->render('Default/terms.html.twig'); 
 
-            [
-                'user' => $this->getUser(),
-            ]
+    }
 
-        );
+    public function privacy()
+    {
+        return $this->render('Default/privacy.html.twig'); 
+    }
+    
+   
 
+    public function tamara()
+    {
+        return $this->render('members/tamara.html.twig'); 
+    }
+
+    public function miro()
+    {
+        return $this->render('members/miro.html.twig'); 
     }
     // Edit Profile /*********************** */
     public function profileEdit(Request $request)
@@ -118,6 +140,24 @@ class DefaultController extends Controller
     }
 
 
+    public function ibrahem()
+    {
+        return $this->render('members/ibrahem.html.twig'); 
+    }
+
+    public function bahaa()
+    {
+        return $this->render('members/bahaa.html.twig'); 
+    }
+
+    public function joao()
+    {
+        return $this->render('members/joao.html.twig'); 
+    }
+
+    public function contact()
+    {
+        return $this->render('default/contact.html.twig'); 
+    }
 
 }
-

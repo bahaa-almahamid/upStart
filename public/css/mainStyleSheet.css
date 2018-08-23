@@ -165,7 +165,6 @@ button {
     bottom: 103%;
 }
 
-
 /* end body */
 
 
@@ -180,7 +179,7 @@ button {
     flex-direction: column;
     padding-top: 45px;
     color: #056675;
-    font-size: 2rem;
+    font-size: 20px;
 }
 
 .white {
@@ -209,6 +208,7 @@ button {
 
 #posting {
     margin-left: 1.5%;
+    margin-top: 30px;
     margin-top: 00px;
     position: absolute;
     top: 60px;
@@ -233,6 +233,24 @@ button {
     position: relative;
     background-color: #fff;
     padding: 10px;
+}
+.post-pic {
+    max-width: 815px;
+    border-radius: 5px;
+}
+
+
+
+.post-pic {
+    max-width: 815px;
+    border-radius: 5px;
+}
+
+.pic-container {
+    width: 815px;
+    height: 300px;
+    overflow: hidden;
+    border-bottom: 2px solid #000;
 }
 
 .post-user-display {
@@ -301,6 +319,66 @@ button {
 
 footer {
     position: absolute;
+
+    position: sticky;
+    position: absolute;
+    bottom:0%; 
+    width:100%; 
+    height: 40px;
+    background:#056675; 
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 25%;
+    display: flex;  
+    flex-direction: row; 
+    justify-content: space-around;
+    font-size: 2rem;
+}
+
+footer a{
+    color: white;
+}
+
+.about, .contact, .privacy, .terms{
+    margin-left: 15%;
+    margin-right: 15%;
+    background-color: #fff;
+    box-shadow: 0px 0px 15px #adadad;
+    padding: 10px;
+    margin-top: 20px;
+}
+
+/* end footer */
+
+/* about */
+
+.team-profile{
+    width: 200px;
+    border-radius: 10px;
+    margin-top: -300px;
+}
+
+.nonono{
+    margin-top: -100px;
+    height: 40px;
+    text-align: center;
+}
+
+#photos{
+    /*margin-right: 15%;
+    background-color: #fff;
+    box-shadow: 0px 0px 15px #adadad;
+    padding: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;*/
+    width: 100%;
+    height: 400px;
+    position: absolute;
+    margin-top: 400px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    position: fixed;
     background-color: #056675;
     bottom: -144px;
     left: 0;
@@ -308,20 +386,39 @@ footer {
     height: 30px;
 }
 
-.post-pic {
-    max-width: 815px;
-    border-radius: 5px;
+#about-us{
+    margin-left: 15%;
+    margin-right: 15%;
+    background-color: #fff;
+    box-shadow: 0px 0px 15px #adadad;
+    padding: 10px;
+    margin-top: 20px;
 }
 
-.pic-container {
-    width: 815px;
-    height: 300px;
-    overflow: hidden;
-    border-bottom: 2px solid #000;
+#description{
+    margin-left: 15%;
+    margin-right: 15%;
+    background-color: #fff;
+    box-shadow: 0px 0px 15px #adadad;
+    padding: 10px;
+    margin-top: 20px;
+}
+
+.about-main{
+    width: 100%;
+    height: 600px;
+    position: relative;
+}
+
+#photos a{
+    text-decoration: none;
 }
 
 
-/* end footer */
+
+
+
+/* end about */
 
 
 /* <<<<<<<<>>>>>>>>> */
@@ -349,8 +446,6 @@ footer {
     #margin_left {
         width: 20px;
         font-size: 1.5rem;
-        display: flex;
-        flex-direction: column;
     }
     #chat {
         margin-left: 0px;
@@ -370,6 +465,15 @@ footer {
         position: absolute;
         right: 16%;
     }
+
+
+    #posting{
+        width: 97%;
+        position: absolute;
+        left: 0px;          
+    }                
+       
+
     .margin_left {
         font-size: 1rem;
     }
