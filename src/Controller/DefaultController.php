@@ -39,10 +39,7 @@ class DefaultController extends Controller
         return $this->render('default/terms.html.twig'); 
     }
 
-    public function privacyPolicy()
-    {
-        return $this->render('default/privacy.html.twig'); 
-    }
+
 
     public function contactUs()
     {
@@ -67,6 +64,7 @@ class DefaultController extends Controller
     public function termsUse()
     {
         return $this->render('Default/terms.html.twig'); 
+
     }
 
     public function privacy()
@@ -74,10 +72,7 @@ class DefaultController extends Controller
         return $this->render('Default/privacy.html.twig'); 
     }
     
-    public function contact()
-    {
-        return $this->render('Default/contact.html.twig'); 
-    }
+   
 
     public function tamara()
     {
@@ -104,16 +99,9 @@ class DefaultController extends Controller
         return $this->render('members/joao.html.twig'); 
     }
 
-
-
-
-
-
-
- 
-
-    
-
+    public function contact()
+    {
+        return $this->render('default/contact.html.twig'); 
+    }
 
 }
-

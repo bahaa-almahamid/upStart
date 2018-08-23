@@ -239,12 +239,20 @@ button {
     border-radius: 5px;
 }
 
+
+
+.post-pic {
+    max-width: 815px;
+    border-radius: 5px;
+}
+
 .pic-container {
     width: 815px;
     height: 300px;
     overflow: hidden;
     border-bottom: 2px solid #000;
 }
+
 .post-user-display {
     margin-left: 30px;
     width: 44px;
@@ -311,6 +319,7 @@ button {
 
 footer {
     position: sticky;
+    position: absolute;
     bottom:0%; 
     width:100%; 
     height: 40px;
@@ -367,7 +376,6 @@ footer a{
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    
     position: fixed;
     background-color: #056675;
     bottom: 0;
@@ -455,6 +463,7 @@ footer a{
         position: absolute;
         right: 16%;
     }
+
 
     #posting{
         width: 97%;
