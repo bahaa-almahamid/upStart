@@ -20,6 +20,26 @@ class DefaultController extends Controller
         return $this->render('default/homepage.html.twig');
     }
 
+    public function aboutUs()
+    {
+        return $this->render('default/about.html.twig'); 
+    }
+
+    public function termsOfUse()
+    {
+        return $this->render('default/terms.html.twig'); 
+    }
+
+    public function privacyPolicy()
+    {
+        return $this->render('default/privacy.html.twig'); 
+    }
+
+    public function contactUs()
+    {
+        return $this->render('default/contact.html.twig'); 
+    }
+
     public function downloadDocument(Document $document)
     {
         $fileName = sprintf(
