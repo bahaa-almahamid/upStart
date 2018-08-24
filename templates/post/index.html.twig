@@ -41,14 +41,14 @@
                     <div class="post-user-display" >
                         {% if post.getUser.getPicture() is not empty %}
                         <div class='user-pic-div'><img class="post-user-pic"  src="{{ path('download_document', {'document' : post.getUser.getPicture().getId()}) }}"> </div>
-                        {% else %}
-                        <div></div>
                         {% endif %}
-                        <div class="post-user-display-username"> {{ post.getUser.getUsername() }} </div>
+                        <div class="post-user-display-username">
+                        <a  href="{{ path ('profile_user', { 'id' : post.getUser.getId() }) }}"> {{ post.getUser.getUsername() }} </a> 
+                        </div>
                     </div>
                     <div class = "post-container">
                         {% if post.getPicture() is not empty %}
-                            <div class="post-pic-container"><img class= 'post-pic' src="{{ path('download_document', {'document' : post.getPicture().getId()}) }}"></div>
+                            <div class="post-pic-container"><img class= 'post-pic' src="{{ path ('download_document', {'document' : post.getPicture().getId()}) }}"></div>
                         {% else %}
                             <div></div>
                         {% endif %}
