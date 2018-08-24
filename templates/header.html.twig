@@ -1,9 +1,17 @@
 <header id="try">  
-    <h1 id="logo-us">uS</h1>
+    <a href = "{{path ('post') }}"> <h1 id="logo-us">uS</h1><a/>
     <div id="search-input-container">
         <i class="fas fa-search"></i> <input type="search" id="search-input" placeholder="Search">
     </div>
+    
+        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                <a href = "{{path ('post') }}"> Home <a/>
+                <a class="logout-header" href = "{{path ('logout') }}"><i class="fas fa-sign-out-alt"></i>  Log Out | <a/>
+                {{ form(searchForm)}}
+        {% endif %}
+
 </header>
+
 
 
    
