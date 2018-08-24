@@ -16,8 +16,8 @@ class PostFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title',TextType::class, ['attr' => ['class' => 'form-control']])
-            ->add('category',TextType::class, ['attr' => ['class' => 'form-control']])
+            ->add('title',TextType::class, ['attr' => ['class' => 'form-control form-control-sm']])
+            ->add('category',TextType::class, ['attr' => ['class' => 'form-control form-control-sm']])
             ->add('text',TextareaType::class, ['attr' => ['class' => 'form-control']])
             ->add('picture',FileType::class,
             ['required'=>false],

@@ -15,7 +15,7 @@ class CommentFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('content',TextareaType::class)
+            ->add('content',TextareaType::class,  ['attr' => ['class' => 'form-control form-control-sm']])
             ->add('picture',FileType::class,
             ['required'=>false]);
             
@@ -23,7 +23,7 @@ class CommentFormType extends AbstractType
             $builder->add(
                 'submit', 
                 SubmitType::class, 
-                ['attr' => ['class' => 'btn-success']]
+                ['attr' => ['class' => 'btn btn-success']]
             );
         }          
     }
