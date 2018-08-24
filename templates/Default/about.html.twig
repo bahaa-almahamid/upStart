@@ -1,7 +1,10 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <div class="about-main">     
+
+    <div class="about-main"> 
+        <a href="{{ path ('post') }}" class="back-about" >Back</a>
+    
         <div id="about-us">
             <h3><u><strong>About us</strong></u></h3><br>
             <h4> Hello world! </h4>
@@ -35,7 +38,7 @@
 
             <div class="nonono">
                 <a href="{{ path ('miro') }}"> <img class="team-profile" src="../img/miro.jpg" alt="photo of miro"><br>
-                Miroslav Nedeljković </a>
+                Miroslav Nedeljkovič </a>
             </div><br>
         </div>
     </div>
