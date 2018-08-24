@@ -7,7 +7,6 @@
         {% if is_granted('IS_AUTHENTICATED_FULLY') %}
                 <a href = "{{path ('post') }}"> Home <a/>
                 <a class="logout-header" href = "{{path ('logout') }}"><i class="fas fa-sign-out-alt"></i>  Log Out | <a/>
-                {{ form(searchForm)}}
         {% endif %}
 
 </header>

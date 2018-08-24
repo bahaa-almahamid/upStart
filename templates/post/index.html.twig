@@ -20,7 +20,7 @@
                 <a href = "{{path ('admin') }}"><i class="fas fa-columns"></i>  Admin panel | <a/>
             {% endif %}
         {% endif %}
-    </div>    
+    </div>  
 
     
     <div class="timeline-container">
@@ -31,6 +31,7 @@
                     {{ form_row(postForm.text) }}
                 {{ form_end(postForm) }}
         </div>
+        
         <div class="show-all-posts">
             {% if posts.getTotalItemCount == 0 %}
                 <p>No Post found in the application</p>
