@@ -47,7 +47,7 @@ class PostRepository extends EntityRepository
     
     public function findPaginates(Request $request, Paginator $paginator, PostSearch $dto)
     {
-        $limit = 4;
+        $limit = 8;
         $query = $this->createQueryBuilder('p');
         $query->orderBy('p.creationDate', 'DESC'); 
         

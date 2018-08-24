@@ -9,6 +9,13 @@ body {
     font-family: 'Ubuntu', sans-serif;
 }
 
+.logout-header {
+    float: right;
+    margin-right: 20px;
+    margin-top: 7px;
+    color: red;
+}
+
 
 /* navbar*/
 
@@ -21,7 +28,6 @@ body {
     width: 20%;
     padding: 15px;
     border-radius: 15px;
-    height: 500px;
     display: flex;
     flex-direction: column;
     margin-top: 40px;
@@ -95,6 +101,7 @@ header a {
     margin: 0 auto;
     background-color: white;
 }
+
 .main-text-container {
     position: absolute;
     width: 60%;
@@ -359,7 +366,7 @@ header a {
 .post-user-display-username {
     display: inline;
     margin-left: 10px;
-    color: #fff;
+    color: #000;
     text-decoration: none;
     list-style: none;
 }
