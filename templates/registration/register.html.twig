@@ -7,7 +7,6 @@
             <span class="start-content">START</span>
             <p class="definition-first-para">Social network for any start-up who wants to share their experience to make it a success guide</p>
             <p class="definition-second-para">Here where every startup should be an introduction for a new successful business</p>
-
         </div>
         <div class="main-forms-container">
             <div class="login">
@@ -20,7 +19,8 @@
                     <input type="checkbox" id="login-form-checkbox" class="login-form-checkbox" name="remember-me"><label class="login-form-label" for="login-form-checkbox">Remember me</label> <br>
                     <a class="forgot-password" href="">Forgot your password?</a>
                 </form>
-                
+            </div>
+            <div class="signup">
                 {{ form_start(form, {'attr': {'class': 'signup-form'}} ) }}
                     {{ form_row(form.username, { 'attr': {'class': 'login-form-user'} }) }}
                     <br>
@@ -39,5 +39,4 @@
             </div>
         </div>
     </div>
-    {# {% block footer %} {% include 'footer.html.twig' %} {% endblock %} #}
 {% endblock %}
