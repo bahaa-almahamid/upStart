@@ -40,8 +40,12 @@
 						<p><i class="fas fa-envelope"></i> E-Mail: {{ user.getEmail() }}</p>   
 						<p><i class="fas fa-info-circle"></i> About: {{ user.getAbout() }}</p> 
 						<p><i class="fas fa-map-marker-alt"></i> Address: {{ user.getAddress() }}</p> 
+
+						{% if app.user == user %}
 						<a href="{{ path("profile_edit") }}" class="btn btn-primary btn-lg" role="button">Edit profile</a>
 						<a href="{{ path("delete_profile", {user: user.getId()}) }}" class="btn btn-danger btn-lg">Delete User</a> 
+						
+						{% endif %}
 						</div>
 					</div> 
 					{% endblock %} 

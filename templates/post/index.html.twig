@@ -44,11 +44,13 @@
                         {% else %}
                         <div class='user-pic-div' > <img class="post-user-pic"  src="{{ asset('img/avatar.png')}}"> </div>
                         {% endif %}
-                        <div class="post-user-display-username"> {{ post.getUser.getUsername() }} </div>
+                        <div class="post-user-display-username">
+                        <a  href="{{ path ('profile_user', { 'id' : post.getUser.getId() }) }}"> {{ post.getUser.getUsername() }} </a> 
+                        </div>
                     </div>
                     <div class = "post-container">
                         {% if post.getPicture() is not empty %}
-                            <div class="post-pic-container"><img class= 'post-pic' src="{{ path('download_document', {'document' : post.getPicture().getId()}) }}"></div>
+                            <div class="post-pic-container"><img class= 'post-pic' src="{{ path ('download_document', {'document' : post.getPicture().getId()}) }}"></div>
                         {% else %}
                             <div class="post-pic-container"><img class="post-pic"  src="{{ asset('img/postAva.png')}}"></div>
                         {% endif %}
