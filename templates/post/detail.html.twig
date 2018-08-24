@@ -2,49 +2,61 @@
 
 {% block title %} post Comments{% endblock %}
 
-
 {% block body %}
-
-
-
-
-	<div class="container">
-
-		
-            {{ post.getCreationDate()| date('Y-m-d H:i:s') }}
+	    <div id="left-navbar">
+        {% if is_granted('ROLE_USER') %}  
+            {% if app.user.getPicture() is not empty %}
+                <div class='index-pic-div'><img class="index-profile-pic"  src="{{ path('download_document', {'document' : app.user.getPicture().getId()}) }}"> </div> <br>
+            {% else %}
+                <div></div><br>
+            {% endif %}
+            <a href="{{ path ('profile') }}"><i class="fas fa-user-alt"></i>  My profile | </a>
             <br>
-            {{ post.getCategory() }} 
+            <a href="{{ path ('Chat') }}"><i class="fas fa-envelope"></i>   Messages | </a>
+            <br>                        
+            <a href = "{{path ('post') }}"><i class="fas fa-list-alt"></i>  Posts | <a/>
             <br>
-            {{ post.getTitle() }}
+            {% if is_granted('ROLE_ADMIN') %}
+                <a href = "{{path ('admin') }}"><i class="fas fa-columns"></i>  Admin panel | <a/>
+            {% endif %}
             <br>
-            {{ post.getText() }}   
+            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                <a href = "{{path ('logout') }}"><i class="fas fa-sign-out-alt"></i>  Log Out | <a/>
+        {% endif %}
+        {% endif %}
+    </div>    
 
+    
+    <div class="timeline-container">
+        <div>
+            <br>
+            <h3 class="title-show">{{ post.getTitle() }}</h3>
+            <br>
             {% if post.getPicture() is not empty %}
-				<img src="{{ path('download_document', {'document' : post.getPicture().getId()}) }}">
-			{% else %}
-				<td></td>
-			{% endif %}			 
-			 
+                <img class="post-pic-container" src="{{ path('download_document', {'document' : post.getPicture().getId()}) }}">
+            <p class="creation-date-show">Created at:&nbsp {{ post.getCreationDate()| date('Y-m-d H:i:s') }}| Category:&nbsp{{ post.getCategory() }}</p>
 
+            <p class="body-show">{{ post.getText() }}<p>
+            {% else %}
+                <td></td>
+            {% endif %}
 
-		<p>id : {{ post.getId() }}</p>
-		 {{ post.getCreationDate()|date('Y-m-d H:i:s') }}
-         <br>
-		 {{ post.getText() }}
-         <br>
-		 {{ post.getTitle() }}
-         <br>
-
-		<div class="element-warning mt-5">
+        </div>
+            <div class="element-warning mt-5">
 		</div>
-		<div id="posting">
-       {{ form(commentForm) }}
-    </div>
+
+	    <div id="posting">
+            {{ form(commentForm) }}
+        </div>
+
+    <div>
+
     {% if comments is empty %}
         <p>No Comments found in the application</p>
     {% else %}  
                      
     {% for comment in comments %}
+            <div class="post-user-display"> {{ comment.getUser.getUsername() }} </div> 
         {{ comment.getCreateDate()| date('Y-m-d H:i:s') }}
         {% if comment.getPicture() is not empty %}
             <td><img src="{{ path('download_document', {'document' : comment.getPicture().getId()}) }}"></td>
@@ -52,17 +64,16 @@
                 <td></td>
             {% endif %}
             <br>
-            {{ comment.getUser.getUsername() }} 
             {{ comment.getContent() }} 
 
-                {% if app.user == comment.getUser() %}
-                    <td><a class="btn btn-danger btn-lg" href="{{ path("comment_edit", {comment: comment.getId()}) }}">Edit Comment</a></td>
+            {% if app.user == comment.getUser() %}
+                <td><a class="btn btn-danger btn-lg" href="{{ path("comment_edit", {comment: comment.getId()}) }}">Edit Comment</a></td>
 
-                    <td><a class="btn btn-danger btn-lg" href="{{ path("delete_comment", {comment: comment.getId()}) }}">Delete Comment</a></td>  
-                {% endif %}  
+                <td><a class="btn btn-danger btn-lg" href="{{ path("delete_comment", {comment: comment.getId()}) }}">Delete Comment</a></td>  
+            {% endif %}
     {% endfor %}
     {% endif %}
-
+    </div>
 
 	</div>
     </div>
