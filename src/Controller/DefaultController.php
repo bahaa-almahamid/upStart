@@ -21,6 +21,7 @@ class DefaultController extends Controller
     {
         return $this->render('default/homepage.html.twig');
     }
+    
 
     public function profile()
     {
@@ -30,6 +31,18 @@ class DefaultController extends Controller
             'profile/profile.html.twig',
             [
                 'user' =>$this->getUser(),
+                ]
+            );          
+    }
+
+    public function profileUser(User $id)
+    {
+        $manager = $this->getDoctrine()->getManager();
+
+        return $this->render(
+            'profile/profile.html.twig',
+            [
+                'user' =>$id,
                 ]
             );          
     }
@@ -175,5 +188,5 @@ class DefaultController extends Controller
         }
        
     }
-
+ 
 }

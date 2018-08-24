@@ -102,3 +102,6 @@ delete_profile:
   path:       /user/delete/{user}
   controller: App\Controller\DefaultController::deleteUser
 
+profile_user:
+  path: /profile/{id}
+  controller: App\Controller\DefaultController::profileUser

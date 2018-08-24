@@ -17,11 +17,11 @@ class ProfileEditFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('username', TextType::class)
-            ->add('password',PasswordType::class)
-            ->add('email', EmailType::class)
-            ->add('address', TextType::class)
-            ->add('about', TextType::class)
+            ->add('username', TextType::class, ['attr' => ['class' => 'form-control']])
+            ->add('password',PasswordType::class, ['attr' => ['class' => 'form-control']])
+            ->add('email', EmailType::class, ['attr' => ['class' => 'form-control']])
+            ->add('address', TextType::class, ['attr' => ['class' => 'form-control']])
+            ->add('about', TextType::class, ['attr' => ['class' => 'form-control']])
             ->add('picture', FileType::class,
             ['required'=>false],
             ['attr' => ['class' => 'form-control']]);

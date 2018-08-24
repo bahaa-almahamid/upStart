@@ -69,16 +69,12 @@ class PostController extends Controller
         return $this->render(
             'post/index.html.twig',
             [
-
                 'posts' => $manager->getRepository(Post::class)->findPaginates($request, $this->get('knp_paginator'), $dto),
                 'users' => $manager->getRepository(User::class)->findAll(),
                 'postForm' => $postForm->createView(),
                 'searchForm' => $searchForm->createView(),
-
             ]
         );
-
-
     }
 
 
