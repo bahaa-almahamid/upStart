@@ -15,11 +15,6 @@
 					{% if is_granted('ROLE_ADMIN') %}
 						<a href = "{{path ('admin') }}"><i class="fas fa-columns"></i>  Admin panel | <a/>
 					{% endif %}
-					<br>
-					<br>
-					{% if is_granted('IS_AUTHENTICATED_FULLY') %}
-						<a href = "{{path ('logout') }}"><i class="fas fa-sign-out-alt"></i>  Log Out | <a/>
-					{% endif %}
 				{% endif %}
 				</div>   
 				

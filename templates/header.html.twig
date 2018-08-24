@@ -3,6 +3,11 @@
     <div id="search-input-container">
         <i class="fas fa-search"></i> <input type="search" id="search-input" placeholder="Search">
     </div>
+    
+        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                <a class="logout-header" href = "{{path ('logout') }}"><i class="fas fa-sign-out-alt"></i>  Log Out | <a/>
+        {% endif %}
+
 </header>
 
 
