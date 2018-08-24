@@ -31,7 +31,7 @@
 								<img class="profile-pic" src="{{ path('download_document', {'document' : user.getPicture().getId()}) }}"> 
 							</div>
 						{% else %}
-							<div class="profile-user-pic"></div>
+							<div class="profile-user-pic"><img class="profile-pic" src="{{ asset('img/avatar.png')}}"> </div>
 						{% endif %}
 						<br>
 						<div class="profile-details">
