@@ -240,15 +240,22 @@ header a {
 
 
 /* end profile */
-.btn{
+
+.btn {
     margin-top: 8px;
 }
 
-.form-control{
+.form-control {
     margin-top: 4px;
 }
 
+
 /* posts */
+
+.searchBar {
+    position: relative;
+    width: 80px;
+}
 
 .timeline-container {
     position: relative;
@@ -269,11 +276,10 @@ header a {
     margin: 0 auto;
 }
 
-#posting{
+#posting {
     position: relative;
     width: 75%;
     height: 160px;
-
 }
 
 .post-container {
@@ -457,13 +463,13 @@ header a {
 
 footer {
     position: fixed;
+    text-align: center;
     bottom: 0%;
     width: 100%;
     height: 30px;
     background: #056675;
     padding-top: 5px;
     padding-bottom: 5px;
-    padding-left: 30%;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -479,7 +485,7 @@ footer a {
 .contact,
 .privacy,
 .terms {
-    margin-left: 15%;
+    text-align: center;
     margin-right: 15%;
     background-color: #fff;
     box-shadow: 0px 0px 15px #adadad;
@@ -575,16 +581,21 @@ footer a {
 @media only screen and (max-width: 800px) {
     .up-content,
     .start-content {
-        font-size: 150px;
+        font-size: 100px;
+        position: relative;
     }
     .definition-first-para,
     .definition-second-para {
-        font-size: 1.5rem;
+        display: none;
+    }
+    .main-text-container {
+        width: 10%;
+        margin-bottom: 300px;
     }
     .main-forms-container {
+        margin-top: 300px;
         width: 100%;
         position: absolute;
-        top: 90%;
     }
     #margin_left {
         width: 20px;
@@ -601,12 +612,10 @@ footer a {
     }
     #logo-us {
         position: absolute;
-        left: -25%;
         bottom: 0%;
     }
     #search-input-container {
-        position: absolute;
-        right: 16%;
+        display: none;
     }
     #posting {
         width: 97%;
@@ -621,6 +630,15 @@ footer a {
     .margin_left {
         font-size: 1rem;
     }
+    .footer {
+        text-align: center;
+    }
+    footer a {
+        font-size: 8px;
+    }
+    /* #left-navbar {
+        display: none;
+    } */
 }
 
 
