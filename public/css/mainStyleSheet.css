@@ -240,7 +240,13 @@ header a {
 
 
 /* end profile */
+.btn{
+    margin-top: 8px;
+}
 
+.form-control{
+    margin-top: 4px;
+}
 
 /* posts */
 
@@ -261,6 +267,13 @@ header a {
     position: relative;
     width: 95%;
     margin: 0 auto;
+}
+
+#posting{
+    position: relative;
+    width: 75%;
+    height: 160px;
+
 }
 
 .post-container {
