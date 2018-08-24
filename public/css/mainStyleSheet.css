@@ -280,8 +280,6 @@ header a {
     border-radius: 5px;
 }
 
-
-
 .post-pic-container {
     width: 100%;
     height: 300px;
@@ -341,13 +339,13 @@ header a {
 .post-user-display {
     margin-left: 15px;
     width: 140px;
-    background-color: #e1e3e8;
+    background-color: #056675;
     position: relative;
     border-bottom-left-radius: 30px;
     border-top-left-radius: 30px;
     border-top-right-radius: 30px;
     border-bottom-right-radius: 30px;
-    margin-bottom: -40px;
+    margin-bottom: -45px;
     margin-top: 40px;
     box-shadow: 0px 0px 15px #adadad;
 }
@@ -366,7 +364,7 @@ header a {
 .post-user-display-username {
     display: inline;
     margin-left: 10px;
-    color: #000;
+    color: #fff;
     text-decoration: none;
     list-style: none;
 }
@@ -615,8 +613,4 @@ footer a {
 }
 
 
-
-
-
 /* end of responsive */
-
