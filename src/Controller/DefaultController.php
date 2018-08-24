@@ -57,10 +57,7 @@ class DefaultController extends Controller
         return $this->render('default/terms.html.twig'); 
     }
 
-    public function contactUs()
-    {
-        return $this->render('default/contact.html.twig'); 
-    }
+
 
     public function downloadDocument(Document $document)
     {
@@ -115,7 +112,7 @@ class DefaultController extends Controller
 
     public function contact()
     {
-        return $this->render('members/contact.html.twig'); 
+        return $this->render('Default/contact.html.twig'); 
     }
 
     // Edit Profile /*********************** */

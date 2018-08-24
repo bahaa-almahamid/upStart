@@ -16,6 +16,33 @@ body {
     color: red;
 }
 
+/* back button */
+.back{
+    background-color: #056675;
+    border: 1px solid #056675;
+    border-radius: 5px;
+    padding: 7px;
+    color: white; 
+    margin-left: 20px;
+    font-size: 2rem; 
+    position: absolute;
+    top: 68px;
+}
+
+.back-about
+{
+    background-color: #056675;
+    border: 1px solid #056675;
+    border-radius: 5px;
+    padding: 7px;
+    color: white; 
+    margin-left: 20px;
+    font-size: 2rem; 
+    position: absolute;
+    top: -2px;  
+}
+/* back button */
+
 
 /* navbar*/
 
@@ -492,7 +519,7 @@ footer a {
 }
 
 .nonono {
-    margin-top: -100px;
+    margin-top: -304px;
     height: 40px;
     text-align: center;
 }
@@ -528,6 +555,10 @@ footer a {
     margin-top: 20px;
 }
 
+#about-us h4{
+    text-decoration: none;
+}
+
 #description {
     margin-left: 15%;
     margin-right: 15%;
@@ -545,6 +576,7 @@ footer a {
 
 #photos a {
     text-decoration: none;
+    font-size: 2rem;
 }
 
 
