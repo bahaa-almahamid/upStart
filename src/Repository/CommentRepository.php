@@ -5,7 +5,9 @@ namespace App\Repository;
 use App\Entity\Comment;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
-
+use Symfony\Component\HttpFoundation\Request;
+use Knp\Component\Pager\Paginator;
+use Doctrine\ORM\EntityRepository;
 /**
  * @method Comment|null find($id, $lockMode = null, $lockVersion = null)
  * @method Comment|null findOneBy(array $criteria, array $orderBy = null)
@@ -17,6 +19,21 @@ class CommentRepository extends ServiceEntityRepository
     public function __construct(RegistryInterface $registry)
     {
         parent::__construct($registry, Comment::class);
+    }
+
+    public function findPaginates(Request $request, Paginator $paginator)
+    {
+        $limit = 20;
+        $query = $this->createQueryBuilder('c');
+        $query->orderBy('c.createDate', 'DESC'); 
+    
+        $pagination = $paginator->paginate(
+            $query,
+            $request->query->getInt('page', 1),
+            $limit
+        );
+        
+        return $pagination;
     }
 
 //    /**
