@@ -26,6 +26,21 @@ class Message
      */
     private $user;
 
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $createDate;
+
+    public function __construct()
+    {
+        $this->createDate = new \DateTime();
+    }
+    public function getCreatedate(): ?\DateTimeInterface
+    {
+        return $this->createDate;
+    }
+
     public function getId(): ?int
     {
         return $this->id;
