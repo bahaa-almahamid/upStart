@@ -546,16 +546,16 @@ header a {
 }
 
 .msg-content {
-    width: 40%;
-    background-color: red;
+    width: 100%;
+    background-color: #d9dce0;
 }
 
 .messenger-form {
     bottom: 0%;
     position: fixed;
     margin: 0 auto;
-    background-color: red;
-    width: 100%;
+    background-color: #d9dce0;
+    width: 70%;
     height: 100px;
 }
 
