@@ -57,6 +57,11 @@ class Message
         return $this->content;
     }
 
+    public function __toString()
+    {
+        return $this->content;
+    }
+
     public function setContent(string $content): self
     {
         $this->content = $content;
