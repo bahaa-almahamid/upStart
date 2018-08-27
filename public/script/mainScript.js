@@ -5,3 +5,15 @@ $(window).scroll(function() {
         $('footer').slideUp(300);
     }
 });
+
+
+$(document).ready(function() {
+
+
+    $('#toggler').click(function(e) {
+        e.preventDefault();
+        $('#left-navbar').slideToggle(500);
+        $(this).toggleClass('navbar-show');
+
+    });
+});

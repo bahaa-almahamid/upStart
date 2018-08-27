@@ -78,6 +78,26 @@ body {
 /* end navbar*/
 
 
+/* responsive hide */
+
+#toggler {
+    margin: 2px;
+    border: none;
+    width: 50px;
+    position: absolute;
+    display: none;
+}
+
+.menu-item {
+    border-radius: 2px;
+    margin: 2px;
+    width: 30px;
+    height: 5px;
+    display: block;
+    background-color: #f7fffe;
+}
+
+
 /* homepage header content */
 
 header {
@@ -378,7 +398,7 @@ header a {
 
 .click-link {
     cursor: pointer;
-    color: #000;
+    color: #fff;
     text-decoration: none;
 }
 
@@ -631,28 +651,20 @@ footer a {
 }
 
 .nonono {
-    margin-top: -304px;
     height: 40px;
+    margin-top: 400px;
     text-align: center;
+    margin-bottom: 100px;
+    padding-bottom: 20px;
 }
 
 #photos {
-    /*margin-right: 15%;
-    background-color: #fff;
-    box-shadow: 0px 0px 15px #adadad;
-    padding: 20px;
-    margin-top: 20px;
-    margin-bottom: 20px;*/
     width: 100%;
     height: 400px;
     position: absolute;
-    margin-top: 400px;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    position: fixed;
-    background-color: #056675;
-    bottom: -144px;
     left: 0;
     right: 0;
     height: 30px;
@@ -761,9 +773,39 @@ footer a {
     footer a {
         font-size: 8px;
     }
-    /* #left-navbar {
+    #left-navbar {
+        margin-top: -10px;
+        width: 50%;
+        z-index: 100;
+        text-align: center;
         display: none;
-    } */
+    }
+    #toggler {
+        display: inline-block;
+    }
+    .navbar-show {
+        background-color: #000;
+        font-size: 100px;
+    }
+    #photos {
+        display: block;
+        position: absolute;
+        background-color: transparent;
+    }
+    #about-us {
+        height: 430px;
+        font-size: 10px;
+        align-content: space-between;
+    }
+    .about-main {
+        height: 100%;
+    }
+    .nonono {
+        display: block;
+        margin-top: 200px;
+        padding-top: 100px;
+        padding-bottom: 20px;
+    }
 }
 
 
