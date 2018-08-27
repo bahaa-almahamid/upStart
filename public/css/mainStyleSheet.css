@@ -529,10 +529,15 @@ header a {
 
 .message-container {
     width: 70%;
-    position: relative;
+    height: 400px;
+    overflow: scroll;
     margin: 0 auto;
     background-color: #fff;
     margin-bottom: 100px;
+    display: flex;
+    flex-direction: column-reverse;
+    padding-top: 20px;
+    padding-bottom: 40px;
 }
 
 .title {
