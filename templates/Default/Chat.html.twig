@@ -3,6 +3,7 @@
 {% block title %}upSTART.lu{% endblock %}
 
 {% block body %}
+	<body onload="load()">
 		{% block left_marge %}
                     <div id="left-navbar">
                         {% if is_granted('ROLE_USER') %}
@@ -29,9 +30,25 @@
 				{% else %}
 				<div id='message-container' class='message-container'>
 					{% for message in messages %}
-						<p class='msg-username'>{{ message.getUser.getUsername() }}</p>          				
-						<p class='msg-content'>{{ message.getContent() }}</p>   
-						<p class='msg-date'>{{ message.getCreateDate()| date('Y-m-d H:i:s') }}</p>     
+						<div class='single-comment-container'>
+						<p class='comment-show-date'>sent at:
+                        {{ message.getCreateDate()| date('Y-m-d H:i:s') }}
+                    </p>
+                    <div class="comment-user-display" >
+                        {% if message.getUser.getPicture() is not empty %}
+                        <div class='user-pic-comment'><img class="comment-user-pic"  src="{{ path('download_document', {'document' : message.getUser.getPicture().getId()}) }}"> </div>
+                        {% else %}
+                        <div class='user-pic-comment' > <img class="comment-user-pic"  src="{{ asset('img/avatar.png')}}"> </div>
+                        {% endif %}
+                        <div class="comment-user-display-username">
+                            <a  href="{{ path ('profile_user', { 'id' : message.getUser.getId() }) }}"> {{ message.getUser.getUsername() }} </a> 
+                        </div>
+                    </div>
+                    <p class='comment-show-body'>
+                        {{ message.getContent() }} 
+                    </p>
+
+						</div>    
 					{% endfor %}
 				</div>
 		{% endif %}
@@ -44,5 +61,14 @@
 		</div>
 		
 	
+{% block javascripts %}
+<script type="text/javascript">
+function load()
+{
+setTimeout("window.open(self.location, '_self');", 5000);
+}
+</script>
 
+{% endblock %}
+</body>
 {% endblock %}
