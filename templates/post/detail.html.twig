@@ -73,8 +73,8 @@
                         {{ comment.getContent() }} 
                     </p>
                     {% if app.user == comment.getUser() %}
-                    <p class="comment-edit-show"><a class="click-link-comment" href="{{ path("comment_edit", {comment: comment.getId()}) }}">Edit Comment</a></p>
-                    <p class="comment-edit-show"><a class="click-link-comment" href="{{ path("delete_comment", {comment: comment.getId()}) }}">Delete Comment</a></p> 
+                    <p class="comment-edit-show"><a class="click-link-comment" href="{{ path("comment_edit", {comment: comment.getId(), post:post.getId()}) }}">Edit Comment</a></p>
+                    <p class="comment-edit-show"><a class="click-link-comment" href="{{ path("delete_comment", {comment: comment.getId(), post:post.getId()}) }}">Delete Comment</a></p> 
                     {% endif %}
                 </div>
             {% endfor %}
