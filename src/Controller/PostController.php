@@ -202,7 +202,7 @@ class PostController extends Controller
     
     // Edit the Comments
 
-    public function editComment( Comment $comment, Request $request)
+    public function editComment(Post $post,  Comment $comment, Request $request)
     {
         $manager = $this->getDoctrine()->getManager();
         if ($comment->getPicture()) {
@@ -241,7 +241,7 @@ class PostController extends Controller
 
             
 
-            return $this->redirectToRoute('post');
+            return $this->redirectToRoute('post_detail',array('post'=>$post->getId()));
 
 
         }
@@ -255,7 +255,7 @@ class PostController extends Controller
             ]
         );
     }
-    public function deleteComment(Request $request, Comment $comment)
+    public function deleteComment(Post $post, Request $request, Comment $comment)
     {
         $idUser = $this->getUser();
         $deletionError = false;
@@ -268,7 +268,7 @@ class PostController extends Controller
             $deletionError = true;
         }
 
-        return $this->redirectToRoute('post');
+        return $this->redirectToRoute('post_detail',array('post'=>$post->getId()));
     }
 }
     

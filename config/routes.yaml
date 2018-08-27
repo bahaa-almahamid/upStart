@@ -46,7 +46,7 @@ post_edit:
   controller: App\Controller\PostController::editPost
 
 comment_edit:
-  path:       /comment/edit/{comment}
+  path:       /comment/edit/{post}/{comment}
   controller: App\Controller\PostController::editComment
 
 delete_post:
@@ -54,7 +54,7 @@ delete_post:
   controller: App\Controller\PostController::deletePost
 
 delete_comment:
-  path:       /comment/delete/{comment}
+  path:       /comment/delete/{post}/{comment}
   controller: App\Controller\PostController::deleteComment
 
 profile_edit:
